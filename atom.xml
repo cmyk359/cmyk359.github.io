@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://cmyk359.github.io</id>
+    <title>猫爪在上</title>
+    <updated>2024-11-22T14:09:05.884Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://cmyk359.github.io"/>
+    <link rel="self" href="https://cmyk359.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://cmyk359.github.io/images/avatar.png</logo>
+    <icon>https://cmyk359.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, 猫爪在上</rights>
+    <entry>
+        <title type="html"><![CDATA[MySQL]]></title>
+        <id>https://cmyk359.github.io/post/mysql/</id>
+        <link href="https://cmyk359.github.io/post/mysql/">
+        </link>
+        <updated>2024-11-22T13:27:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="数据库">数据库</h1>
+<blockquote>
+<p>什么是数据库？什么是数据库管理系统？什么是SQL？他们之间的关系是什么？</p>
+</blockquote>
+<ul>
+<li>数据库：<br>
+英文单词DataBase，简称DB。按照一定格式存储数据的一些文件的组合。<br>
+顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据</li>
+<li>数据库管理系统：<br>
+DataBaseManagement，简称DBMS。<br>
+数据库管理系统是专门用来管理数据库中数据的，数据库管理系统可以对数据库当中的数据进行增删改查。</li>
+</ul>
+<p>常见的数据库管理系统：<br>
+MySQL、Oracle、MS SqlServer、DB2、Sybase等....</p>
+<h2 id="关于sql语句的分类">关于SQL语句的分类</h2>
+<p>DXL（数据库X语言）:其中D代表数据库，X是语言的功能，如定义、管理、查询、控制。</p>
+<ul>
+<li>
+<p>DDL：<br>
+数据定义语言<br>
+凡是带有create、drop、alter的都是DDL。<br>
+DDL主要操作的是<strong>表的结构</strong>。不是表中的数据。<br>
+create：新建，等同于增<br>
+drop：删除<br>
+alter：修改<br>
+这个增删改和DML不同，这个主要是对表结构进行操作。</p>
+</li>
+<li>
+<p>DML：<br>
+数据操作语言（凡是对表当中的数据进行增删改的都是DML）<br>
+insert delete update<br>
+insert 增<br>
+delete 删<br>
+update 改<br>
+这个主要是操作<strong>表中的数据</strong>。</p>
+</li>
+<li>
+<p>DQL：<br>
+数据查询语言（凡是带有select关键字的都是查询语句）<br>
+select...</p>
+</li>
+<li>
+<p>DCL：<br>
+是数据控制语言。<br>
+例如：授权grant、撤销权限revoke....</p>
+</li>
+<li>
+<p>TCL：<br>
+是事务控制语言<br>
+包括：<br>
+事务提交：commit;<br>
+事务回滚：rollback;</p>
+</li>
+</ul>
+<h2 id="操作数据库">操作数据库</h2>
+<p>1、创建数据库</p>
+<pre><code class="language-sql">CREATE DATABASE IF NOT EXISTS school;  --IF NOT EXISTS 当不存在该数据库时才创建
+</code></pre>
+<p>2、删除数据库</p>
+<pre><code class="language-sql">DROP DATABASE IF EXISTS xxxx;  --如果存在该数据库则删除
+</code></pre>
+<p>3、查看数据库</p>
+<pre><code class="language-sql">SHOW DATABASES;
+</code></pre>
+<p>4、使用某个数据库</p>
+<pre><code class="language-sql">USE  `xxx`;  --如果你的表名或者字段名是一个特殊字符，就需要带``
+</code></pre>
+<p>5、查看当前使用的数据库</p>
+<pre><code class="language-sql">SELECT DATABASE();
+</code></pre>
+<p>6、查看数据库下的表</p>
+<pre><code class="language-sql">SHOW TABLES;
+</code></pre>
+<h1 id="一-数据定义">一、数据定义</h1>
+<h2 id="1-模式的定义与删除">1、模式的定义与删除</h2>
+<p>先看最下面</p>
+<h2 id="2-基本表的定义-删除和修改">2、基本表的定义、删除和修改</h2>
+<h3 id="定义基本表">定义基本表</h3>
+<ul>
+<li>格式</li>
+</ul>
+<pre><code class="language-mysql">建表的语法格式：(建表属于DDL语句，DDL包括：create drop alter)
+create table 表名(字段名1 数据类型, 字段名2 数据类型, 字段名3 数据类型);
+
+create table 表名(
+  字段名1 数据类型, 
+  字段名2 数据类型, 
+  字段名3 数据类型
+);
+
+表名：建议以t_ 或者 tbl_开始，可读性强。见名知意。
+字段名：见名知意。
+表名和字段名都属于标识符。
+
+添加主键： 在最后一行 添加 primary key (字段名)
+添加外键：  创建表时添加：
+  	FOREIGN KEY(&lt;列名&gt;)REFERENCES &lt;主表名&gt; (&lt;列名&gt;); 
+
+		 修改表添加：ALTER TABLE &lt;数据表名&gt; ADD FOREIGN KEY(&lt;列名&gt;) REFERENCES &lt;主表名&gt; (&lt;列名&gt;); 
+	外键名是当修改或删除外键时使用的
+
+例子：
+CREATE TABLE `t_student` (
+  `ID` int(4) NOT NULL AUTO_INCREMENT COMMENT '学号',
+  `NAME` varchar(30) NOT NULL DEFAULT '匿名' COMMENT '姓名',
+  `PWD` varchar(20) NOT NULL DEFAULT '123456' COMMENT '密码',
+  `SEX` varchar(2) NOT NULL DEFAULT '女' COMMENT '性别',
+  `BIRTHDAY` datetime DEFAULT NULL COMMENT '出生日期',
+  `ADDRESS` varchar(100) DEFAULT NULL COMMENT '住址',
+  `EMAIL` varchar(50) DEFAULT NULL COMMENT '邮箱',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+ 
+ CREATE TABLE `grade` (
+	`gradeId` INT(4) NOT NULL AUTO_INCREMENT COMMENT '年级id',
+	`gradeName` VARCHAR(50) NOT NULL COMMENT '年级名称',
+	PRIMARY KEY(`gradeId`)
+)ENGINE=INNODB DEFAULT CHARSET=UTF8  
+</code></pre>
+<pre><code class="language-sql">SHOW CREATE DATABASE school; --查看数据库定义语句
+SHOW CREATE TABLE t_student; --查看数据表定义语句
+DESC t_student; --查看数据表的结构
+</code></pre>
+<blockquote>
+<p>补充：MySQL两种常见引擎 InnoDB（默认）和MylSAM（早些年使用的）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MyISAM</th>
+<th>InnoDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事务支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>数据行锁定</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>表空间大小</td>
+<td>较小</td>
+<td>较大，约为2倍</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>MyISAM 节约空间，速度较快</li>
+<li>InnoDB 安全性高，事务的处理，多表多用户操作</li>
+</ul>
+<h4 id="mysql中的数据类型">MySQL中的数据类型</h4>
+<blockquote>
+<p>数值</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">tinyint</td>
+<td style="text-align:center">十分小的数据</td>
+<td style="text-align:center">1个字节</td>
+</tr>
+<tr>
+<td style="text-align:center">smallint</td>
+<td style="text-align:center">较小的数据</td>
+<td style="text-align:center">2个字节</td>
+</tr>
+<tr>
+<td style="text-align:center">mediumint</td>
+<td style="text-align:center">中等大小的数据</td>
+<td style="text-align:center">3个字节</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>int</strong></td>
+<td style="text-align:center"><strong>标准的整数</strong></td>
+<td style="text-align:center"><strong>4个字节</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">bigint</td>
+<td style="text-align:center">较大的数据</td>
+<td style="text-align:center">8个字节</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">浮点数</td>
+<td style="text-align:center">4个字节</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">浮点数</td>
+<td style="text-align:center">8个字节</td>
+</tr>
+<tr>
+<td style="text-align:center">decimal</td>
+<td style="text-align:center">定点型（字符串形式的浮点数）</td>
+<td style="text-align:center">精度高</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>字符串</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">字符串固定大小</td>
+<td style="text-align:center">0~255</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>varchar</strong></td>
+<td style="text-align:center"><strong>可变字符串（相当于String、常用）</strong></td>
+<td style="text-align:center"><strong>0~65535</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">tinytext</td>
+<td style="text-align:center">微型文本</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>8</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^8 - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>text</strong></td>
+<td style="text-align:center"><strong>文本串,保存大文本</strong></td>
+<td style="text-align:center"><strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>16</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{16}-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>时间日期</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td style="text-align:right">YYYY-MM-DD，日期格式</td>
+</tr>
+<tr>
+<td>time</td>
+<td style="text-align:right">HH：mm：ss,时间格式</td>
+</tr>
+<tr>
+<td>year</td>
+<td style="text-align:right">年份表示</td>
+</tr>
+<tr>
+<td><strong>datetime</strong></td>
+<td style="text-align:right"><strong>YYYY-MM-DD  HH：mm：ss,最常用的时间格式</strong></td>
+</tr>
+<tr>
+<td><strong>timestamp</strong></td>
+<td style="text-align:right"><strong>时间戳，1970.1.1到现在的毫秒数，唯一</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>null</p>
+</blockquote>
+<ul>
+<li>没有值</li>
+<li>注意，不要使用NULL进行运算，结果为NULL</li>
+</ul>
+<h4 id="约束">约束</h4>
+<pre><code class="language-mysql">什么是约束？
+约束对应的英语单词： constraint
+在创建表的时候，我们可以给表中的字段加上一些约束，来保证这个表中数据的
+完整性、有效性！！！
+
+约束的作用就是为了保证：表中的数据有效！！
+
+约束包括哪些？
+非空约束：not null
+唯一性约束: unique
+主键约束: primary key （简称PK）
+外键约束：foreign key（简称FK）
+
+检查约束：check（**mysql不支持**，oracle支持）
+</code></pre>
+<h5 id="非空约束not-null">非空约束：not null</h5>
+<pre><code class="language-mysql">drop table if exists t_vip;
+create table t_vip(
+  id int,
+  name varchar(255) not null  // not null只有列级约束，没有表级约束！
+);
+</code></pre>
+<h5 id="唯一性约束-unique">唯一性约束: unique</h5>
+<blockquote>
+<p>唯一性约束unique约束的字段不能重复，但是可以为NULL。</p>
+</blockquote>
+<pre><code class="language-mysql">drop table if exists t_vip;
+create table t_vip(
+  id int,
+  name varchar(255) unique,
+  email varchar(255)
+);
+</code></pre>
+<p>如何做到联合唯一约束</p>
+<pre><code class="language-mysql">drop table if exists t_vip;
+-- name和email两个字段联合起来唯一
+create table t_vip(
+  id int,
+  name varchar(255),
+  email varchar(255),
+  unique(name,email) // 约束没有添加在列的后面，这种约束被称为 **表级约束**。
+);
+</code></pre>
+<blockquote>
+<p>注：在MySQL当中，如果一个字段同时被not null和unique约束的话，该字段自动变成主键字段。</p>
+</blockquote>
+<h5 id="主键约束-primary-key">主键约束: primary key</h5>
+<p>主键约束的相关术语？</p>
+<ul>
+<li>主键约束：就是一种约束</li>
+<li>主键字段：该字段上添加了主键约束，这样的字段叫做：主键字段</li>
+<li>主键值：主键字段中的每一个值都叫做：主键值。<strong>主键值是每一行记录的唯一标识。</strong></li>
+</ul>
+<p>主键的特征：<mark>not null + unique</mark>（主键值不能是NULL，同时也不能重复！）</p>
+<pre><code class="language-mysql">怎么给一张表添加主键约束呢？
+  drop table if exists t_vip;
+  // 1个字段做主键，叫做：单一主键
+  create table t_vip(
+    id int primary key,  //列级约束
+    name varchar(255)
+  );
+
+表级约束主要是给多个字段联合起来添加约束？
+  drop table if exists t_vip;
+  // id和name联合起来做主键：复合主键！！！！
+  create table t_vip(
+    id int,
+    name varchar(255),
+    email varchar(255),
+    primary key(id,name)
+  );
+  
+在实际开发中不建议使用：复合主键。建议使用单一主键！
+
+因为主键值存在的意义就是这行记录的身份证号，只要意义达到即可，单一主键可以做到。
+复合主键比较复杂，不建议使用！！！
+
+主键值建议使用：
+  int
+  bigint
+  char
+  等类型。
+
+不建议使用：varchar来做主键。主键值一般都是数字，一般都是定长的！
+
+主键除了：单一主键和复合主键之外，还可以这样进行分类？
+  自然主键：主键值是一个自然数，和业务没关系。
+  业务主键：主键值和业务紧密关联，例如拿银行卡账号做主键值。这就是业务主键！
+
+在实际开发中使用业务主键多，还是使用自然主键多一些？
+  自然主键使用比较多，因为主键只要做到不重复就行，不需要有意义。
+  业务主键不好，因为主键一旦和业务挂钩，那么当业务发生变动的时候，
+  可能会影响到主键值，所以业务主键不建议使用。尽量使用自然主键。
+  
+在mysql当中，有一种机制，可以帮助我们自动维护一个主键值？
+		drop table if exists t_vip;
+		create table t_vip(
+			id int primary key auto_increment, //auto_increment表示自增，从1开始，以1递增！
+			name varchar(255)
+		);
+</code></pre>
+<h5 id="外键约束foreign-key">外键约束：foreign key</h5>
+<figure data-type="image" tabindex="1"><img src="MySQL.assets/8ce084247b4b46a1b0e12459e3cc8232.png" alt="在这里插入图片描述" loading="lazy"></figure>
+<pre><code class="language-mysql">外键约束涉及到的相关术语：
+  外键约束：一种约束（ foreign key）
+  外键字段：该字段上添加了外键约束
+  外键值：外键字段当中的每一个值。
+</code></pre>
+<p><strong>创建外键的两种方式：</strong><br>
+<strong>方式一</strong>：在创建表的时候进行添加</p>
+<pre><code class="language-mysql">[CONSTRAINT &lt;外键约束名称&gt;] FOREIGN KEY（从表的某个字段) references 主表名(被参考字段)
+</code></pre>
+<p>表一：</p>
+<pre><code class="language-mysql">create table stuInfo(	
+		Scode int primary key,   --学生的学号
+		Sname char(10),    --学生的姓名
+		Saddress varchar(50),    --学生的住址
+		Sgrade int,    --学生所在班级
+		Semail varchar(50),    --学生的邮箱地址
+		Sbrith date	
+)DEFAULT CHARSET='utf8';	
+
+</code></pre>
+<p>表二：</p>
+<pre><code class="language-mysql">create table score(
+studentID	int,
+coureseID int,	
+score int,	
+scoreID int primary key,	
+foreign	key(studentID) references stuInfo(Scode)  --添加外键 )
+DEFAULT charset='utf8';
+</code></pre>
+<p><strong>方式二</strong>：表已经创建好了，继续修改表的结构来添加外键。</p>
+<pre><code class="language-mysql">ALTER TABLE 表名 ADD CONSTRAINT 外键名 FOREIGN KEY(外键字段名)
+REFERENCES 外表表名(主键字段名)
+[ON DELETE {RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT}]
+[ON UPDATE {RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT}]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">RESTRICT</td>
+<td style="text-align:left">限制外表中的外键改动（默认值，也是最安全的设置）</td>
+</tr>
+<tr>
+<td style="text-align:left">CASCADE</td>
+<td style="text-align:left">跟随外键改动</td>
+</tr>
+<tr>
+<td style="text-align:left">SET NULL</td>
+<td style="text-align:left">设为null值</td>
+</tr>
+<tr>
+<td style="text-align:left">NO ACTION</td>
+<td style="text-align:left">无动作</td>
+</tr>
+<tr>
+<td style="text-align:left">SET DEFAULT</td>
+<td style="text-align:left">设为默认值</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-mysql">alter table stuInfo	add foreign key (scode) references score(studentID);
+</code></pre>
+<ul>
+<li>
+<p>触发限制使用默认值 RESTRICT 的情况下</p>
+<ul>
+<li>从表插入新行，外键值不在主表中，被阻止</li>
+<li>从表修改外键值，新值不是主表的主键值，阻止修改</li>
+<li>主表删除行，其主键值在从表里存在便阻止删除(要想删除，必须先删除从表的相关行)</li>
+<li>主表修改主键值，旧值在从表里存在便阻止修改（要想修改，必须先删除从表的相关行）</li>
+</ul>
+</li>
+<li>
+<p>更改事件触发限制为 CASCADE</p>
+<ul>
+<li>当主表修改主键值，从表中相关行的外键值将一起修改</li>
+<li>如果主表删除行，从表中的相关行将一起被删除</li>
+</ul>
+</li>
+</ul>
+<p><strong>删除外键约束</strong></p>
+<pre><code class="language-mysql">ALTER TABLE 表名 DROP FOREIGN KEY 外键名;
+ 
+ALTER TABLE student_score DROP FOREIGN KEY s_id;
+</code></pre>
+<p>以上的操作都是物理外键，<u>数据库级别的外键</u>，我们<mark>不建议使用</mark>！（避免数据库过多造成困扰，了解即可）</p>
+<p><mark>最佳实践</mark>:不使用外键，采用业务逻辑关联的方式，来模拟这种外键</p>
+<ul>
+<li>数据库就是单纯的表，只用来存数据，只有行（数据）和列（字段）</li>
+<li>我们想使用多张表的数据，想使用外键（程序去实现）</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20240911151117915-2024-9-1115:12:23.png" alt="image-20240911151117915" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20240911151138728-2024-9-1115:12:27.png" alt="image-20240911151138728" loading="lazy"></figure>
+<h5 id="检查约束check">检查约束：check</h5>
+<p>MySQL不支持</p>
+<h5 id="默认值约束default">默认值约束：default</h5>
+<p>给某个字段/某列指定默认值，一旦设置默认值，在插入数据时，如果此字段没有显式赋值，则赋值为默认值</p>
+<h3 id="修改基本表">修改基本表</h3>
+<pre><code class="language-sql">--修改表名：ALTER TABLE 旧表名 RENAME AS 新表名
+ALTER TABLE `t_teacher` RENAME AS	`t_teacher1`;
+
+--增加表的字段：ALTER TABLE 表名 ADD 字段名 列属性 [约束];
+ALTER TABLE `t_teacher1` ADD `job` VARCHAR(20) UNIQUE DEFAULT '职工';
+
+--修改表的字段
+--ALTER TABLE 表名 MODIFY 字段名 列属性 [约束];
+--ALTER TABLE 表名 CHANGE 字段名 列属性 [约束];
+ALTER TABLE `t_teacher1` MODIFY age VARCHAR(3);  --修改列属性
+ALTER TABLE `t_teacher1` CHANGE `age` `age1` INT(1);  ---列重命名
+
+--删除表的字段：ALTER TABLE 表名 DROP 字段名 [CASCADE|RESTRICT];
+ALTER TABLE `t_teacher1` DROP `age1` CASCADE;
+</code></pre>
+<h3 id="删除基本表">删除基本表</h3>
+<pre><code class="language-mysql"> 一般格式
+ drop table&lt;表名&gt;[restrict|cascade]
+</code></pre>
+<ul>
+<li>若选择 <u>restrict</u>，则该表的删除是有限制条件的。欲删除的基本表<u>不能被其他的约束所引用（如CHECK，FOREIGN KEY等），不能有视图，不能有触发器，不能有存储过程或函数等</u>。如果存在这些依赖该表的对象，则此表不能被删除</li>
+<li>若选择 <u>cascade</u>，则该表的删除没有限制条件。在删除基本表的同时，相关的依赖对象都将一起被删除。</li>
+<li>默认情况时是 restrict。</li>
+</ul>
+]]></content>
+    </entry>
+</feed>

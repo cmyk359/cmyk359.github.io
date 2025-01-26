@@ -1,15 +1,15 @@
-<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/static/img/webicon.png"><link rel="icon" href="https://cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/static/img/webicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="author" content="猫爪在上"><meta name="keywords" content=""><meta name="description" content="一、数据库  什么是数据库？什么是数据库管理系统？什么是SQL？他们之间的关系是什么？   数据库： 英文单词DataBase，简称DB。按照一定格式存储数据的一些文件的组合。 顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据 数据库管理系统： DataBaseManagement，简称DBMS。 数据库管理系统是专门用来管理数据库中数据的，数"><meta property="og:type" content="article"><meta property="og:title" content="MySQL（一）"><meta property="og:url" content="http://catpaws.top/8d742da7/index.html"><meta property="og:site_name" content="猫爪在上de书桌"><meta property="og:description" content="一、数据库  什么是数据库？什么是数据库管理系统？什么是SQL？他们之间的关系是什么？   数据库： 英文单词DataBase，简称DB。按照一定格式存储数据的一些文件的组合。 顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据 数据库管理系统： DataBaseManagement，简称DBMS。 数据库管理系统是专门用来管理数据库中数据的，数"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/static/img/art-post2.jpg"><meta property="article:published_time" content="2024-12-08T13:56:01.000Z"><meta property="article:modified_time" content="2024-12-10T17:45:22.356Z"><meta property="article:author" content="猫爪在上"><meta property="article:tag" content="数据库"><meta property="article:tag" content="MySQL"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/static/img/art-post2.jpg"><title>MySQL（一） - 猫爪在上de书桌</title><link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css"><link rel="stylesheet" href="/css/main.css"><link id="highlight-css" rel="stylesheet" href="/css/highlight.css"><link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/source/css/font.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/source/css/poem.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css"><script id="fluid-configs">var Fluid=window.Fluid||{};Fluid.ctx=Object.assign({},Fluid.ctx);var CONFIG={hostname:"catpaws.top",root:"/",version:"1.9.8",typing:{enable:!0,typeSpeed:70,cursorChar:"_",loop:!1,scope:[]},anchorjs:{enable:!0,element:"h1,h2,h3,h4,h5,h6",placement:"left",visible:"hover",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},code_language:{enable:!0,default:"TEXT"},copy_btn:!0,image_caption:{enable:!0},image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,placement:"right",headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:0},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,follow_dnt:!0,baidu:null,google:{measurement_id:null},tencent:{sid:null,cid:null},leancloud:{app_id:"TNTPv22capMq3aFV9S0sLqSm-gzGzoHsz",app_key:"G2BBAxXmiixopVg5mIJ2sxXR",server_url:"https://tntpv22c.lc-cn-n1-shared.com",path:"window.location.pathname",ignore_local:!1},umami:{src:null,website_id:null,domains:null,start_time:"2024-01-01T00:00:00.000Z",token:null,api_server:null}},search_path:"/local-search.xml",include_content_in_search:!0};if(CONFIG.web_analytics.follow_dnt){var dntVal=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;Fluid.ctx.dnt=dntVal&&(dntVal.startsWith("1")||dntVal.startsWith("yes")||dntVal.startsWith("on"))}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><header><div class="header-inner" style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><strong>猫爪在上de书桌</strong> </a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/about/" target="_self"><i class="iconfont icon-addrcard"></i> <span>主页</span></a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="iconfont icon-books"></i> <span>博客</span></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="/" target="_self"><i class="iconfont icon-pen"></i> <span>文章</span> </a><a class="dropdown-item" href="/archives/" target="_self"><i class="iconfont icon-archive-fill"></i> <span>归档</span> </a><a class="dropdown-item" href="/categories/" target="_self"><i class="iconfont icon-category-fill"></i> <span>分类</span> </a><a class="dropdown-item" href="/tags/" target="_self"><i class="iconfont icon-tags-fill"></i> <span>标签</span></a></div></li><li class="nav-item"><a class="nav-link" href="/messages/" target="_self"><i class="iconfont icon-comment"></i> <span>留言板</span></a></li><li class="nav-item"><a class="nav-link" href="/timeline/" target="_self"><i class="iconfont icon-images"></i> <span>时光轴</span></a></li><li class="nav-item"><a class="nav-link" href="/links/" target="_self"><i class="iconfont icon-link-fill"></i> <span>友链</span></a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search"><i class="iconfont icon-search"></i></a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle"><i class="iconfont icon-dark" id="color-toggle-icon"></i></a></li></ul></div></div></nav><div id="banner" class="banner" parallax="true" style="background:url(https://cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/static/img/article-bg.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="banner-text text-center fade-in-up"><div class="h2"><span id="subtitle" data-typed-text="MySQL（一）"></span></div><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2024-12-08 21:56" pubdate>2024年12月8日 晚上</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 11k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 91 分钟 </span><span id="leancloud-page-views-container" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="leancloud-page-views"></span> 次</span></div></div></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="side-col d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div id="board"><article class="post-content mx-auto"><h1 id="seo-header">MySQL（一）</h1><p id="updated-time" class="note note-info">本文最后更新于 2024年12月11日 凌晨</p><div class="markdown-body"><meta name="referrer" , content="no-referrer"><h2 id="一数据库">一、数据库</h2><blockquote><p>什么是数据库？什么是数据库管理系统？什么是SQL？他们之间的关系是什么？</p></blockquote><ul><li>数据库： 英文单词DataBase，简称DB。按照一定格式存储数据的一些文件的组合。 顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据</li><li>数据库管理系统： DataBaseManagement，简称DBMS。 数据库管理系统是专门用来管理数据库中数据的，数据库管理系统可以对数据库当中的数据进行增删改查。</li></ul><p>常见的数据库管理系统： MySQL、Oracle、MS SqlServer、DB2、Sybase等....</p><h3 id="关于sql语句的分类">关于SQL语句的分类</h3><p>DXL（数据库X语言）:其中D代表数据库，X是语言的功能，如定义、管理、查询、控制。</p><ul><li><p>DDL： 数据定义语言 凡是带有create、drop、alter的都是DDL。 DDL主要操作的是<strong>表的结构</strong>。不是表中的数据。 create：新建，等同于增 drop：删除 alter：修改 这个增删改和DML不同，这个主要是对表结构进行操作。</p></li><li><p>DML： 数据操作语言（凡是对表当中的数据进行增删改的都是DML） insert delete update insert 增 delete 删 update 改 这个主要是操作<strong>表中的数据</strong>。<br></p></li><li><p>DQL： 数据查询语言（凡是带有select关键字的都是查询语句） select...</p></li><li><p>DCL： 是数据控制语言。 例如：授权grant、撤销权限revoke....</p></li><li><p>TCL： 是事务控制语言 包括： 事务提交：commit; 事务回滚：rollback;</p></li></ul><h3 id="操作数据库">操作数据库</h3><p>1、创建数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> DATABASE IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> school;  <span class="hljs-comment">--IF NOT EXISTS 当不存在该数据库时才创建</span></code></pre></div><p>2、删除数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> DATABASE IF <span class="hljs-keyword">EXISTS</span> xxxx;  <span class="hljs-comment">--如果存在该数据库则删除</span></code></pre></div><p>3、查看数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> DATABASES;</code></pre></div><p>4、使用某个数据库</p><div class="code-wrapper"><pre><code class="hljs sql">USE  `xxx`;  <span class="hljs-comment">--如果你的表名或者字段名是一个特殊字符，就需要带``</span></code></pre></div><p>5、查看当前使用的数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> DATABASE();</code></pre></div><p>6、查看数据库下的表</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> TABLES;</code></pre></div><h2 id="二数据定义">二、数据定义</h2><h3 id="模式的定义与删除">2.1、模式的定义与删除</h3><p>在MySQL中，模式（schema）是数据库的组织和结构，它定义了数据库的表、视图、存储过程等对象。</p><ul><li><p>模式的定义语句</p><div class="code-wrapper"><pre><code class="hljs mysql">CREATE　SCHEM &lt;模式名&gt;AUTHORIZATION &lt;用户名&gt;;</code></pre></div><p>要创建模式需要拥有管理员的权限或者获得了数据库管理员授予的CREATE <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=SCHEMA&amp;spm=1001.2101.3001.7020">SCHEMA</a> 的权限。</p></li><li><p>删除模式</p><div class="code-wrapper"><pre><code class="hljs mysql">DROP SCHEMA&lt;模式名&gt;CASCADE |RESTRICT&gt;;</code></pre></div><p>其中<code>CASCADE</code>和<code>RESTRICT</code>两者必选其一。 CASCADE （级联），表示在删除模式的同时把该模式中所有的数据库对象全部删除；RESTRICT（限制），表示如果该模式中已经定义了下属的数据库对象（如表、视图等），则拒绝删除语句的执行，只有当该模式中没有任何下属的对象时才能执行语句。</p></li></ul><h3 id="基本表的定义删除和修改">2.2、基本表的定义、删除和修改</h3><h4 id="定义基本表">定义基本表</h4><p>​ 建表的语法格式：(建表属于DDL语句，DDL包括：create drop alter)</p><div class="code-wrapper"><pre><code class="hljs mysql">create table 表名(字段名1 数据类型, 字段名2 数据类型, 字段名3 数据类型);
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="http://img.catpaws.top/blog-source/imgs/webicon.png"><link rel="icon" href="http://img.catpaws.top/blog-source/imgs/webicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="author" content="猫爪在上"><meta name="keywords" content=""><meta name="description" content="一、数据库  什么是数据库？什么是数据库管理系统？什么是 SQL？他们之间的关系是什么？   数据库： 英文单词 DataBase，简称 DB。按照一定格式存储数据的一些文件的组合。 顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据 数据库管理系统： DataBaseManagement，简称 DBMS。 数据库管理系统是专门用来管理数据库中"><meta property="og:type" content="article"><meta property="og:title" content="MySQL（一）"><meta property="og:url" content="https://catpaws.top/8d742da7/index.html"><meta property="og:site_name" content="猫爪在上de书桌"><meta property="og:description" content="一、数据库  什么是数据库？什么是数据库管理系统？什么是 SQL？他们之间的关系是什么？   数据库： 英文单词 DataBase，简称 DB。按照一定格式存储数据的一些文件的组合。 顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据 数据库管理系统： DataBaseManagement，简称 DBMS。 数据库管理系统是专门用来管理数据库中"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://img.catpaws.top/blog-source/imgs/art-post2.jpg"><meta property="article:published_time" content="2024-12-08T13:56:01.000Z"><meta property="article:modified_time" content="2025-01-26T08:12:18.407Z"><meta property="article:author" content="猫爪在上"><meta property="article:tag" content="数据库"><meta property="article:tag" content="MySQL"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="http://img.catpaws.top/blog-source/imgs/art-post2.jpg"><title>MySQL（一） - 猫爪在上de书桌</title><link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css"><link rel="stylesheet" href="/css/main.css"><link id="highlight-css" rel="stylesheet" href="/css/highlight.css"><link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css"><link rel="stylesheet" href="//img.catpaws.top/blog-source/css/font.css"><link rel="stylesheet" href="//img.catpaws.top/blog-source/css/poem.css"><script id="fluid-configs">var Fluid=window.Fluid||{};Fluid.ctx=Object.assign({},Fluid.ctx);var CONFIG={hostname:"catpaws.top",root:"/",version:"1.9.8",typing:{enable:!0,typeSpeed:70,cursorChar:"_",loop:!1,scope:[]},anchorjs:{enable:!0,element:"h1,h2,h3,h4,h5,h6",placement:"left",visible:"hover",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},code_language:{enable:!0,default:"TEXT"},copy_btn:!0,image_caption:{enable:!0},image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,placement:"right",headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:0},lazyload:{enable:!0,loading_img:"/img/loading.gif",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,follow_dnt:!0,baidu:null,google:{measurement_id:null},tencent:{sid:null,cid:null},leancloud:{app_id:"TNTPv22capMq3aFV9S0sLqSm-gzGzoHsz",app_key:"G2BBAxXmiixopVg5mIJ2sxXR",server_url:"https://tntpv22c.lc-cn-n1-shared.com",path:"window.location.pathname",ignore_local:!1},umami:{src:null,website_id:null,domains:null,start_time:"2024-01-01T00:00:00.000Z",token:null,api_server:null}},search_path:"/local-search.xml",include_content_in_search:!0};if(CONFIG.web_analytics.follow_dnt){var dntVal=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;Fluid.ctx.dnt=dntVal&&(dntVal.startsWith("1")||dntVal.startsWith("yes")||dntVal.startsWith("on"))}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><header><div class="header-inner" style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><strong>猫爪在上de书桌</strong> </a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/about/" target="_self"><i class="iconfont icon-addrcard"></i> <span>主页</span></a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="iconfont icon-books"></i> <span>博客</span></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="/" target="_self"><i class="iconfont icon-pen"></i> <span>文章</span> </a><a class="dropdown-item" href="/archives/" target="_self"><i class="iconfont icon-archive-fill"></i> <span>归档</span> </a><a class="dropdown-item" href="/categories/" target="_self"><i class="iconfont icon-category-fill"></i> <span>分类</span> </a><a class="dropdown-item" href="/tags/" target="_self"><i class="iconfont icon-tags-fill"></i> <span>标签</span></a></div></li><li class="nav-item"><a class="nav-link" href="/messages/" target="_self"><i class="iconfont icon-comment"></i> <span>留言板</span></a></li><li class="nav-item"><a class="nav-link" href="/timeline/" target="_self"><i class="iconfont icon-images"></i> <span>时光轴</span></a></li><li class="nav-item"><a class="nav-link" href="/links/" target="_self"><i class="iconfont icon-link-fill"></i> <span>友链</span></a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search"><i class="iconfont icon-search"></i></a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle"><i class="iconfont icon-dark" id="color-toggle-icon"></i></a></li></ul></div></div></nav><div id="banner" class="banner" parallax="true" style="background:url(http://img.catpaws.top/blog-source/imgs/article-bg.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="banner-text text-center fade-in-up"><div class="h2"><span id="subtitle" data-typed-text="MySQL（一）"></span></div><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2024-12-08 21:56" pubdate>2024年12月8日 晚上</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 11k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 91 分钟 </span><span id="leancloud-page-views-container" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="leancloud-page-views"></span> 次</span></div></div></div></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="side-col d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div id="board"><article class="post-content mx-auto"><h1 id="seo-header">MySQL（一）</h1><p id="updated-time" class="note note-info">本文最后更新于 2025年1月26日 下午</p><div class="markdown-body"><meta name="referrer" , content="no-referrer"><h2 id="一数据库">一、数据库</h2><blockquote><p>什么是数据库？什么是数据库管理系统？什么是 SQL？他们之间的关系是什么？</p></blockquote><ul><li>数据库： 英文单词 DataBase，简称 DB。按照一定格式存储数据的一些文件的组合。 顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据</li><li>数据库管理系统： DataBaseManagement，简称 DBMS。 数据库管理系统是专门用来管理数据库中数据的，数据库管理系统可以对数据库当中的数据进行增删改查。</li></ul><p>常见的数据库管理系统： MySQL、Oracle、MS SqlServer、DB2、Sybase 等....</p><h3 id="关于-sql-语句的分类">关于 SQL 语句的分类</h3><p>DXL（数据库 X 语言）:其中 D 代表数据库，X 是语言的功能，如定义、管理、查询、控制。</p><ul><li><p>DDL： 数据定义语言 凡是带有 create、drop、alter 的都是 DDL。 DDL 主要操作的是<strong>表的结构</strong>。不是表中的数据。 create：新建，等同于增 drop：删除 alter：修改 这个增删改和 DML 不同，这个主要是对表结构进行操作。</p></li><li><p>DML： 数据操作语言（凡是对表当中的数据进行增删改的都是 DML） insert delete update insert 增 delete 删 update 改 这个主要是操作<strong>表中的数据</strong>。</p></li><li><p>DQL： 数据查询语言（凡是带有 select 关键字的都是查询语句） select...</p></li><li><p>DCL： 是数据控制语言。 例如：授权 grant、撤销权限 revoke....</p></li><li><p>TCL： 是事务控制语言 包括： 事务提交：commit; 事务回滚：rollback;</p></li></ul><h3 id="操作数据库">操作数据库</h3><p>1、创建数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> DATABASE IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> school;  <span class="hljs-comment">--IF NOT EXISTS 当不存在该数据库时才创建</span></code></pre></div><p>2、删除数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> DATABASE IF <span class="hljs-keyword">EXISTS</span> xxxx;  <span class="hljs-comment">--如果存在该数据库则删除</span></code></pre></div><p>3、查看数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> DATABASES;</code></pre></div><p>4、使用某个数据库</p><div class="code-wrapper"><pre><code class="hljs sql">USE  `xxx`;  <span class="hljs-comment">--如果你的表名或者字段名是一个特殊字符，就需要带``</span></code></pre></div><p>5、查看当前使用的数据库</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> DATABASE();</code></pre></div><p>6、查看数据库下的表</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> TABLES;</code></pre></div><h2 id="二数据定义">二、数据定义</h2><h3 id="模式的定义与删除">2.1、模式的定义与删除</h3><p>在 MySQL 中，模式（schema）是数据库的组织和结构，它定义了数据库的表、视图、存储过程等对象。</p><ul><li><p>模式的定义语句</p><div class="code-wrapper"><pre><code class="hljs mysql">CREATE　SCHEM &lt;模式名&gt;AUTHORIZATION &lt;用户名&gt;;</code></pre></div><p>要创建模式需要拥有管理员的权限或者获得了数据库管理员授予的 CREATE <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=SCHEMA&amp;spm=1001.2101.3001.7020">SCHEMA</a> 的权限。</p></li><li><p>删除模式</p><div class="code-wrapper"><pre><code class="hljs mysql">DROP SCHEMA&lt;模式名&gt;CASCADE |RESTRICT&gt;;</code></pre></div><p>其中<code>CASCADE</code>和<code>RESTRICT</code>两者必选其一。 CASCADE （级联），表示在删除模式的同时把该模式中所有的数据库对象全部删除；RESTRICT（限制），表示如果该模式中已经定义了下属的数据库对象（如表、视图等），则拒绝删除语句的执行，只有当该模式中没有任何下属的对象时才能执行语句。</p></li></ul><h3 id="基本表的定义删除和修改">2.2、基本表的定义、删除和修改</h3><h4 id="定义基本表">定义基本表</h4><p>建表的语法格式：(建表属于 DDL 语句，DDL 包括：create drop alter)</p><div class="code-wrapper"><pre><code class="hljs mysql">create table 表名(字段名1 数据类型, 字段名2 数据类型, 字段名3 数据类型);
 
 create table 表名(
-  字段名1 数据类型, 
-  字段名2 数据类型, 
+  字段名1 数据类型,
+  字段名2 数据类型,
   字段名3 数据类型
 );
 
 表名：建议以t_ 或者 tbl_开始，可读性强。见名知意。
 字段名：见名知意。
 表名和字段名都属于标识符。</code></pre></div><p>添加主键：在最后一行 添加<code>primary key (字段名)</code></p><p>添加外键</p><div class="code-wrapper"><pre><code class="hljs mysql">-- 创建表时添加：
- FOREIGN KEY(&lt;列名&gt;)REFERENCES &lt;主表名&gt; (&lt;列名&gt;); 
+ FOREIGN KEY(&lt;列名&gt;)REFERENCES &lt;主表名&gt; (&lt;列名&gt;);
 -- 修改表添加：
 ALTER TABLE &lt;数据表名&gt; ADD FOREIGN KEY(&lt;列名&gt;) REFERENCES &lt;主表名&gt; (&lt;列名&gt;);</code></pre></div><p>创建两个基本表 <code>t_student</code>和<code>t_grade</code></p><div class="code-wrapper"><pre><code class="hljs mysql">CREATE TABLE `t_student` (
   `ID` int(4) NOT NULL AUTO_INCREMENT COMMENT &#x27;学号&#x27;,
@@ -21,18 +21,18 @@ ALTER TABLE &lt;数据表名&gt; ADD FOREIGN KEY(&lt;列名&gt;) REFERENCES &lt;
   `EMAIL` varchar(50) DEFAULT NULL COMMENT &#x27;邮箱&#x27;,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
- 
+
  CREATE TABLE `t_grade` (
 	`gradeId` INT(4) NOT NULL AUTO_INCREMENT COMMENT &#x27;年级id&#x27;,
 	`gradeName` VARCHAR(50) NOT NULL COMMENT &#x27;年级名称&#x27;,
 	PRIMARY KEY(`gradeId`)
 )ENGINE=INNODB DEFAULT CHARSET=UTF8</code></pre></div><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE</span> DATABASE school; <span class="hljs-comment">--查看数据库定义语句</span>
 <span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> t_student; <span class="hljs-comment">--查看数据表定义语句</span>
-<span class="hljs-keyword">DESC</span> t_student; <span class="hljs-comment">--查看数据表的结构</span></code></pre></div><h5 id="mysql中的数据类型">MySQL中的数据类型</h5><blockquote><p>数值</p></blockquote><table><thead><tr class="header"><th style="text-align:center">类型</th><th style="text-align:center">描述</th><th style="text-align:center">大小</th></tr></thead><tbody><tr class="odd"><td style="text-align:center">tinyint</td><td style="text-align:center">十分小的数据</td><td style="text-align:center">1个字节</td></tr><tr class="even"><td style="text-align:center">smallint</td><td style="text-align:center">较小的数据</td><td style="text-align:center">2个字节</td></tr><tr class="odd"><td style="text-align:center">mediumint</td><td style="text-align:center">中等大小的数据</td><td style="text-align:center">3个字节</td></tr><tr class="even"><td style="text-align:center"><strong>int</strong></td><td style="text-align:center"><strong>标准的整数</strong></td><td style="text-align:center"><strong>4个字节</strong></td></tr><tr class="odd"><td style="text-align:center">bigint</td><td style="text-align:center">较大的数据</td><td style="text-align:center">8个字节</td></tr><tr class="even"><td style="text-align:center">float</td><td style="text-align:center">浮点数</td><td style="text-align:center">4个字节</td></tr><tr class="odd"><td style="text-align:center">double</td><td style="text-align:center">浮点数</td><td style="text-align:center">8个字节</td></tr><tr class="even"><td style="text-align:center">decimal</td><td style="text-align:center">定点型（字符串形式的浮点数）</td><td style="text-align:center">精度高</td></tr></tbody></table><blockquote><p>字符串</p></blockquote><table><thead><tr class="header"><th style="text-align:center">类型</th><th style="text-align:center">描述</th><th style="text-align:center">大小</th></tr></thead><tbody><tr class="odd"><td style="text-align:center">char</td><td style="text-align:center">字符串固定大小</td><td style="text-align:center">0~255</td></tr><tr class="even"><td style="text-align:center"><strong>varchar</strong></td><td style="text-align:center"><strong>可变字符串（相当于String、常用）</strong></td><td style="text-align:center"><strong>0~65535</strong></td></tr><tr class="odd"><td style="text-align:center">tinytext</td><td style="text-align:center">微型文本</td><td style="text-align:center"><span class="math inline">\(2^8 - 1\)</span></td></tr><tr class="even"><td style="text-align:center"><strong>text</strong></td><td style="text-align:center"><strong>文本串,保存大文本</strong></td><td style="text-align:center"><strong><span class="math inline">\(2^{16}-1\)</span></strong></td></tr></tbody></table><blockquote><p>时间日期</p></blockquote><table><thead><tr class="header"><th>类型</th><th style="text-align:right">描述</th></tr></thead><tbody><tr class="odd"><td>date</td><td style="text-align:right">YYYY-MM-DD，日期格式</td></tr><tr class="even"><td>time</td><td style="text-align:right">HH：mm：ss,时间格式</td></tr><tr class="odd"><td>year</td><td style="text-align:right">年份表示</td></tr><tr class="even"><td><strong>datetime</strong></td><td style="text-align:right"><strong>YYYY-MM-DD HH：mm：ss,最常用的时间格式</strong></td></tr><tr class="odd"><td><strong>timestamp</strong></td><td style="text-align:right"><strong>时间戳，1970.1.1到现在的毫秒数，唯一</strong></td></tr></tbody></table><blockquote><p>null</p></blockquote><ul><li>没有值</li><li>注意，不要使用NULL进行运算，结果为NULL</li></ul><h5 id="约束">约束</h5><p>什么是约束？ 约束对应的英语单词： constraint。在创建表的时候，可以给表中的字段加上一些约束，来保证这个表中数据的完整性、有效性。</p><p>约束的作用就是为了保证<strong>表中的数据有效</strong>。</p><p>约束包括哪些？</p><p>​ 非空约束：not null</p><p>​ 唯一性约束: unique</p><p>​ 主键约束: primary key （简称PK）</p><p>​ 外键约束：foreign key（简称FK）</p><p>​ 检查约束：check（<strong>mysql不支持</strong>，oracle支持）</p><ul><li><strong>非空约束：not null</strong></li></ul><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
+<span class="hljs-keyword">DESC</span> t_student; <span class="hljs-comment">--查看数据表的结构</span></code></pre></div><h5 id="mysql-中的数据类型">MySQL 中的数据类型</h5><blockquote><p>数值</p></blockquote><table><thead><tr class="header"><th style="text-align:center">类型</th><th style="text-align:center">描述</th><th style="text-align:center">大小</th></tr></thead><tbody><tr class="odd"><td style="text-align:center">tinyint</td><td style="text-align:center">十分小的数据</td><td style="text-align:center">1 个字节</td></tr><tr class="even"><td style="text-align:center">smallint</td><td style="text-align:center">较小的数据</td><td style="text-align:center">2 个字节</td></tr><tr class="odd"><td style="text-align:center">mediumint</td><td style="text-align:center">中等大小的数据</td><td style="text-align:center">3 个字节</td></tr><tr class="even"><td style="text-align:center"><strong>int</strong></td><td style="text-align:center"><strong>标准的整数</strong></td><td style="text-align:center"><strong>4 个字节</strong></td></tr><tr class="odd"><td style="text-align:center">bigint</td><td style="text-align:center">较大的数据</td><td style="text-align:center">8 个字节</td></tr><tr class="even"><td style="text-align:center">float</td><td style="text-align:center">浮点数</td><td style="text-align:center">4 个字节</td></tr><tr class="odd"><td style="text-align:center">double</td><td style="text-align:center">浮点数</td><td style="text-align:center">8 个字节</td></tr><tr class="even"><td style="text-align:center">decimal</td><td style="text-align:center">定点型（字符串形式的浮点数）</td><td style="text-align:center">精度高</td></tr></tbody></table><blockquote><p>字符串</p></blockquote><table><thead><tr class="header"><th style="text-align:center">类型</th><th style="text-align:center">描述</th><th style="text-align:center">大小</th></tr></thead><tbody><tr class="odd"><td style="text-align:center">char</td><td style="text-align:center">字符串固定大小</td><td style="text-align:center">0~255</td></tr><tr class="even"><td style="text-align:center"><strong>varchar</strong></td><td style="text-align:center"><strong>可变字符串（相当于 String、常用）</strong></td><td style="text-align:center"><strong>0~65535</strong></td></tr><tr class="odd"><td style="text-align:center">tinytext</td><td style="text-align:center">微型文本</td><td style="text-align:center"><span class="math inline">\(2^8 - 1\)</span></td></tr><tr class="even"><td style="text-align:center"><strong>text</strong></td><td style="text-align:center"><strong>文本串,保存大文本</strong></td><td style="text-align:center"><strong><span class="math inline">\(2^{16}-1\)</span></strong></td></tr></tbody></table><blockquote><p>时间日期</p></blockquote><table><thead><tr class="header"><th>类型</th><th style="text-align:right">描述</th></tr></thead><tbody><tr class="odd"><td>date</td><td style="text-align:right">YYYY-MM-DD，日期格式</td></tr><tr class="even"><td>time</td><td style="text-align:right">HH：mm：ss,时间格式</td></tr><tr class="odd"><td>year</td><td style="text-align:right">年份表示</td></tr><tr class="even"><td><strong>datetime</strong></td><td style="text-align:right"><strong>YYYY-MM-DD HH：mm：ss,最常用的时间格式</strong></td></tr><tr class="odd"><td><strong>timestamp</strong></td><td style="text-align:right"><strong>时间戳，1970.1.1 到现在的毫秒数，唯一</strong></td></tr></tbody></table><blockquote><p>null</p></blockquote><ul><li>没有值</li><li>注意，不要使用 NULL 进行运算，结果为 NULL</li></ul><h5 id="约束">约束</h5><p>什么是约束？ 约束对应的英语单词： constraint。在创建表的时候，可以给表中的字段加上一些约束，来保证这个表中数据的完整性、有效性。</p><p>约束的作用就是为了保证<strong>表中的数据有效</strong>。</p><p>约束包括哪些？</p><p>非空约束：not null</p><p>唯一性约束: unique</p><p>主键约束: primary key （简称 PK）</p><p>外键约束：foreign key（简称 FK）</p><p>检查约束：check（<strong>mysql 不支持</strong>，oracle 支持）</p><ul><li><strong>非空约束：not null</strong></li></ul><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
 create table t_vip(
   id int,
   name varchar(255) not null  // not null只有列级约束，没有表级约束！
-);</code></pre></div><ul><li><strong>唯一性约束: unique</strong></li></ul><blockquote><p>唯一性约束unique约束的字段不能重复，但是可以为NULL。</p></blockquote><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
+);</code></pre></div><ul><li><strong>唯一性约束: unique</strong></li></ul><blockquote><p>唯一性约束 unique 约束的字段不能重复，但是可以为 NULL。</p></blockquote><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
 create table t_vip(
   id int,
   name varchar(255) unique,
@@ -44,38 +44,38 @@ create table t_vip(
   name varchar(255),
   email varchar(255),
   unique(name,email) // 约束没有添加在列的后面，这种约束被称为 **表级约束**。
-);</code></pre></div><ul><li><strong>主键约束: primary key</strong></li></ul><p>主键约束的相关术语？</p><p>​ 主键字段：该字段上添加了主键约束，这样的字段叫做：主键字段</p><p>​ 主键值：主键字段中的每一个值都叫做：主键值。<strong>主键值是每一行记录的唯一标识。</strong></p><blockquote><p>主键的特征：<strong>not null + unique</strong>（主键值不能是NULL，同时也不能重复！）</p><p>注：在MySQL当中，如果一个字段同时被not null和unique约束的话，该字段自动变成主键字段。</p></blockquote><p>给一张表添加主键约束</p><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
+);</code></pre></div><ul><li><strong>主键约束: primary key</strong></li></ul><p>主键约束的相关术语？</p><p>主键字段：该字段上添加了主键约束，这样的字段叫做：主键字段</p><p>主键值：主键字段中的每一个值都叫做：主键值。<strong>主键值是每一行记录的唯一标识。</strong></p><blockquote><p>主键的特征：<strong>not null + unique</strong>（主键值不能是 NULL，同时也不能重复！）</p><p>注：在 MySQL 当中，如果一个字段同时被 not null 和 unique 约束的话，该字段自动变成主键字段。</p></blockquote><p>给一张表添加主键约束</p><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
 // 1个字段做主键，叫做：单一主键
 create table t_vip(
   id int primary key,  //列级约束
   name varchar(255)
-);</code></pre></div><p>​ 表级约束主要是给多个字段联合起来添加约束。在实际开发中不建议使用<strong>复合主键</strong>，建议使用<strong>单一主键</strong>。因为主键值存在的意义就是这行记录的身份证号，只要意义达到即可，单一主键可以做到。 复合主键比较复杂，不建议使用。</p><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
+);</code></pre></div><p>表级约束主要是给多个字段联合起来添加约束。在实际开发中不建议使用<strong>复合主键</strong>，建议使用<strong>单一主键</strong>。因为主键值存在的意义就是这行记录的身份证号，只要意义达到即可，单一主键可以做到。 复合主键比较复杂，不建议使用。</p><div class="code-wrapper"><pre><code class="hljs mysql">drop table if exists t_vip;
 // id和name联合起来做主键：复合主键！！！！
 create table t_vip(
   id int,
   name varchar(255),
   email varchar(255),
   primary key(id,name)
-);</code></pre></div><p>​ 主键值建议使用：int、bigint、char等类型。不建议使用：varchar来做主键。主键值一般都是数字，一般都是定长的！</p><p>主键除了：单一主键和复合主键之外，还可以分为：</p><ul><li>自然主键：主键值是一个自然数，和业务没关系。</li><li>业务主键：主键值和业务紧密关联，例如拿银行卡账号做主键值。这就是业务主键！</li></ul><p>​ 在实际开发中使用自然主键使用比较多，因为主键只要做到不重复就行，不需要有意义。业务主键不好，因为主键一旦和业务挂钩，那么当业务发生变动的时候，可能会影响到主键值，所以业务主键不建议使用。尽量使用自然主键。</p><p>在MySQL当中，可以在主键后添加<code>auto_increment</code>帮助我们自动维护主键值。</p><ul><li><strong>外键约束：foreign key</strong></li></ul><figure><img src="https://gitee.com/cmyk359/img/raw/master/img/8ce084247b4b46a1b0e12459e3cc8232-2024-12-823:09:58.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><figcaption aria-hidden="true">在这里插入图片描述</figcaption></figure><p><strong>创建外键的两种方式：</strong> <strong>方式一</strong>：在创建表的时候进行添加</p><div class="code-wrapper"><pre><code class="hljs mysql">[CONSTRAINT &lt;外键约束名称&gt;] FOREIGN KEY（从表的某个字段) references 主表名(被参考字段)</code></pre></div><p>表一：</p><div class="code-wrapper"><pre><code class="hljs mysql">create table stuInfo(	
+);</code></pre></div><p>主键值建议使用：int、bigint、char 等类型。不建议使用：varchar 来做主键。主键值一般都是数字，一般都是定长的！</p><p>主键除了：单一主键和复合主键之外，还可以分为：</p><ul><li>自然主键：主键值是一个自然数，和业务没关系。</li><li>业务主键：主键值和业务紧密关联，例如拿银行卡账号做主键值。这就是业务主键！</li></ul><p>在实际开发中使用自然主键使用比较多，因为主键只要做到不重复就行，不需要有意义。业务主键不好，因为主键一旦和业务挂钩，那么当业务发生变动的时候，可能会影响到主键值，所以业务主键不建议使用。尽量使用自然主键。</p><p>在 MySQL 当中，可以在主键后添加<code>auto_increment</code>帮助我们自动维护主键值。</p><ul><li><strong>外键约束：foreign key</strong></li></ul><figure><img src="http://img.catpaws.top/img/8ce084247b4b46a1b0e12459e3cc8232-2024-12-823_09_58.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><figcaption aria-hidden="true">在这里插入图片描述</figcaption></figure><p><strong>创建外键的两种方式：</strong> <strong>方式一</strong>：在创建表的时候进行添加</p><div class="code-wrapper"><pre><code class="hljs mysql">[CONSTRAINT &lt;外键约束名称&gt;] FOREIGN KEY（从表的某个字段) references 主表名(被参考字段)</code></pre></div><p>表一：</p><div class="code-wrapper"><pre><code class="hljs mysql">create table stuInfo(
 		Scode int primary key,   --学生的学号
 		Sname char(10),    --学生的姓名
 		Saddress varchar(50),    --学生的住址
 		Sgrade int,    --学生所在班级
 		Semail varchar(50),    --学生的邮箱地址
-		Sbrith date	
-)DEFAULT CHARSET=&#x27;utf8&#x27;;	
+		Sbrith date
+)DEFAULT CHARSET=&#x27;utf8&#x27;;
 </code></pre></div><p>表二：</p><div class="code-wrapper"><pre><code class="hljs mysql">create table score(
 studentID	int,
-coureseID int,	
-score int,	
-scoreID int primary key,	
+coureseID int,
+score int,
+scoreID int primary key,
 foreign	key(studentID) references stuInfo(Scode)  --添加外键 )
 DEFAULT charset=&#x27;utf8&#x27;;</code></pre></div><p><strong>方式二</strong>：表已经创建好了，继续修改表的结构来添加外键。</p><div class="code-wrapper"><pre><code class="hljs mysql">ALTER TABLE 表名 ADD CONSTRAINT 外键名 FOREIGN KEY(外键字段名)
 REFERENCES 外表表名(主键字段名)
 [ON DELETE &#123;RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT&#125;]
-[ON UPDATE &#123;RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT&#125;]</code></pre></div><table><thead><tr class="header"><th style="text-align:left">参数</th><th style="text-align:left">意义</th></tr></thead><tbody><tr class="odd"><td style="text-align:left">RESTRICT</td><td style="text-align:left">限制外表中的外键改动（默认值，也是最安全的设置）</td></tr><tr class="even"><td style="text-align:left">CASCADE</td><td style="text-align:left">跟随外键改动</td></tr><tr class="odd"><td style="text-align:left">SET NULL</td><td style="text-align:left">设为null值</td></tr><tr class="even"><td style="text-align:left">NO ACTION</td><td style="text-align:left">无动作</td></tr><tr class="odd"><td style="text-align:left">SET DEFAULT</td><td style="text-align:left">设为默认值</td></tr></tbody></table><div class="code-wrapper"><pre><code class="hljs mysql">alter table stuInfo	add foreign key (scode) references score(studentID);</code></pre></div><ul><li><p>触发限制使用默认值 RESTRICT 的情况下</p><ul><li>从表插入新行，外键值不在主表中，被阻止</li><li>从表修改外键值，新值不是主表的主键值，阻止修改</li><li>主表删除行，其主键值在从表里存在便阻止删除(要想删除，必须先删除从表的相关行)</li><li>主表修改主键值，旧值在从表里存在便阻止修改（要想修改，必须先删除从表的相关行）</li></ul></li><li><p>更改事件触发限制为 CASCADE</p><ul><li>当主表修改主键值，从表中相关行的外键值将一起修改</li><li>如果主表删除行，从表中的相关行将一起被删除</li></ul></li></ul><p><strong>删除外键约束</strong></p><div class="code-wrapper"><pre><code class="hljs mysql">ALTER TABLE 表名 DROP FOREIGN KEY 外键名;
- 
-ALTER TABLE student_score DROP FOREIGN KEY s_id;</code></pre></div><p>以上的操作都是物理外键，<u>数据库级别的外键</u>，<u><strong>不建议使用</strong></u>！（避免数据库过多造成困扰，了解即可）</p><p><strong>最佳实践</strong>:不使用外键，采用业务逻辑关联的方式，来模拟这种外键</p><ul><li>数据库就是单纯的表，只用来存数据，只有行（数据）和列（字段）</li><li>我们想使用多张表的数据，想使用外键（程序去实现）</li></ul><figure><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20240911151117915-2024-9-1115:12:23.png" srcset="/img/loading.gif" lazyload alt="image-20240911151117915"><figcaption aria-hidden="true">image-20240911151117915</figcaption></figure><figure><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20240911151138728-2024-9-1115:12:27.png" srcset="/img/loading.gif" lazyload alt="image-20240911151138728"><figcaption aria-hidden="true">image-20240911151138728</figcaption></figure><ul><li><strong>检查约束：check</strong></li></ul><p>MySQL不支持</p><ul><li><strong>默认值约束：default</strong></li></ul><p>给某个字段/某列指定默认值，一旦设置默认值，在插入数据时，如果此字段没有显式赋值，则赋值为默认值</p><h4 id="修改基本表">修改基本表</h4><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--修改表名：ALTER TABLE 旧表名 RENAME AS 新表名</span>
+[ON UPDATE &#123;RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT&#125;]</code></pre></div><table><thead><tr class="header"><th style="text-align:left">参数</th><th style="text-align:left">意义</th></tr></thead><tbody><tr class="odd"><td style="text-align:left">RESTRICT</td><td style="text-align:left">限制外表中的外键改动（默认值，也是最安全的设置）</td></tr><tr class="even"><td style="text-align:left">CASCADE</td><td style="text-align:left">跟随外键改动</td></tr><tr class="odd"><td style="text-align:left">SET NULL</td><td style="text-align:left">设为 null 值</td></tr><tr class="even"><td style="text-align:left">NO ACTION</td><td style="text-align:left">无动作</td></tr><tr class="odd"><td style="text-align:left">SET DEFAULT</td><td style="text-align:left">设为默认值</td></tr></tbody></table><div class="code-wrapper"><pre><code class="hljs mysql">alter table stuInfo	add foreign key (scode) references score(studentID);</code></pre></div><ul><li><p>触发限制使用默认值 RESTRICT 的情况下</p><ul><li>从表插入新行，外键值不在主表中，被阻止</li><li>从表修改外键值，新值不是主表的主键值，阻止修改</li><li>主表删除行，其主键值在从表里存在便阻止删除(要想删除，必须先删除从表的相关行)</li><li>主表修改主键值，旧值在从表里存在便阻止修改（要想修改，必须先删除从表的相关行）</li></ul></li><li><p>更改事件触发限制为 CASCADE</p><ul><li>当主表修改主键值，从表中相关行的外键值将一起修改</li><li>如果主表删除行，从表中的相关行将一起被删除</li></ul></li></ul><p><strong>删除外键约束</strong></p><div class="code-wrapper"><pre><code class="hljs mysql">ALTER TABLE 表名 DROP FOREIGN KEY 外键名;
+
+ALTER TABLE student_score DROP FOREIGN KEY s_id;</code></pre></div><p>以上的操作都是物理外键，<u>数据库级别的外键</u>，<u><strong>不建议使用</strong></u>！（避免数据库过多造成困扰，了解即可）</p><p><strong>最佳实践</strong>:不使用外键，采用业务逻辑关联的方式，来模拟这种外键</p><ul><li>数据库就是单纯的表，只用来存数据，只有行（数据）和列（字段）</li><li>我们想使用多张表的数据，想使用外键（程序去实现）</li></ul><figure><img src="http://img.catpaws.top/img/image-20240911151117915-2024-9-1115_12_23.png" srcset="/img/loading.gif" lazyload alt="image-20240911151117915"><figcaption aria-hidden="true">image-20240911151117915</figcaption></figure><figure><img src="http://img.catpaws.top/img/image-20240911151138728-2024-9-1115_12_27.png" srcset="/img/loading.gif" lazyload alt="image-20240911151138728"><figcaption aria-hidden="true">image-20240911151138728</figcaption></figure><ul><li><strong>检查约束：check</strong></li></ul><p>MySQL 不支持</p><ul><li><strong>默认值约束：default</strong></li></ul><p>给某个字段/某列指定默认值，一旦设置默认值，在插入数据时，如果此字段没有显式赋值，则赋值为默认值</p><h4 id="修改基本表">修改基本表</h4><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">--修改表名：ALTER TABLE 旧表名 RENAME AS 新表名</span>
 <span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `t_teacher` RENAME <span class="hljs-keyword">AS</span>	`t_teacher1`;
 
 <span class="hljs-comment">--增加表的字段：ALTER TABLE 表名 ADD 字段名 列属性 [约束];</span>
@@ -89,15 +89,15 @@ ALTER TABLE student_score DROP FOREIGN KEY s_id;</code></pre></div><p>以上的�
 
 <span class="hljs-comment">--删除表的字段：ALTER TABLE 表名 DROP 字段名 [CASCADE|RESTRICT];</span>
 <span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> `t_teacher1` <span class="hljs-keyword">DROP</span> `age1` CASCADE;</code></pre></div><h4 id="删除基本表">删除基本表</h4><div class="code-wrapper"><pre><code class="hljs mysql">-- 一般格式
-drop table&lt;表名&gt;[restrict|cascade]</code></pre></div><ul><li>若选择 <u>restrict</u>，则该表的删除是有限制条件的。欲删除的基本表<u>不能被其他的约束所引用（如CHECK，FOREIGN KEY等），不能有视图，不能有触发器，不能有存储过程或函数等</u>。如果存在这些依赖该表的对象，则此表不能被删除</li><li>若选择 <u>cascade</u>，则该表的删除没有限制条件。在删除基本表的同时，相关的依赖对象都将一起被删除。</li><li>默认情况时是 restrict。</li></ul><h3 id="索引的建立与删除">2.3、索引的建立与删除</h3><h4 id="建立索引">建立索引</h4><p>语法：</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">UNIQUE</span>][FULLTEXT] INDEX <span class="hljs-operator">&lt;</span>索引名<span class="hljs-operator">&gt;</span>
-<span class="hljs-keyword">ON</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> (<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>[<span class="hljs-operator">&lt;</span>次序<span class="hljs-operator">&gt;</span>] [,<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>[<span class="hljs-operator">&lt;</span>次序<span class="hljs-operator">&gt;</span>]]...)</code></pre></div><ul><li>索引可以建立在该表的一列或多列上，各列用逗号分隔。每个<列名>后可以使用<次序>指定索引值的排列次序，可选ASC（升序）或DESC（降序），默认为ASC；</次序></列名></li></ul><div class="code-wrapper"><pre><code class="hljs mysql">#为student、course、和sc建立索引。其中Student按学号升序建立唯一索引，course按课程号升序建立唯一索引，sc阿铭学号升序和课程号降序建立唯一索引
+drop table&lt;表名&gt;[restrict|cascade]</code></pre></div><ul><li>若选择 <u>restrict</u>，则该表的删除是有限制条件的。欲删除的基本表<u>不能被其他的约束所引用（如 CHECK，FOREIGN KEY 等），不能有视图，不能有触发器，不能有存储过程或函数等</u>。如果存在这些依赖该表的对象，则此表不能被删除</li><li>若选择 <u>cascade</u>，则该表的删除没有限制条件。在删除基本表的同时，相关的依赖对象都将一起被删除。</li><li>默认情况时是 restrict。</li></ul><h3 id="索引的建立与删除">2.3、索引的建立与删除</h3><h4 id="建立索引">建立索引</h4><p>语法：</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> [<span class="hljs-keyword">UNIQUE</span>][FULLTEXT] INDEX <span class="hljs-operator">&lt;</span>索引名<span class="hljs-operator">&gt;</span>
+<span class="hljs-keyword">ON</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span> (<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>[<span class="hljs-operator">&lt;</span>次序<span class="hljs-operator">&gt;</span>] [,<span class="hljs-operator">&lt;</span>列名<span class="hljs-operator">&gt;</span>[<span class="hljs-operator">&lt;</span>次序<span class="hljs-operator">&gt;</span>]]...)</code></pre></div><ul><li>索引可以建立在该表的一列或多列上，各列用逗号分隔。每个<列名>后可以使用<次序>指定索引值的排列次序，可选 ASC（升序）或 DESC（降序），默认为 ASC；</次序></列名></li></ul><div class="code-wrapper"><pre><code class="hljs mysql">#为student、course、和sc建立索引。其中Student按学号升序建立唯一索引，course按课程号升序建立唯一索引，sc阿铭学号升序和课程号降序建立唯一索引
 create unique index Stusno on student(Sno);
 create unique index Coucno on course(Cno);
-create unique index SCno on sc(Sno ASC, Cno DESC);</code></pre></div><ul><li><p>表中的主键和具有unique约束的字段会自动添加唯一索引</p></li><li><p>什么时候考虑给字段添加索引？（满足什么条件）</p><ul><li>数据量庞大。（根据客户的需求，根据线上的环境）</li><li>该字段很少的DML操作。（因为字段进行修改操作，索引也需要维护）</li><li>该字段经常出现在where子句中。（经常根据哪个字段查询）</li></ul></li></ul><h4 id="查看索引">查看索引</h4><div class="code-wrapper"><pre><code class="hljs mysql">#查看索引信息
+create unique index SCno on sc(Sno ASC, Cno DESC);</code></pre></div><ul><li><p>表中的主键和具有 unique 约束的字段会自动添加唯一索引</p></li><li><p>什么时候考虑给字段添加索引？（满足什么条件）</p><ul><li>数据量庞大。（根据客户的需求，根据线上的环境）</li><li>该字段很少的 DML 操作。（因为字段进行修改操作，索引也需要维护）</li><li>该字段经常出现在 where 子句中。（经常根据哪个字段查询）</li></ul></li></ul><h4 id="查看索引">查看索引</h4><div class="code-wrapper"><pre><code class="hljs mysql">#查看索引信息
 SHOW INDEX FROM sc;
 
 #查询一个sql语句是否使用索引检索  explain + sql语句,根据type和rows判断
-explain select * from sc where cno = &#x27;2&#x27;;</code></pre></div><h4 id="删除索引">删除索引</h4><div class="code-wrapper"><pre><code class="hljs mysql">DROP INDEX &lt;索引名&gt; on &lt;表名&gt;</code></pre></div><blockquote><p>更多索引相关内容，见另一篇文章 “MySQL（二）”</p></blockquote><h2 id="三数据查询">三、数据查询</h2><blockquote><p>select语句的一般格式</p></blockquote><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> [<span class="hljs-keyword">ALL</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">DISTINCT</span>]
+explain select * from sc where cno = &#x27;2&#x27;;</code></pre></div><h4 id="删除索引">删除索引</h4><div class="code-wrapper"><pre><code class="hljs mysql">DROP INDEX &lt;索引名&gt; on &lt;表名&gt;</code></pre></div><blockquote><p>更多索引相关内容，见另一篇文章 “MySQL（二）”</p></blockquote><h2 id="三数据查询">三、数据查询</h2><blockquote><p>select 语句的一般格式</p></blockquote><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> [<span class="hljs-keyword">ALL</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">DISTINCT</span>]
 &#123;<span class="hljs-operator">*</span> <span class="hljs-operator">|</span> table.<span class="hljs-operator">*</span> <span class="hljs-operator">|</span> [ table. field1[ <span class="hljs-keyword">as</span> alias1][, table. field2[ <span class="hljs-keyword">as</span> alias2]][,...]]&#125;
 <span class="hljs-keyword">FROM</span> table_name [<span class="hljs-keyword">as</span> table_alias]
 	[<span class="hljs-keyword">left</span> outr <span class="hljs-operator">|</span> <span class="hljs-keyword">right</span> <span class="hljs-keyword">outer</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> table_name2]  <span class="hljs-comment">--连接查询</span>
@@ -106,23 +106,23 @@ explain select * from sc where cno = &#x27;2&#x27;;</code></pre></div><h4 id="�
 	[<span class="hljs-keyword">HAVING</span>]  		<span class="hljs-comment">--过滤分组的记录必须满足的条件</span>
 	[<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ...]  <span class="hljs-comment">--指定查询记录按照一个或多个条件排序</span>
 	[LIMIT &#123;[<span class="hljs-keyword">offset</span>,]row_count  <span class="hljs-operator">|</span> row_countOffset <span class="hljs-keyword">offset</span>&#125;] <span class="hljs-comment">--指定查询的记录从哪几条到哪几条</span>
-	
-<span class="hljs-comment">--注意：[]括号代表可选的，&#123;）括号代表必选得</span></code></pre></div><h3 id="单表查询">3.1、单表查询</h3><h4 id="选择表中的若干列">选择表中的若干列</h4><ul><li><p>查询全部列</p><ul><li><p>第一种方式：可以把每个字段都写上</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> a,b,c,d,e,f... <span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span>;</code></pre></div></li><li><p>第二种方式：可以使用 *</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span>;</code></pre></div></li></ul></li><li><p>查询指定列</p><ul><li><目标表达式>中的各个列的先后顺序可以和表中的顺序不一致</目标表达式></li><li>可以对<目标表达式>中的列 <u>通过 as 起别名</u>（也可以给表起别名）</目标表达式></li></ul></li><li><p>查询经过计算的值</p><ul><li><p>select子句的<目标列表达式>不仅可以是表中的属性列，也可以是<u>表达式，字符串常量，函数</u>等。</目标列表达式></p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `StudentName` <span class="hljs-keyword">AS</span> <span class="hljs-string">&#x27;姓名&#x27;</span>,  <span class="hljs-number">2024</span> <span class="hljs-operator">-</span> DATE_FORMAT(`borndate`,<span class="hljs-string">&#x27;%Y&#x27;</span>) <span class="hljs-keyword">AS</span> <span class="hljs-string">&#x27;年龄&#x27;</span> 
+
+<span class="hljs-comment">--注意：[]括号代表可选的，&#123;）括号代表必选得</span></code></pre></div><h3 id="单表查询">3.1、单表查询</h3><h4 id="选择表中的若干列">选择表中的若干列</h4><ul><li><p>查询全部列</p><ul><li><p>第一种方式：可以把每个字段都写上</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> a,b,c,d,e,f... <span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span>;</code></pre></div></li><li><p>第二种方式：可以使用 *</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-operator">&lt;</span>表名<span class="hljs-operator">&gt;</span>;</code></pre></div></li></ul></li><li><p>查询指定列</p><ul><li><目标表达式>中的各个列的先后顺序可以和表中的顺序不一致</目标表达式></li><li>可以对<目标表达式>中的列 <u>通过 as 起别名</u>（也可以给表起别名）</目标表达式></li></ul></li><li><p>查询经过计算的值</p><ul><li><p>select 子句的<目标列表达式>不仅可以是表中的属性列，也可以是<u>表达式，字符串常量，函数</u>等。</目标列表达式></p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> `StudentName` <span class="hljs-keyword">AS</span> <span class="hljs-string">&#x27;姓名&#x27;</span>,  <span class="hljs-number">2024</span> <span class="hljs-operator">-</span> DATE_FORMAT(`borndate`,<span class="hljs-string">&#x27;%Y&#x27;</span>) <span class="hljs-keyword">AS</span> <span class="hljs-string">&#x27;年龄&#x27;</span>
 	<span class="hljs-keyword">FROM</span> `student`;</code></pre></div></li><li><p>常见单行处理函数：<strong>注意不要对存在索引的列进行函数运算，会使查询过程中索引失效</strong>。</p><div class="code-wrapper"><pre><code class="hljs mysql">#字符串处理:
 
 lower #转换小写
 	mysql&gt; select lower(ename) as ename from emp;
-	
+
 upper #转换大写
 	mysql&gt; select upper(name) as name from t_student;
-	
+
 substr #取子串（substr(被截取的字符串, 起始下标,截取的长度)）
 	mysql&gt; select substr(ename, 1, 1) as ename from emp;
 	起始下标从1开始
-	
+
 concat #函数进行字符串的拼接
 	mysql&gt; select concat(empno,ename) from emp;
-	
+
 char_length #包含的字符数
 	mysql&gt; select char_length(ename) enamelength from emp;
 replace #在原串中，用一个字符串替换指定的串 replace(str,from_str, to_str)
@@ -143,7 +143,7 @@ reverse #反转字符串
 	+------------------------+
 
 trim #去空格
-	mysql&gt;	select * from emp where ename = trim(&#x27;   KING&#x27;);</code></pre></div><p></p><div class="code-wrapper"><pre><code class="hljs mysql">#日期相关
+	mysql&gt;	select * from emp where ename = trim(&#x27;   KING&#x27;);</code></pre></div><div class="code-wrapper"><pre><code class="hljs mysql">#日期相关
 
 SELECT CURRENT_DATE（）---获取当前日期
 SELECT CURDATE（）--获取当前日期
@@ -169,39 +169,24 @@ mysql的日期格式：
 insert into t_user(id,name,birth) values(1, &#x27;zhangsan&#x27;, str_to_date(&#x27;01-10-1990&#x27;,&#x27;%d-%m-%Y&#x27;));
 mysql默认的日期格式：&#x27;%Y-%m-%d&#x27;，如果所提供的日期字符串是这个格式，str_to_date函数就不需要了！！！
 
-insert into t_user(id,name,birth) values(2, &#x27;lisi&#x27;, &#x27;1990-10-01&#x27;);
+insert into t_user(id,name,birth) values(2, &#x27;lisi&#x27;, &#x27;1990-10-01&#x27;);</code></pre></div><p>date_format 格式化日期 查询的时候可以使用date_format将日期类型转换成特定格式的字符串展示 语法格式： date_format(日期类型数据, '日期格式') 这个函数通常使用在查询日期方面。设置展示的日期格式。</p><p>select id,name,date_format(birth, '%m/%d/%Y') as birth from t_user; +------+----------+------------+ | id | name | birth | +------+----------+------------+ | 1 | zhangsan | 10/01/1990 | | 2 | lisi | 10/01/1990 | +------+----------+------------+</p><div class="code-wrapper"><pre><code class="hljs livecodeserver">
+```mysql
+<span class="hljs-comment">#数学运算</span>
 
+select <span class="hljs-built_in">abs</span>(<span class="hljs-number">-10</span>)  <span class="hljs-comment">#绝对值</span>
+select CEILING(<span class="hljs-number">9.4</span>) <span class="hljs-comment">#向上取整</span>
+select FLOOR(<span class="hljs-number">9.4</span>)	<span class="hljs-comment">#向下取整</span>
+select SIGN(<span class="hljs-number">10</span>)		<span class="hljs-comment">#判断一个数的符号，0返回0，正数返回1，负数返回-1</span>
 
+<span class="hljs-built_in">round</span> <span class="hljs-comment">#四舍五入</span>
+mysql&gt; select <span class="hljs-built_in">round</span>(<span class="hljs-number">1236.567</span>, <span class="hljs-number">0</span>) <span class="hljs-keyword">as</span> <span class="hljs-built_in">result</span> ;<span class="hljs-comment"> //保留整数位。</span>
+mysql&gt; select <span class="hljs-built_in">round</span>(<span class="hljs-number">1236.567</span>, <span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> <span class="hljs-built_in">result</span> ;<span class="hljs-comment"> //保留1个小数</span>
+mysql&gt; select <span class="hljs-built_in">round</span>(<span class="hljs-number">1236.567</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> <span class="hljs-built_in">result</span> ;<span class="hljs-comment"> //保留2个小数</span>
+mysql&gt; select <span class="hljs-built_in">round</span>(<span class="hljs-number">1236.567</span>, <span class="hljs-number">-1</span>) <span class="hljs-keyword">as</span> <span class="hljs-built_in">result</span>;<span class="hljs-comment"> // 保留到十位。</span>
 
-
-date_format 格式化日期
-查询的时候可以使用date_format将日期类型转换成特定格式的字符串展示
-语法格式：
-  date_format(日期类型数据, &#x27;日期格式&#x27;)
-这个函数通常使用在查询日期方面。设置展示的日期格式。
-  
-select id,name,date_format(birth, &#x27;%m/%d/%Y&#x27;) as birth from t_user;
-+------+----------+------------+
-| id   | name     | birth      |
-+------+----------+------------+
-|    1 | zhangsan | 10/01/1990 |
-|    2 | lisi     | 10/01/1990 |
-+------+----------+------------+</code></pre></div><p></p><p></p><div class="code-wrapper"><pre><code class="hljs mysql">#数学运算
-	
-select abs(-10)  #绝对值
-select CEILING(9.4) #向上取整
-select FLOOR(9.4)	#向下取整
-select SIGN(10)		#判断一个数的符号，0返回0，正数返回1，负数返回-1
-
-round #四舍五入
-mysql&gt; select round(1236.567, 0) as result ; //保留整数位。
-mysql&gt; select round(1236.567, 1) as result ; //保留1个小数
-mysql&gt; select round(1236.567, 2) as result ; //保留2个小数
-mysql&gt; select round(1236.567, -1) as result; // 保留到十位。
-
-rand() #生成0~1之间的随机数
-  mysql&gt; select round(rand()*100,0) from emp; // 100以内的随机数</code></pre></div><p></p></li></ul></li></ul><h4 id="选择表中的若干元组">选择表中的若干元组</h4><ul><li><p>消除重复的行</p><ul><li><p>使用 <u>DISTINCT<列名></列名></u>,消除查询结果中重复的列。</p><div class="code-wrapper"><pre><code class="hljs sql"> <span class="hljs-comment">--studentno，由于同一个学生由于同一个学生有多门考试成绩，得到的studentno有重复</span>
-<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> `studentno` <span class="hljs-keyword">as</span> <span class="hljs-string">&#x27;学号&#x27;</span> <span class="hljs-keyword">FROM</span> `<span class="hljs-keyword">result</span>`</code></pre></div></li><li><p>原表数据不会被修改，只是查询结果去重。如果没有指定DISTINCT关键词，则默认为ALL，即保留结果表中取值重复的行</p></li></ul></li></ul><h4 id="where子句">where子句</h4><p>查询满足条件的元组</p><ul><li><table><thead><tr class="header"><th>查询条件</th><th>谓词</th></tr></thead><tbody><tr class="odd"><td>比较</td><td>=,&lt;,&gt;,&gt;=,&lt;=,!=,&lt;&gt;,!&gt;,!&lt;; NOT+上述比较符</td></tr><tr class="even"><td>确定范围</td><td>between and, not between and</td></tr><tr class="odd"><td>确定集合</td><td>in, not in</td></tr><tr class="even"><td>字符匹配</td><td>like, not like</td></tr><tr class="odd"><td>空值</td><td>is null, is not null</td></tr><tr class="even"><td>多重条件（逻辑运算）</td><td>and, or , not</td></tr></tbody></table></li></ul><p>示例</p><ul><li><p>比较大小</p><p>其中，!=或&lt;&gt;（不等于）、!&gt;（不大于）、!&lt;（不小于）</p></li><li><p>确定范围</p><p><code>between...and...</code>和 <code>not between... and...</code></p></li></ul><div class="code-wrapper"><pre><code class="hljs sql">#查询年龄在<span class="hljs-number">20</span><span class="hljs-operator">~</span><span class="hljs-number">30</span>岁之间（包括<span class="hljs-number">20</span>和<span class="hljs-number">30</span>）的学生的姓名，系别和年龄
+rand() <span class="hljs-comment">#生成0~1之间的随机数</span>
+  mysql&gt; select <span class="hljs-built_in">round</span>(rand()*<span class="hljs-number">100</span>,<span class="hljs-number">0</span>) <span class="hljs-built_in">from</span> emp;<span class="hljs-comment"> // 100以内的随机数</span></code></pre></div><p></p></li></ul></li></ul><h4 id="选择表中的若干元组">选择表中的若干元组</h4><ul><li><p>消除重复的行</p><ul><li><p>使用 <u>DISTINCT<列名></列名></u>,消除查询结果中重复的列。</p><div class="code-wrapper"><pre><code class="hljs sql"> <span class="hljs-comment">--studentno，由于同一个学生由于同一个学生有多门考试成绩，得到的studentno有重复</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> `studentno` <span class="hljs-keyword">as</span> <span class="hljs-string">&#x27;学号&#x27;</span> <span class="hljs-keyword">FROM</span> `<span class="hljs-keyword">result</span>`</code></pre></div></li><li><p>原表数据不会被修改，只是查询结果去重。如果没有指定 DISTINCT 关键词，则默认为 ALL，即保留结果表中取值重复的行</p></li></ul></li></ul><h4 id="where-子句">where 子句</h4><p>查询满足条件的元组</p><ul><li><table><thead><tr class="header"><th>查询条件</th><th>谓词</th></tr></thead><tbody><tr class="odd"><td>比较</td><td>=,&lt;,&gt;,&gt;=,&lt;=,!=,&lt;&gt;,!&gt;,!&lt;; NOT+上述比较符</td></tr><tr class="even"><td>确定范围</td><td>between and, not between and</td></tr><tr class="odd"><td>确定集合</td><td>in, not in</td></tr><tr class="even"><td>字符匹配</td><td>like, not like</td></tr><tr class="odd"><td>空值</td><td>is null, is not null</td></tr><tr class="even"><td>多重条件（逻辑运算）</td><td>and, or , not</td></tr></tbody></table></li></ul><p>示例</p><ul><li><p>比较大小</p><p>其中，!=或&lt;&gt;（不等于）、!&gt;（不大于）、!&lt;（不小于）</p></li><li><p>确定范围</p><p><code>between...and...</code>和 <code>not between... and...</code></p></li></ul><div class="code-wrapper"><pre><code class="hljs sql">#查询年龄在<span class="hljs-number">20</span><span class="hljs-operator">~</span><span class="hljs-number">30</span>岁之间（包括<span class="hljs-number">20</span>和<span class="hljs-number">30</span>）的学生的姓名，系别和年龄
 <span class="hljs-keyword">select</span> Sname, Sage, Sdept <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> Sage <span class="hljs-keyword">between</span> <span class="hljs-number">20</span> <span class="hljs-keyword">and</span> <span class="hljs-number">30</span>;
 
 <span class="hljs-comment">--------------------------------------------------------------------</span>
@@ -210,7 +195,7 @@ rand() #生成0~1之间的随机数
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+------+-------+</span>
 <span class="hljs-operator">|</span> 小红   <span class="hljs-operator">|</span>   <span class="hljs-number">20</span> <span class="hljs-operator">|</span> CS    <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+------+-------+</span>
-<span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)</code></pre></div><ul><li>确定集合</li></ul><p>谓词IN可以查找属性值属于指定集合的元组,与之对应的是NOT IN。(<u>IN实际上是多个OR运算符的缩写</u>)</p><div class="code-wrapper"><pre><code class="hljs sql">#查询既不是计算机科学系，也不是数学系的学生姓名和性别。
+<span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)</code></pre></div><ul><li>确定集合</li></ul><p>谓词 IN 可以查找属性值属于指定集合的元组,与之对应的是 NOT IN。(<u>IN 实际上是多个 OR 运算符的缩写</u>)</p><div class="code-wrapper"><pre><code class="hljs sql">#查询既不是计算机科学系，也不是数学系的学生姓名和性别。
 <span class="hljs-keyword">select</span> Sname, Ssex <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> Sdept <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;CS&#x27;</span>,<span class="hljs-string">&#x27;MA&#x27;</span>);
 <span class="hljs-comment">--------------------------------------------------------------------</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+------+</span>
@@ -218,7 +203,7 @@ rand() #生成0~1之间的随机数
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+------+</span>
 <span class="hljs-operator">|</span> 小雅   <span class="hljs-operator">|</span> 女   <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+------+</span>
-<span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)</code></pre></div><ul><li><p>字符匹配</p><p>谓词LIKE可以用来进行字符串的匹配。</p><ul><li>"%"代表任意长度的字符串。例如a%b，代表以a开头，以b结尾的任意长度的字符串。</li><li>"_"代表任意单个字符。 例如 a_b，表示以a开头，以b结尾的长度为3的任意字符串。</li></ul><p>当要查询的字符串中含有特殊字符 %或 _时，需要<u>使用<code>\</code>进行转义</u>，将其转变为普通字符。</p></li></ul><div class="code-wrapper"><pre><code class="hljs sql">#查询名字中包含 美的学生的姓名和年龄
+<span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)</code></pre></div><ul><li><p>字符匹配</p><p>谓词 LIKE 可以用来进行字符串的匹配。</p><ul><li>"%"代表任意长度的字符串。例如 a%b，代表以 a 开头，以 b 结尾的任意长度的字符串。</li><li>"_"代表任意单个字符。 例如 a_b，表示以 a 开头，以 b 结尾的长度为 3 的任意字符串。</li></ul><p>当要查询的字符串中含有特殊字符 %或 _时，需要<u>使用<code>\</code>进行转义</u>，将其转变为普通字符。</p></li></ul><div class="code-wrapper"><pre><code class="hljs sql">#查询名字中包含 美的学生的姓名和年龄
 <span class="hljs-keyword">select</span> Sname, Sage <span class="hljs-keyword">from</span> student <span class="hljs-keyword">where</span> Sname <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;%美%&#x27;</span>;
 
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+------+</span>
@@ -252,22 +237,22 @@ rand() #生成0~1之间的随机数
 <span class="hljs-operator">|</span> <span class="hljs-number">201215121</span> <span class="hljs-operator">|</span> 小红_a   <span class="hljs-operator">|</span> 女   <span class="hljs-operator">|</span>   <span class="hljs-number">20</span> <span class="hljs-operator">|</span> CS    <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">-----------+----------+------+------+-------+</span>
 <span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)</code></pre></div><ul><li><p>涉及空值的查询</p><div class="code-wrapper"><pre><code class="hljs sql">#查询选了课但没有考试的学生，即选课成绩为<span class="hljs-number">0</span>的学生的信息
-<span class="hljs-keyword">select</span> Sname, student.Sno <span class="hljs-keyword">from</span> student, sc 
+<span class="hljs-keyword">select</span> Sname, student.Sno <span class="hljs-keyword">from</span> student, sc
 	<span class="hljs-keyword">where</span> sc.Sno <span class="hljs-operator">=</span> student.Sno <span class="hljs-keyword">and</span> sc.Grade <span class="hljs-keyword">is</span> <span class="hljs-keyword">null</span>;
-	
+
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+-----------+</span>
 <span class="hljs-operator">|</span> Sname  <span class="hljs-operator">|</span> Sno       <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+-----------+</span>
 <span class="hljs-operator">|</span> 小亮   <span class="hljs-operator">|</span> <span class="hljs-number">201215123</span> <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">--------+-----------+</span>
-<span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)</code></pre></div></li><li><p>多重条件查询</p><p>逻辑运算符 AND和OR可以用来连接多个查询条件。<strong>AND的优先级高于OR，但可以通过加括号来改变优先级</strong>。</p></li></ul><h4 id="order-by子句">ORDER BY子句</h4><p>​ 用户可可以使用ORDER BY子句<strong>对查询结果</strong>按照<strong>一个或多个</strong>属性列的升序(<strong>ASC</strong>)或降序(<strong>DESC</strong>)排列，<strong>默认为升序</strong>;</p><div class="code-wrapper"><pre><code class="hljs sql">#查询选修了<span class="hljs-number">6</span>号课程的学生的学号,姓名及其成绩，查询结果按分数的降序排列
+<span class="hljs-number">1</span> <span class="hljs-type">row</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)</code></pre></div></li><li><p>多重条件查询</p><p>逻辑运算符 AND 和 OR 可以用来连接多个查询条件。<strong>AND 的优先级高于 OR，但可以通过加括号来改变优先级</strong>。</p></li></ul><h4 id="order-by-子句">ORDER BY 子句</h4><p>用户可可以使用 ORDER BY 子句<strong>对查询结果</strong>按照<strong>一个或多个</strong>属性列的升序(<strong>ASC</strong>)或降序(<strong>DESC</strong>)排列，<strong>默认为升序</strong>;</p><div class="code-wrapper"><pre><code class="hljs sql">#查询选修了<span class="hljs-number">6</span>号课程的学生的学号,姓名及其成绩，查询结果按分数的降序排列
 #连结查询
-<span class="hljs-keyword">select</span> student.Sno, Sname, Grade <span class="hljs-keyword">from</span> student, sc 
+<span class="hljs-keyword">select</span> student.Sno, Sname, Grade <span class="hljs-keyword">from</span> student, sc
 	<span class="hljs-keyword">where</span> student.Sno <span class="hljs-operator">=</span> sc.Sno <span class="hljs-keyword">and</span> sc.Cno <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;6&#x27;</span>
 	<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> Grade <span class="hljs-keyword">DESC</span>;
 #嵌套查询
 ......
-	
+
 <span class="hljs-operator">+</span><span class="hljs-comment">-----------+--------+-------+</span>
 <span class="hljs-operator">|</span> Sno       <span class="hljs-operator">|</span> Sname  <span class="hljs-operator">|</span> Grade <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">-----------+--------+-------+</span>
@@ -300,7 +285,7 @@ avg		# 平均值
 max		# 最大值
 min		# 最小值
 
-聚集函数[distinct|all] &lt;列名&gt; 加上distinct在计算时不计入指定列中的重复值</code></pre></div><p><strong>注意：</strong></p><ol start="2" type="1"><li><p>聚集函数中count(*)和count(具体字段)有什么区别？</p><p>count(具体字段)：表示统计该字段下所有不为NULL的元素的总数。</p><p>count(*)：统计表当中的总行数。（只要有一行数据count则++）</p><blockquote><p>因为每一行记录不可能都为NULL，一行数据中有一列不为NULL，则这行数据就是有效的。</p></blockquote></li><li><p><strong>聚集函数不能够直接使用在where子句中。聚集函数只能用于SELECT子句和GROUP BY中的HAVING子句。</strong></p></li><li><p>所有的聚集函数可以组合起来一起用。</p></li></ol><div class="code-wrapper"><pre><code class="hljs sql"># 查询选了课的学生人数 	必须加<span class="hljs-keyword">distinct</span>
+聚集函数[distinct|all] &lt;列名&gt; 加上distinct在计算时不计入指定列中的重复值</code></pre></div><p><strong>注意：</strong></p><ol start="2" type="1"><li><p>聚集函数中 count(*)和 count(具体字段)有什么区别？</p><p>count(具体字段)：表示统计该字段下所有不为 NULL 的元素的总数。</p><p>count(*)：统计表当中的总行数。（只要有一行数据 count 则++）</p><blockquote><p>因为每一行记录不可能都为 NULL，一行数据中有一列不为 NULL，则这行数据就是有效的。</p></blockquote></li><li><p><strong>聚集函数不能够直接使用在 where 子句中。聚集函数只能用于 SELECT 子句和 GROUP BY 中的 HAVING 子句。</strong></p></li><li><p>所有的聚集函数可以组合起来一起用。</p></li></ol><div class="code-wrapper"><pre><code class="hljs sql"># 查询选了课的学生人数 	必须加<span class="hljs-keyword">distinct</span>
 <span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> Sno) <span class="hljs-keyword">as</span> <span class="hljs-string">&#x27;选课人数&#x27;</span> <span class="hljs-keyword">from</span> sc;
 #计算选修了<span class="hljs-number">6</span>号课程的平均成绩
 <span class="hljs-keyword">select</span> <span class="hljs-built_in">avg</span>(Grade) <span class="hljs-keyword">as</span> <span class="hljs-string">&#x27;平均成绩&#x27;</span> <span class="hljs-keyword">from</span> sc <span class="hljs-keyword">where</span> Cno <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;6&#x27;</span>;
@@ -311,24 +296,24 @@ min		# 最小值
 <span class="hljs-operator">|</span> 总学分    <span class="hljs-operator">|</span>
 <span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span>
 <span class="hljs-operator">|</span>        <span class="hljs-number">13</span> <span class="hljs-operator">|</span>
-<span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span></code></pre></div><h4 id="group-by子句">GROUP BY子句</h4><div class="code-wrapper"><pre><code class="hljs mysql">语法格式：
+<span class="hljs-operator">+</span><span class="hljs-comment">-----------+</span></code></pre></div><h4 id="group-by-子句">GROUP BY 子句</h4><div class="code-wrapper"><pre><code class="hljs mysql">语法格式：
 	select
       ...
     from
       ...
     group by
       ...
-     [having ...]</code></pre></div><ul><li>GROUP BY子句将<strong>查询结果</strong>按某一列或多列的值分组，<strong>值相等的为一组</strong>；</li><li>对查询结构分组的目的是为了<strong>细化聚集函数的作用对象</strong></li><li><strong>如果未对查询结果分组，聚集函数将作用到整个查询结果。分组后聚集函数将作用于每一个组，每个组都有一个聚集函数</strong></li><li><strong>在一条select语句当中，如果有group by语句的话，select后面只能跟：<u>参加分组的字段，以及聚集函数。其它的一律不能跟。</u></strong></li><li>若要对分组后的结构进行进一步筛选，可以使用<code>HAVING</code>短语指定筛选条件，最终只输出满足指定条件的<strong>组</strong>。</li></ul><div class="code-wrapper"><pre><code class="hljs mysql">#查询各个课程号及其相应的选课人数
+     [having ...]</code></pre></div><ul><li>GROUP BY 子句将<strong>查询结果</strong>按某一列或多列的值分组，<strong>值相等的为一组</strong>；</li><li>对查询结构分组的目的是为了<strong>细化聚集函数的作用对象</strong></li><li><strong>如果未对查询结果分组，聚集函数将作用到整个查询结果。分组后聚集函数将作用于每一个组，每个组都有一个聚集函数</strong></li><li><strong>在一条 select 语句当中，如果有 group by 语句的话，select 后面只能跟：<u>参加分组的字段，以及聚集函数。其它的一律不能跟。</u></strong></li><li>若要对分组后的结构进行进一步筛选，可以使用<code>HAVING</code>短语指定筛选条件，最终只输出满足指定条件的<strong>组</strong>。</li></ul><div class="code-wrapper"><pre><code class="hljs mysql">#查询各个课程号及其相应的选课人数
 select Cno, count(Sno) from sc
 	group by(Cno);
-	
+
 #该语句对查询结果按Cno的值分组，所有具有相同Cno的值为一组，然后对每一组作用聚集函数COUNT进行计算，以求得该组的学生人数</code></pre></div><div class="code-wrapper"><pre><code class="hljs mysql">#查询选了三门课以上的学生学号
-select Sno from sc 
+select Sno from sc
 	group by Sno
 	having count(*) &gt; 3;
-	
-#查询选了三门课以上的学生学号: 先用GROUP BY子句按 Sno分组，**值相等的为一组**，再用聚集函数COUNT对每一组计数，将总数大于3的组选出来。</code></pre></div><p><strong>WHERE子句和HVING短语的区别</strong></p><ul><li>两者作用的对象不同。WHERE子句作用于<strong>视图或基本表</strong>，从中选择满足条件的元组。HAVING短语作用于<strong>组</strong>，从中选择满足条件的组。</li><li>WHERE子句中不能用聚集函数作为条件表达式，HAVING短语中可以用；HAVING不能单独使用，HAVING必须和group by联合使用。</li></ul><h3 id="连接查询">3.2、连接查询</h3><blockquote><p>多张表联合起来查询数据，被称为连接查询。</p></blockquote><p>连接查询思路：</p><ol type="1"><li>分析需求，分析查询的字段来自哪些表</li><li>确定使用哪种连接查询，确定交叉点（在两张表中哪个字段是相同的），得到连接的条件</li></ol><p>根据表连接的方式分类：</p><ul><li><p>内连接： 等值连接 非等值连接 自连接</p></li><li><p>外连接：外连接、 左外连接（左连接） 右外连接（右连接）</p></li></ul><h4 id="内连接">内连接</h4><div class="code-wrapper"><pre><code class="hljs mysql">SQL99语法：
-  select 
+
+#查询选了三门课以上的学生学号: 先用GROUP BY子句按 Sno分组，**值相等的为一组**，再用聚集函数COUNT对每一组计数，将总数大于3的组选出来。</code></pre></div><p><strong>WHERE 子句和 HVING 短语的区别</strong></p><ul><li>两者作用的对象不同。WHERE 子句作用于<strong>视图或基本表</strong>，从中选择满足条件的元组。HAVING 短语作用于<strong>组</strong>，从中选择满足条件的组。</li><li>WHERE 子句中不能用聚集函数作为条件表达式，HAVING 短语中可以用；HAVING 不能单独使用，HAVING 必须和 group by 联合使用。</li></ul><h3 id="连接查询">3.2、连接查询</h3><blockquote><p>多张表联合起来查询数据，被称为连接查询。</p></blockquote><p>连接查询思路：</p><ol type="1"><li>分析需求，分析查询的字段来自哪些表</li><li>确定使用哪种连接查询，确定交叉点（在两张表中哪个字段是相同的），得到连接的条件</li></ol><p>根据表连接的方式分类：</p><ul><li><p>内连接： 等值连接 非等值连接 自连接</p></li><li><p>外连接：外连接、 左外连接（左连接） 右外连接（右连接）</p></li></ul><h4 id="内连接">内连接</h4><div class="code-wrapper"><pre><code class="hljs mysql">SQL99语法：
+  select
     ...
   from
     a
@@ -338,7 +323,7 @@ select Sno from sc
     a和b的连接条件
   where
     筛选条件
-# inner可以省略（带着inner可读性更好！！！一眼就能看出来是内连接）</code></pre></div><p>两张表时用inner join 连接查询之后生成的笛卡尔积数据中很多数据都是无意义的，我们如何消除无意义的数据呢？ --添加进行连接查询的条件</p><ul><li>使⽤where设置过滤条件：先⽣成笛卡尔积再从笛卡尔积中过滤数据（<strong>效率很低</strong>）</li><li>使用 <strong>on</strong> 设置两张表连接查询的匹配条件：先判断连接条件是否成⽴，如果成⽴两张表的数据进⾏组合⽣成⼀ 条结果记录</li></ul><h5 id="等值连接和非等值连接">等值连接和非等值连接</h5><p>​ 当连接运算符为=时，称为等值连。使用其他运算符称为非等值连接。</p><div class="code-wrapper"><pre><code class="hljs mysql">select * from sc inner join student on sc.Sno = student.Sno;
+# inner可以省略（带着inner可读性更好！！！一眼就能看出来是内连接）</code></pre></div><p>两张表时用 inner join 连接查询之后生成的笛卡尔积数据中很多数据都是无意义的，我们如何消除无意义的数据呢？ --添加进行连接查询的条件</p><ul><li>使⽤ where 设置过滤条件：先⽣成笛卡尔积再从笛卡尔积中过滤数据（<strong>效率很低</strong>）</li><li>使用 <strong>on</strong> 设置两张表连接查询的匹配条件：先判断连接条件是否成⽴，如果成⽴两张表的数据进⾏组合⽣成⼀ 条结果记录</li></ul><h5 id="等值连接和非等值连接">等值连接和非等值连接</h5><p>当连接运算符为=时，称为等值连。使用其他运算符称为非等值连接。</p><div class="code-wrapper"><pre><code class="hljs mysql">select * from sc inner join student on sc.Sno = student.Sno;
 
 #有两个Sno列
 +-----------+-----+-------+-----------+--------+------+------+-------+
@@ -353,7 +338,7 @@ select Sno from sc
 | 201215122 | 6   |    83 | 201215122 | 小美   | 女   |   19 | CS    |
 | 201215123 | 6   |  NULL | 201215123 | 小亮   | 男   |   18 | MA    |
 | 201215124 | 6   |    90 | 201215124 | 小雅   | 女   |   19 | IS    |
-+-----------+-----+-------+-----------+--------+------+------+-------+</code></pre></div><h5 id="自然连接">自然连接</h5><p>​ 自然连接是一种特殊的等值连接。它要求两个关系中进行比较的分量<strong>必须有同名的属性组</strong>，并且会<strong><u>在结果中把重复的属性列去掉</u>。</strong></p><p>​ <strong>自然连接会自动去查找两个表中是否有相同的字段（<u>字段名相同、字段类型也相同</u>，这样的字段可以不止一个，有多少个这样的字段就会生成多少个等值条件），找到后自动完成等值连接。如果连接的表中，没有相同字段，会返回一个空结果。</strong></p><p>​ 一般的连接操作时从行的角度进行运算，但自然连接还需要取消重复列，所以是同时从行和列的角度进行运算。</p><div class="code-wrapper"><pre><code class="hljs mysql">#此 SQL 语句中没有使用 where 字句 和 on，也没有出现连接符，但是也达到了等值连接的效果。
++-----------+-----+-------+-----------+--------+------+------+-------+</code></pre></div><h5 id="自然连接">自然连接</h5><p>自然连接是一种特殊的等值连接。它要求两个关系中进行比较的分量<strong>必须有同名的属性组</strong>，并且会<strong><u>在结果中把重复的属性列去掉</u>。</strong></p><p><strong>自然连接会自动去查找两个表中是否有相同的字段（<u>字段名相同、字段类型也相同</u>，这样的字段可以不止一个，有多少个这样的字段就会生成多少个等值条件），找到后自动完成等值连接。如果连接的表中，没有相同字段，会返回一个空结果。</strong></p><p>一般的连接操作时从行的角度进行运算，但自然连接还需要取消重复列，所以是同时从行和列的角度进行运算。</p><div class="code-wrapper"><pre><code class="hljs mysql">#此 SQL 语句中没有使用 where 字句 和 on，也没有出现连接符，但是也达到了等值连接的效果。
 #通过两个表中相同的Sno属性连接，并将结果中重复的Sno去掉
 select * from sc natural join student;
 +-----------+-----+-------+--------+------+------+-------+
@@ -383,7 +368,7 @@ select c1.Cname as &#x27;课程&#x27;,c2.Cname as &#x27;先修课程&#x27; from 
 | 操作系统     | 数据处理     |
 | 数据结构     | DB_Design    |
 | DB_Design    | 数据处理     |
-+--------------+--------------+</code></pre></div><h4 id="外连接">外连接</h4><p>​ 两个关系R和S（两个表）做连接操作时，选择两个关系在公共属性上相等的元组构成新的关系（得到结果表)。</p><p>​ 在关系R中的某些元组可能在S中不存在公共属性上值相等的元组，关系S中同样也可能存在着这样的元组，从而在操作时将这些元组舍弃了，这些被舍弃的元组称为 <u>悬浮元组</u>。</p><p>如果把悬浮元组保存在结果关系中，而在其他属性上填上空值NULL，这种连接就叫<strong>外连接</strong>；</p><p>只保留左边关系R中的悬浮元组就叫做<strong>左外连接</strong></p><p>只保留右边关系S中的悬浮元组就叫做<strong>右外连接</strong></p><p><code>左外连接，以左表为主，会从左表返回所有的元组，即使其中一些元组在右表表没有匹配（这些元组所包含的右表的属性用NULL填充）；右外连接同理。</code></p><p>外连接的查询结果条数一定是 &gt;= 内连接的查询结果条数</p><div class="code-wrapper"><pre><code class="hljs mysql"> select 
++--------------+--------------+</code></pre></div><h4 id="外连接">外连接</h4><p>两个关系 R 和 S（两个表）做连接操作时，选择两个关系在公共属性上相等的元组构成新的关系（得到结果表)。</p><p>在关系 R 中的某些元组可能在 S 中不存在公共属性上值相等的元组，关系 S 中同样也可能存在着这样的元组，从而在操作时将这些元组舍弃了，这些被舍弃的元组称为 <u>悬浮元组</u>。</p><p>如果把悬浮元组保存在结果关系中，而在其他属性上填上空值 NULL，这种连接就叫<strong>外连接</strong>；</p><p>只保留左边关系 R 中的悬浮元组就叫做<strong>左外连接</strong></p><p>只保留右边关系 S 中的悬浮元组就叫做<strong>右外连接</strong></p><p><code>左外连接，以左表为主，会从左表返回所有的元组，即使其中一些元组在右表表没有匹配（这些元组所包含的右表的属性用NULL填充）；右外连接同理。</code></p><p>外连接的查询结果条数一定是 &gt;= 内连接的查询结果条数</p><div class="code-wrapper"><pre><code class="hljs mysql"> select
    ...
  from
    a
@@ -392,10 +377,10 @@ right[left] outer join
  on
    a和b的连接条件
  where
-   筛选条件</code></pre></div><h5 id="全外连接">全外连接</h5><p>​ MySql是没有全外连接的(MySql中没有full outer join关键字)，想要达到全外连接的效果，可以使用union关键字连接左外连接和右外连接。UNION会自动去除重复行，如果不喜欢去除重复行可以用UNION ALL。</p><h5 id="左外连接">左外连接</h5><p>左外连接以左边的表为主，<strong>左边表的内容都会查出来</strong>，匹配到就组成新的元组，匹配不到就在多出来的属性用NULL填充。</p><div class="code-wrapper"><pre><code class="hljs mysql">#查询每个学生的选课情况及其选课成绩（以student表为主）
-select student.Sno,Sname,Sdept,Cno,Grade 
-from student  
-left outer  join sc 
+   筛选条件</code></pre></div><h5 id="全外连接">全外连接</h5><p>MySql 是没有全外连接的(MySql 中没有 full outer join 关键字)，想要达到全外连接的效果，可以使用 union 关键字连接左外连接和右外连接。UNION 会自动去除重复行，如果不喜欢去除重复行可以用 UNION ALL。</p><h5 id="左外连接">左外连接</h5><p>左外连接以左边的表为主，<strong>左边表的内容都会查出来</strong>，匹配到就组成新的元组，匹配不到就在多出来的属性用 NULL 填充。</p><div class="code-wrapper"><pre><code class="hljs mysql">#查询每个学生的选课情况及其选课成绩（以student表为主）
+select student.Sno,Sname,Sdept,Cno,Grade
+from student
+left outer  join sc
 on student.Sno = sc.Sno;
 
 
@@ -415,9 +400,9 @@ on student.Sno = sc.Sno;
 | 201215126 | 张三   | CS    | NULL |  NULL |
 +-----------+--------+-------+------+-------+
 #其中小文和张三没有选课，在sc表中没有他们的Sno，所以在左外连接的结果中，他们的选课号和成绩用NULL填充</code></pre></div><h5 id="右外连接">右外连接</h5><div class="code-wrapper"><pre><code class="hljs mysql">#查询已选课的学生的相关信息
-select student.Sno,Sname,Sdept,Cno,Grade 
-from student  
-right outer  join sc 
+select student.Sno,Sname,Sdept,Cno,Grade
+from student
+right outer  join sc
 on student.Sno = sc.Sno;
 
 +-----------+--------+-------+-----+-------+
@@ -433,9 +418,9 @@ on student.Sno = sc.Sno;
 | 201215123 | 小亮   | MA    | 6   |  NULL |
 | 201215124 | 小雅   | IS    | 6   |    90 |
 +-----------+--------+-------+-----+-------+
-</code></pre></div><p><strong>多表连接</strong>： 一条SQL中内连接和外连接可以混合，都可以出现！可以进行多个表的连接。</p><div class="code-wrapper"><pre><code class="hljs mysql">#查询参加了考试的同学信息：学号、姓名、科目名、分数 （以sc表为主）
+</code></pre></div><p><strong>多表连接</strong>： 一条 SQL 中内连接和外连接可以混合，都可以出现！可以进行多个表的连接。</p><div class="code-wrapper"><pre><code class="hljs mysql">#查询参加了考试的同学信息：学号、姓名、科目名、分数 （以sc表为主）
 SELECT sc.Sno, Sname, Cname, Grade
-FROM sc 
+FROM sc
 LEFT OUTER JOIN student s
 ON sc.Sno = s.Sno
 INNER JOIN course c  #为了获得科目名，再连接course表
@@ -452,12 +437,12 @@ ON sc.Cno = c.Cno;
 | 201215122 | 小美   | 数据处理     |    83 |
 | 201215123 | 小亮   | 数据处理     |  NULL |
 | 201215124 | 小雅   | 数据处理     |    90 |
-+-----------+--------+--------------+-------+</code></pre></div><h3 id="嵌套查询">3.3、嵌套查询</h3><p>​ 在SQL语言中，一个SELECT-FROM-WHERE语句被称为一个查询块。将一个查询块嵌套在另一个查询块的WHERE子句或HAVING短语的条件中的查询称为<strong>嵌套查询</strong>。</p><p>​ 上层的查询块称为<strong>外层查询或父查询</strong>，下层查询称为<strong>内层查询或子查询</strong>。</p><p>​ <strong>子查询的SELECT不能使用ORDER BY子句，ORDER BY子句只能对最终查询结果排序。</strong></p><h4 id="子查询">子查询</h4><p>子查询都可以出现的位置</p><div class="code-wrapper"><pre><code class="hljs mysql">select 
++-----------+--------+--------------+-------+</code></pre></div><h3 id="嵌套查询">3.3、嵌套查询</h3><p>在 SQL 语言中，一个 SELECT-FROM-WHERE 语句被称为一个查询块。将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询称为<strong>嵌套查询</strong>。</p><p>上层的查询块称为<strong>外层查询或父查询</strong>，下层查询称为<strong>内层查询或子查询</strong>。</p><p><strong>子查询的 SELECT 不能使用 ORDER BY 子句，ORDER BY 子句只能对最终查询结果排序。</strong></p><h4 id="子查询">子查询</h4><p>子查询都可以出现的位置</p><div class="code-wrapper"><pre><code class="hljs mysql">select
   ..(select).
 from
   ..(select).
 where
-  ..(select).</code></pre></div><ol type="1"><li>where子句中的子查询:</li></ol><div class="code-wrapper"><pre><code class="hljs mysql">第一步：查询选修6号课程的平均分
+  ..(select).</code></pre></div><ol type="1"><li>where 子句中的子查询:</li></ol><div class="code-wrapper"><pre><code class="hljs mysql">第一步：查询选修6号课程的平均分
   select avg(Grade) from sc where Cno = &#x27;6&#x27;;
 	+------------+
 	| avg(Grade) |
@@ -472,10 +457,10 @@ where
   select student.Sno, Sname ,Sdept, Grade
   	from sc right join student on sc.Sno = student.Sno
   	where Grade &gt; (
-  		select avg(Grade) from sc where Cno = &#x27;6&#x27;	
+  		select avg(Grade) from sc where Cno = &#x27;6&#x27;
   );
-  
-  
+
+
   #执行顺序，先将两张表连接起来，再在其中选出成绩大于平均分的元组，最后使用select选出想要的列。
 	+-----------+--------+-------+-------+
 	| Sno       | Sname  | Sdept | Grade |
@@ -485,23 +470,23 @@ where
 	| 201215122 | 小美   | CS    |    91 |
 	| 201215122 | 小美   | CS    |    95 |
 	| 201215124 | 小雅   | IS    |    90 |
-	+-----------+--------+-------+-------+</code></pre></div><ol start="2" type="1"><li>from子句中的子查询: (基于派生表的查询)</li></ol><p>from后面的子查询，可以将子查询的查询结果当做一张<strong>临时表</strong>。每个派生表都必须指定一个别名，在其中可以定义查询出字段的名字</p><div class="code-wrapper"><pre><code class="hljs mysql">-- 找出每个学生超过他自己选修课程平均成绩的课程号和成绩
-SELECT s_id, c_id, s_score, s1.avg_grade 
-FROM score, (SELECT s_id, AVG(s_score) FROM score GROUP BY s_id) AS s1(avg_s_id, avg_grade) 
+	+-----------+--------+-------+-------+</code></pre></div><ol start="2" type="1"><li>from 子句中的子查询: (基于派生表的查询)</li></ol><p>from 后面的子查询，可以将子查询的查询结果当做一张<strong>临时表</strong>。每个派生表都必须指定一个别名，在其中可以定义查询出字段的名字</p><div class="code-wrapper"><pre><code class="hljs mysql">-- 找出每个学生超过他自己选修课程平均成绩的课程号和成绩
+SELECT s_id, c_id, s_score, s1.avg_grade
+FROM score, (SELECT s_id, AVG(s_score) FROM score GROUP BY s_id) AS s1(avg_s_id, avg_grade)
 WHERE score.s_id = s1.avg_s_id AND score.s_score &gt;	s1.avg_grade;
-</code></pre></div><h5 id="带有in谓词的子查询">带有IN谓词的子查询</h5><p>在嵌套查询中，子查询的结果往往是一个集合，所以谓词IN是嵌套查询中最经常使用的谓词</p><div class="code-wrapper"><pre><code class="hljs mysql">#查询与小美在同一个系学习的学生
+</code></pre></div><h5 id="带有-in-谓词的子查询">带有 IN 谓词的子查询</h5><p>在嵌套查询中，子查询的结果往往是一个集合，所以谓词 IN 是嵌套查询中最经常使用的谓词</p><div class="code-wrapper"><pre><code class="hljs mysql">#查询与小美在同一个系学习的学生
 #嵌套查询
-select Sno, Sname, Sdept from student 
+select Sno, Sname, Sdept from student
 	where Sdept in (
 	select Sdept from student where Sname = &#x27;小美&#x27;
     );
 #连接查询
 #先通过自连接将两个student中系别相同的连接起来，再通过where选出和小美同一个系的,最后通过select得到想要的列
-select s2.Sno,s2.Sname,s2.Sdept 
-	from student s1 inner join student s2 
+select s2.Sno,s2.Sname,s2.Sdept
+	from student s1 inner join student s2
 		on s1.Sdept = s2.Sdept
 	where s1.Sname = &#x27;小美&#x27;;
-	
+
 +-----------+--------+-------+
 | Sno       | Sname  | Sdept |
 +-----------+--------+-------+
@@ -516,16 +501,16 @@ select Sno from sc where Cno = course.Cno
 select Sno, Sname from student where Sno = sc.Sno
 ===================&gt;
 select Sno,Sname
-from student 
+from student
 where Sno in (
-	select Sno 
+	select Sno
 	from sc
 	where Cno in (
     	select Cno
     	from course
     	where Cname = &#x27;信息系统&#x27;)
-	); 
-	
+	);
+
 +-----------+--------+
 | Sno       | Sname  |
 +-----------+--------+
@@ -536,19 +521,19 @@ where Sno in (
 
 #连接查询
 
-select student.Sno, student.Sname 
+select student.Sno, student.Sname
 from student
 inner join
-sc 
-on 
+sc
+on
 sc.Sno = student.Sno
-inner join 
+inner join
 course
-on 
+on
 sc.Cno = course.Cno
 where course.Cname = &#x27;信息系统&#x27;;
 
-select student.Sno, student.Sname 
+select student.Sno, student.Sname
 from course, student, sc
 where student.Sno = sc.Sno and
 	Sc.Cno = course.Cno and
@@ -557,18 +542,18 @@ where student.Sno = sc.Sno and
 select Sno, Cno, Grade
 from sc s1
 where Grade &gt; (
-	select avg(Grade) 
+	select avg(Grade)
     from sc s2
     where s2.Cno = s1.Cno #查询选课表中，每个学生对应已选课程的平均分
 	);
-	
+
 +-----------+-----+-------+
 | Sno       | Cno | Grade |
 +-----------+-----+-------+
 | 201215122 | 2   |    91 |
 | 201215124 | 6   |    90 |
 +-----------+-----+-------+
-2 rows in set (0.00 sec)</code></pre></div><p><strong>相关子查询和不相关子查询</strong></p><ul><li>如果子查询的查询条件不依赖于父查询，这类子查询就称为<strong>不相关子查询</strong>。</li><li>如果子查询的查询条件依赖于父查询，这类子查询就称为<strong>相关子查询</strong>。整个查询语句就称为相关嵌套查询语句。如上</li></ul><p>求解相关子查询不能像求解不相关子查询那样一次将子查询求解出来，然后再求解父查询。内存查询由于与外层查询有关，因此必须反复求值。</p><h5 id="带有any或all谓词的子查询">带有ANY或ALL谓词的子查询</h5><p>子查询返回单值时可以用比较运算符 ，但返回<strong>多值</strong>时要用<strong>ANY</strong>(SOME)或<strong>ALL</strong>谓词修饰符，同时使用比较运算符。</p><div class="code-wrapper"><pre><code class="hljs mysql">#ANY 和 SOME是一样的
+2 rows in set (0.00 sec)</code></pre></div><p><strong>相关子查询和不相关子查询</strong></p><ul><li>如果子查询的查询条件不依赖于父查询，这类子查询就称为<strong>不相关子查询</strong>。</li><li>如果子查询的查询条件依赖于父查询，这类子查询就称为<strong>相关子查询</strong>。整个查询语句就称为相关嵌套查询语句。如上</li></ul><p>求解相关子查询不能像求解不相关子查询那样一次将子查询求解出来，然后再求解父查询。内存查询由于与外层查询有关，因此必须反复求值。</p><h5 id="带有-any-或-all-谓词的子查询">带有 ANY 或 ALL 谓词的子查询</h5><p>子查询返回单值时可以用比较运算符 ，但返回<strong>多值</strong>时要用<strong>ANY</strong>(SOME)或<strong>ALL</strong>谓词修饰符，同时使用比较运算符。</p><div class="code-wrapper"><pre><code class="hljs mysql">#ANY 和 SOME是一样的
 #ANY ：对于子查询返回的列中的任一数值，只要有一个满足比较条件就为true
 #ALL ：对于子查询返回的列中的所有值，必须所有值均满足比较条件才为true
 
@@ -587,7 +572,7 @@ where Grade &gt; (
 select Sname, Sage, Sdept
 from student
 where Sdept != &#x27;CS&#x27; and Sage &lt; any (
-	select Sage 
+	select Sage
 	from student
 );
 
@@ -604,7 +589,7 @@ where Sdept != &#x27;CS&#x27; and Sage &lt; any (
 
 
 #使用聚集函数实现：找出CS系中年龄的最大值，只要比其小即可。
-select Sname, Sage, Sdept 
+select Sname, Sage, Sdept
 from student
 where Sage &lt; (
 	select max(Sage)
@@ -615,7 +600,7 @@ where Sage &lt; (
 
 #查询非计算机科学系中比计算机科学系 所有学生 年龄都小的学生姓名及年龄。
 #使用 &lt; all
-#使用聚集函数  &lt; min(Sage)</code></pre></div><p>事实上，<strong>使用聚集函数实现子查询通常比直接使用ANY或ALL查询效率要高。</strong></p><p>ANY、ALL和聚集函数的对应关系</p><table><thead><tr class="header"><th></th><th>=</th><th>&lt;&gt; 或 !=</th><th>&lt;</th><th>&lt;=</th><th>&gt;</th><th>&gt;=</th></tr></thead><tbody><tr class="odd"><td>ANY</td><td>IN</td><td>--</td><td>&lt; MAX</td><td>&lt;= MAX</td><td>&gt; MIN</td><td>&gt;= MIN</td></tr><tr class="even"><td>ALL</td><td>--</td><td>NOT IN</td><td>&lt; MIN</td><td>&lt;= MIN</td><td>&gt; MAX</td><td>&gt;=MAX</td></tr></tbody></table><p>如：= ANY 等价于IN谓词，&lt; ANY 等价于 &lt; MAX, &lt; ALL 等价于 &lt; MIN;</p><h5 id="带有exists谓词的子查询">带有EXISTS谓词的子查询</h5><ul><li><p>EXISTS代表量词 ∃。</p></li><li><p>带有EXISTS谓词的子查询 <strong>不返回任何数据</strong>，只产生逻辑真值<strong>true 或</strong>逻辑假值<strong>false</strong></p></li><li><p>使用存在量词EXISTS后，<strong>若内存查询结果非空</strong>，则外层的WHERE子句返回真值，否则返回假值</p></li><li><p>由EXISTS引出的子查询，其目标列表达式通常用 *****,因为带EXISTS的子查询只返回真值或假值，给出列名无实际意义。</p></li><li><p>与EXISTS对应的是NOT EXISTS。使用存在量词<u>NOT EXISTS</u>后，<strong>若内层查询结果为空</strong>，则外层的WHERE子句返回真值，否则返回假值</p></li></ul><div class="code-wrapper"><pre><code class="hljs mysql">#查询所有选修了2号课程的学生姓名
+#使用聚集函数  &lt; min(Sage)</code></pre></div><p>事实上，<strong>使用聚集函数实现子查询通常比直接使用 ANY 或 ALL 查询效率要高。</strong></p><p>ANY、ALL 和聚集函数的对应关系</p><table><thead><tr class="header"><th></th><th>=</th><th>&lt;&gt; 或 !=</th><th>&lt;</th><th>&lt;=</th><th>&gt;</th><th>&gt;=</th></tr></thead><tbody><tr class="odd"><td>ANY</td><td>IN</td><td>--</td><td>&lt; MAX</td><td>&lt;= MAX</td><td>&gt; MIN</td><td>&gt;= MIN</td></tr><tr class="even"><td>ALL</td><td>--</td><td>NOT IN</td><td>&lt; MIN</td><td>&lt;= MIN</td><td>&gt; MAX</td><td>&gt;=MAX</td></tr></tbody></table><p>如：= ANY 等价于 IN 谓词，&lt; ANY 等价于 &lt; MAX, &lt; ALL 等价于 &lt; MIN;</p><h5 id="带有-exists-谓词的子查询">带有 EXISTS 谓词的子查询</h5><ul><li><p>EXISTS 代表量词 ∃。</p></li><li><p>带有 EXISTS 谓词的子查询 <strong>不返回任何数据</strong>，只产生逻辑真值<strong>true 或</strong>逻辑假值<strong>false</strong></p></li><li><p>使用存在量词 EXISTS 后，<strong>若内存查询结果非空</strong>，则外层的 WHERE 子句返回真值，否则返回假值</p></li><li><p>由 EXISTS 引出的子查询，其目标列表达式通常用 <strong>*</strong>,因为带 EXISTS 的子查询只返回真值或假值，给出列名无实际意义。</p></li><li><p>与 EXISTS 对应的是 NOT EXISTS。使用存在量词<u>NOT EXISTS</u>后，<strong>若内层查询结果为空</strong>，则外层的 WHERE 子句返回真值，否则返回假值</p></li></ul><div class="code-wrapper"><pre><code class="hljs mysql">#查询所有选修了2号课程的学生姓名
 select Sname
 from student s
 where exists (
@@ -630,12 +615,12 @@ where exists (
 | 小红   |
 | 小美   |
 +--------+
-2 rows in set (0.00 sec)</code></pre></div><p>该<u>相关子查询的执行过程</u>为：</p><ul><li>首先执行一次外层查询，取student表中的第一个元组，缓存结果</li><li>将其带入子查询中作为条件进行查询，根据它与内层查询相关属性（Sno)处理内层查询。</li><li>若子查询有返回结果，则EXISTS子句返回true，将这个元组的Sname放入结果表，否则不放入。</li><li>然后取Student表的下一个元组，重复这一过程直至外层Student表全部检查完为止。</li></ul><p>一些带EXSITS或NOT EXISTS的子查询不能被其他形式的子查询等价替换。<strong>但所有使用IN谓词、比较运算符、ANY和ALL谓词的子查询都能使用带EXISTS谓词的子查询等价替换。</strong></p><div class="code-wrapper"><pre><code class="hljs mysql">#查询与小美在同一个系学习的学生
+2 rows in set (0.00 sec)</code></pre></div><p>该<u>相关子查询的执行过程</u>为：</p><ul><li>首先执行一次外层查询，取 student 表中的第一个元组，缓存结果</li><li>将其带入子查询中作为条件进行查询，根据它与内层查询相关属性（Sno)处理内层查询。</li><li>若子查询有返回结果，则 EXISTS 子句返回 true，将这个元组的 Sname 放入结果表，否则不放入。</li><li>然后取 Student 表的下一个元组，重复这一过程直至外层 Student 表全部检查完为止。</li></ul><p>一些带 EXSITS 或 NOT EXISTS 的子查询不能被其他形式的子查询等价替换。<strong>但所有使用 IN 谓词、比较运算符、ANY 和 ALL 谓词的子查询都能使用带 EXISTS 谓词的子查询等价替换。</strong></p><div class="code-wrapper"><pre><code class="hljs mysql">#查询与小美在同一个系学习的学生
 #使用EXISTS替换IN
-select Sno, Sname, Sdept 
+select Sno, Sname, Sdept
 from student s1
 where exists (
-	select * 
+	select *
 	from student s2
 	where s2.Sname = &#x27;小美&#x27; and s1.Sdept = s2.Sdept
 );
@@ -647,7 +632,7 @@ where exists (
 | 201215122 | 小美   | CS    |
 | 201215126 | 张三   | CS    |
 +-----------+--------+-------+
-3 rows in set (0.00 sec)</code></pre></div><h3 id="集合查询">3.4、集合查询</h3><h5 id="并操作union">并操作UNION</h5><div class="code-wrapper"><pre><code class="hljs mysql">案例：查询工作岗位是MANAGER和SALESMAN的员工
+3 rows in set (0.00 sec)</code></pre></div><h3 id="集合查询">3.4、集合查询</h3><h5 id="并操作-union">并操作 UNION</h5><div class="code-wrapper"><pre><code class="hljs mysql">案例：查询工作岗位是MANAGER和SALESMAN的员工
 select ename,job from emp where job = &#x27;MANAGER&#x27; or job = &#x27;SALESMAN&#x27;;
 select ename,job from emp where job in(&#x27;MANAGER&#x27;,&#x27;SALESMAN&#x27;);
 +--------+----------+
@@ -676,7 +661,7 @@ select ename,job from emp where job = &#x27;SALESMAN&#x27;;
 | WARD   | SALESMAN |
 | MARTIN | SALESMAN |
 | TURNER | SALESMAN |
-+--------+----------+</code></pre></div><p>​ union的效率要高一些。对于表连接来说，每连接一次新表，则匹配的次数满足笛卡尔积，成倍的翻。但是union可以减少匹配的次数。在减少匹配次数的情况下，还可以完成两个结果集的拼接。</p><p>a 连接 b 连接 c，a 10条记录，b 10条记录，c 10条记录。</p><p>匹配次数是：1000，a 连接 b一个结果：10 * 10 --&gt; 100次，a 连接 c一个结果：10 * 10 --&gt; 100次。 使用union的话是：100次 + 100次 = 200次。（union把乘法变成了加法运算）</p><p>union在使用的时候的注意事项</p><div class="code-wrapper"><pre><code class="hljs mysql">//错误的：union在进行结果集合并的时候，要求两个结果集的列数相同。
++--------+----------+</code></pre></div><p>union 的效率要高一些。对于表连接来说，每连接一次新表，则匹配的次数满足笛卡尔积，成倍的翻。但是 union 可以减少匹配的次数。在减少匹配次数的情况下，还可以完成两个结果集的拼接。</p><p>a 连接 b 连接 c，a 10 条记录，b 10 条记录，c 10 条记录。</p><p>匹配次数是：1000，a 连接 b 一个结果：10 _ 10 --&gt; 100 次，a 连接 c 一个结果：10 _ 10 --&gt; 100 次。 使用 union 的话是：100 次 + 100 次 = 200 次。（union 把乘法变成了加法运算）</p><p>union 在使用的时候的注意事项</p><div class="code-wrapper"><pre><code class="hljs mysql">//错误的：union在进行结果集合并的时候，要求两个结果集的列数相同。
 select ename,job from emp where job = &#x27;MANAGER&#x27;
 union
 select ename from emp where job = &#x27;SALESMAN&#x27;;
@@ -684,25 +669,25 @@ select ename from emp where job = &#x27;SALESMAN&#x27;;
 // MYSQL可以，oracle语法严格 ，不可以，报错。要求：结果集合并时列和列的数据类型也要一致。
 select ename,job from emp where job = &#x27;MANAGER&#x27;
 union
-select ename,sal from emp where job = &#x27;SALESMAN&#x27;;</code></pre></div><h5 id="交操作intersect">交操作INTERSECT</h5><p>​ MySQL不支持该操作（但是<code>Inner Join</code>有求两张表交集的功能）</p><h5 id="差操作except">差操作EXCEPT</h5><p>​ MySQL不支持该操作</p><h2 id="四数据更新">四、数据更新</h2><h3 id="插入数据insert">4.1、插入数据insert</h3><p>语法格式：</p><div class="code-wrapper"><pre><code class="hljs mysql">#插入一行
-insert 
-into 表名(属性列1,属性2,属性列3...) 
- values(常量1,常量2,常量3);  
+select ename,sal from emp where job = &#x27;SALESMAN&#x27;;</code></pre></div><h5 id="交操作-intersect">交操作 INTERSECT</h5><p>MySQL 不支持该操作（但是<code>Inner Join</code>有求两张表交集的功能）</p><h5 id="差操作-except">差操作 EXCEPT</h5><p>MySQL 不支持该操作</p><h2 id="四数据更新">四、数据更新</h2><h3 id="插入数据-insert">4.1、插入数据 insert</h3><p>语法格式：</p><div class="code-wrapper"><pre><code class="hljs mysql">#插入一行
+insert
+into 表名(属性列1,属性2,属性列3...)
+ values(常量1,常量2,常量3);
 #其功能是将新元组插入指定 表中，其中新元组的属性列的值为常量1、属性列2的值为常量2.....
-  
-  
+
+
 #插入多行
-insert 
-into 表名(属性列1,属性2,属性列3...) 
+insert
+into 表名(属性列1,属性2,属性列3...)
 values(常量1,常量2,常量3),(常量1,常量2,常量3),....
-  
-  
+
+
 例：
 INSERT INTO `t_grade`(`gradeName`) VALUES(&#x27;大三&#x27;),(&#x27;大二&#x27;),(&#x27;大一&#x27;);
 
 INSERT INTO `t_student`(`NAME`,`SEX`,`BIRTHDAY`,`ADDRESS`,`EMAIL`)
 VALUES (&#x27;李四&#x27;,&#x27;男&#x27;,&#x27;2023-03-02&#x27;,&#x27;安徽省合肥市屯溪路193号&#x27;,&#x27;3357625240@qq.com&#x27;),
-	   (&#x27;王五&#x27;,&#x27;男&#x27;,&#x27;2021-04-18&#x27;,&#x27;安徽省合肥市屯溪路193号&#x27;,&#x27;4357625240@qq.com&#x27;);</code></pre></div><p>规则：</p><ul><li>INTO子句中没有出现的属性列，新元组在这些列上取空值。（对应有not null约束的字段会出错）</li><li>其中属性列的顺序可以和创建表时的顺序不一样</li><li>当只指出表名，没有指出属性名时，默认插入全部属性，且属性和给定值按照创建表时的顺序一一对应。</li></ul><p>补：</p><p><code>str_to_date</code>：将字符串varchar类型转换成date类型，通常使用在插入insert方面，因为插入的时候需要一个日期类型的数据，语法格式：<code>str_to_date('字符串日期', '日期格式')</code>。</p><p><code>date_format</code>：将date类型转换成具有一定格式的varchar字符串类型。</p><div class="code-wrapper"><pre><code class="hljs mysql">mysql的日期格式：
+	   (&#x27;王五&#x27;,&#x27;男&#x27;,&#x27;2021-04-18&#x27;,&#x27;安徽省合肥市屯溪路193号&#x27;,&#x27;4357625240@qq.com&#x27;);</code></pre></div><p>规则：</p><ul><li>INTO 子句中没有出现的属性列，新元组在这些列上取空值。（对应有 not null 约束的字段会出错）</li><li>其中属性列的顺序可以和创建表时的顺序不一样</li><li>当只指出表名，没有指出属性名时，默认插入全部属性，且属性和给定值按照创建表时的顺序一一对应。</li></ul><p>补：</p><p><code>str_to_date</code>：将字符串 varchar 类型转换成 date 类型，通常使用在插入 insert 方面，因为插入的时候需要一个日期类型的数据，语法格式：<code>str_to_date('字符串日期', '日期格式')</code>。</p><p><code>date_format</code>：将 date 类型转换成具有一定格式的 varchar 字符串类型。</p><div class="code-wrapper"><pre><code class="hljs mysql">mysql的日期格式：
   %Y	年
   %m    月
   %d    日
@@ -714,19 +699,19 @@ insert into t_user(id,name,birth) values(1, &#x27;zhangsan&#x27;, str_to_date(&#
 mysql默认的日期格式：&#x27;%Y-%m-%d&#x27;，如果所提供的日期字符串是这个格式，str_to_date函数就不需要了！！！
 
 insert into t_user(id,name,birth) values(2, &#x27;lisi&#x27;, &#x27;1990-10-01&#x27;);
-</code></pre></div><p>查询的时候可以使用date_format将日期类型转换成特定格式的字符串展示。</p><p>语法格式：<code>date_format(日期类型数据, '日期格式')</code>，这个函数通常使用在查询日期方面。设置展示的日期格式。</p><div class="code-wrapper"><pre><code class="hljs mysql">select id,name,date_format(birth, &#x27;%m/%d/%Y&#x27;) as birth from t_user;
+</code></pre></div><p>查询的时候可以使用 date_format 将日期类型转换成特定格式的字符串展示。</p><p>语法格式：<code>date_format(日期类型数据, '日期格式')</code>，这个函数通常使用在查询日期方面。设置展示的日期格式。</p><div class="code-wrapper"><pre><code class="hljs mysql">select id,name,date_format(birth, &#x27;%m/%d/%Y&#x27;) as birth from t_user;
 +------+----------+------------+
 | id   | name     | birth      |
 +------+----------+------------+
 |    1 | zhangsan | 10/01/1990 |
 |    2 | lisi     | 10/01/1990 |
-+------+----------+------------+</code></pre></div><h3 id="修改update">4.2、修改update</h3><p>语法格式：</p><div class="code-wrapper"><pre><code class="hljs mysql">update 表名 
++------+----------+------------+</code></pre></div><h3 id="修改-update">4.2、修改 update</h3><p>语法格式：</p><div class="code-wrapper"><pre><code class="hljs mysql">update 表名
 set 字段名1=值1,[字段名2=值2,字段名3=值3... ]
 [where 条件;]</code></pre></div><p>注： 1、没有条件限制会导致所有数据全部更新。 2、其中的值可以是一个变量</p><div class="code-wrapper"><pre><code class="hljs mysql">例子:
 UPDATE `t_student`
 	SET `NAME` =  &#x27;小红&#x27;, `SEX` = &#x27;女&#x27;, `BIRTHDAY` = &#x27;2013-02-01&#x27;
 		WHERE `ID` = 1;
-		
+
 UPDATE `t_student`
 	SET  `BIRTHDAY` = CURRENT_DATE  #value是一个变量
 		WHERE `ID` = 5;</code></pre></div><h3 id="删除数据-delete">4.3、删除数据 delete</h3><p>语法格式:</p><div class="code-wrapper"><pre><code class="hljs sql">语法格式？
@@ -735,20 +720,20 @@ UPDATE `t_student`
 注意：没有条件，整张表的数据会全部删除！
 
 例：
-<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> `t_student` 
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> `t_student`
 	<span class="hljs-keyword">WHERE</span> `id` <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;</code></pre></div><blockquote><p>删除表中数据 delete 和 truncate</p></blockquote><p>测试：</p><div class="code-wrapper"><pre><code class="hljs mysql">CREATE TABLE `t_test` (
 `id` INT(10)  AUTO_INCREMENT PRIMARY KEY,
-`coll` VARCHAR(20) NOT NULL		
-) ENGINE=INNODB DEFAULT CHARSET=UTF8; 
+`coll` VARCHAR(20) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 
-INSERT INTO	`t_test`(`coll`) VALUES (&#x27;1&#x27;),(&#x27;2&#x27;),(&#x27;3&#x27;); 
+INSERT INTO	`t_test`(`coll`) VALUES (&#x27;1&#x27;),(&#x27;2&#x27;),(&#x27;3&#x27;);
 
 DELETE FROM `t_test`;			#不会影响自增字段
 TRUNCATE TABLE `t_test`;		#自增字段归零
 
 #区分
-DROP TABLE `t_test`; #不是删除表中数据，而是删除整个表</code></pre></div><p><code>delete</code>和<code>truncate</code>的区别:</p><ul><li>使用delete删除表，表中的数据被删除了，但是这个数据在硬盘上的真实存储空间不会被释放；使用truncate删除表，表被一次截断，物理删除。</li><li>delete删除表，支持回滚；truncate删除表不支持回滚。</li><li>delete删除效率比较低；truncate删除快</li></ul><p>补充：使用delete删除表中数据，重启数据库后</p><ul><li>对于InnoDB，自增列会重1开始（存在内存当中的，断电即失）</li><li>对于MyISAM，继续从上一个自增量开始（存在文件中的，不会丢失）</li></ul><h2 id="五mysql语法补充">五、MySQL语法补充</h2><h3 id="case-when-的语法">5.1、case when 的语法</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenduzizhong/p/9590741.html">case when语法</a></p><h3 id="分页">5.2、分页</h3><p>语法：<code>limit 查询起始值，页面大小</code></p><p>主要参数</p><ul><li>pageSize :页面大小</li><li>n:当前页</li><li>(n-1)*pageSize:第n页起始值</li><li>数据总数/页面大小 = 总页数</li></ul><p>limit作用：将查询结果集的一部分取出来。通常使用在分页查询当中。分页的作用是为了提高用户的体验，因为一次全部都查出来，用户体验差。</p><p>limit的使用：完整用法：<code>limit startIndex, length</code>，其中 startIndex 是起始下标，length是长度。起始下标从0开始。</p><div class="code-wrapper"><pre><code class="hljs mysql">#页面大小pagesize = 5
+DROP TABLE `t_test`; #不是删除表中数据，而是删除整个表</code></pre></div><p><code>delete</code>和<code>truncate</code>的区别:</p><ul><li>使用 delete 删除表，表中的数据被删除了，但是这个数据在硬盘上的真实存储空间不会被释放；使用 truncate 删除表，表被一次截断，物理删除。</li><li>delete 删除表，支持回滚；truncate 删除表不支持回滚。</li><li>delete 删除效率比较低；truncate 删除快</li></ul><p>补充：使用 delete 删除表中数据，重启数据库后</p><ul><li>对于 InnoDB，自增列会重 1 开始（存在内存当中的，断电即失）</li><li>对于 MyISAM，继续从上一个自增量开始（存在文件中的，不会丢失）</li></ul><h2 id="五mysql-语法补充">五、MySQL 语法补充</h2><h3 id="case-when-的语法">5.1、case when 的语法</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenduzizhong/p/9590741.html">case when 语法</a></p><h3 id="分页">5.2、分页</h3><p>语法：<code>limit 查询起始值，页面大小</code></p><p>主要参数</p><ul><li>pageSize :页面大小</li><li>n:当前页</li><li>(n-1)*pageSize:第 n 页起始值</li><li>数据总数/页面大小 = 总页数</li></ul><p>limit 作用：将查询结果集的一部分取出来。通常使用在分页查询当中。分页的作用是为了提高用户的体验，因为一次全部都查出来，用户体验差。</p><p>limit 的使用：完整用法：<code>limit startIndex, length</code>，其中 startIndex 是起始下标，length 是长度。起始下标从 0 开始。</p><div class="code-wrapper"><pre><code class="hljs mysql">#页面大小pagesize = 5
 #第一页  limit 0,5;   (1-1)*5
 #第二页  limit 5,5;	(2-1)*5
 #第三页  limit 10,5;	(3-1)*5
@@ -764,7 +749,7 @@ DROP TABLE `t_test`; #不是删除表中数据，而是删除整个表</code></p
 
 每页显示pageSize条记录
 第pageNo页：limit (pageNo - 1) * pageSize  , pageSize
-</code></pre></div><p>记公式：<code>limit (pageNo-1)*pageSize , pageSize</code></p><blockquote><p>注意：MySQL当中limit在order by之后执行</p></blockquote><h3 id="md5加密">5.3、MD5加密</h3><p><code>MD5(pwd),使用内置的MD5()函数对数据进行加密</code></p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>测试MD5加密 <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>
+</code></pre></div><p>记公式：<code>limit (pageNo-1)*pageSize , pageSize</code></p><blockquote><p>注意：MySQL 当中 limit 在 order by 之后执行</p></blockquote><h3 id="md5-加密">5.3、MD5 加密</h3><p><code>MD5(pwd),使用内置的MD5()函数对数据进行加密</code></p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>测试MD5加密 <span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span><span class="hljs-operator">=</span>
 <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `testmd5(
 	`id` <span class="hljs-type">INT</span>（<span class="hljs-number">4</span>）<span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
 	`name` <span class="hljs-type">VARCHAR</span>（<span class="hljs-number">20</span>）<span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
@@ -783,4 +768,4 @@ DROP TABLE `t_test`; #不是删除表中数据，而是删除整个表</code></p
 <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> testmd5 <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;xiaoming&#x27;</span>,MD5(<span class="hljs-string">&#x27;123456&#x27;</span>));
 
 <span class="hljs-comment">--如何校验：将用户传递进来的密码，进行md5加密，然后比对加密后的值</span>
-<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> testmd5 <span class="hljs-keyword">WHERE</span><span class="hljs-string">&#x27;name=&#x27;</span>xiaoming<span class="hljs-string">&#x27;AND pwd=MD5(&#x27;</span><span class="hljs-number">123456</span><span class="hljs-string">&#x27;);</span></code></pre></div></div><hr><div><div class="post-metas my-3"><div class="post-meta mr-3 d-flex align-items-center"><i class="iconfont icon-category"></i> <span class="category-chains"><span class="category-chain"><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a></span></span></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="print-no-link">#数据库</a> <a href="/tags/MySQL/" class="print-no-link">#MySQL</a></div></div><div class="license-box my-3"><div class="license-title"><div>MySQL（一）</div><div>http://catpaws.top/8d742da7/</div></div><div class="license-meta"><div class="license-meta-item"><div>作者</div><div>猫爪在上</div></div><div class="license-meta-item license-meta-date"><div>发布于</div><div>2024年12月8日</div></div><div class="license-meta-item"><div>许可协议</div><div><a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/"><span class="hint--top hint--rounded" aria-label="BY - 署名"><i class="iconfont icon-cc-by"></i></span></a></div></div></div><div class="license-icon iconfont"></div></div><div class="post-prevnext my-3"><article class="post-prev col-6"><a href="/bd62c17f/" title="MySQL（二）"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">MySQL（二）</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/978a1655/" title="八、排序"><span class="hidden-mobile">八、排序</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article id="comments" lazyload><div id="twikoo"></div><script type="text/javascript">Fluid.utils.loadComments("#comments",(function(){Fluid.utils.createScript("https://cdn.smartcis.cn/npm/twikoo@1.6.40/dist/twikoo.all.min.js",(function(){var t=Object.assign({envId:"https://catpaws-comments.netlify.app/.netlify/functions/twikoo",region:"ap-shanghai",path:"window.location.pathname"},{el:"#twikoo",path:"window.location.pathname",onCommentLoaded:function(){Fluid.utils.listenDOMLoaded((function(){var t="#twikoo .tk-content img:not(.tk-owo-emotion)";Fluid.plugins.imageCaption(t),Fluid.plugins.fancyBox(t)}))}});twikoo.init(t)}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="side-col d-none d-lg-block col-lg-2"><aside class="sidebar" style="margin-left:-1rem"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i> <span>目录</span></p><div class="toc-body" id="toc-body"></div></div></aside></div></div></div><script>Fluid.utils.createScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js",(function(){mermaid.initialize({theme:"default"}),Fluid.utils.listenDOMLoaded((function(){Fluid.events.registerRefreshCallback((function(){"mermaid"in window&&mermaid.init()}))}))}))</script><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer><div class="footer-inner"><div class="footer-content"><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a><br>人山人海，欢迎你的到来 <i class="iconfont icon-love"></i><br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></div></div></footer><script src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js"></script><link rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js"></script><script src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js"></script><script>!function(t,e){var i=Fluid.plugins.typing,n=e.getElementById("subtitle");n&&i&&i(n.getAttribute("data-typed-text"))}(window,document)</script><script src="/js/img-lazyload.js"></script><script>Fluid.utils.createScript("https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js",(function(){var t=jQuery("#toc");if(0!==t.length&&window.tocbot){var i=jQuery("#board-ctn").offset().top;window.tocbot.init(Object.assign({tocSelector:"#toc-body",contentSelector:".markdown-body",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",scrollSmooth:!0,includeTitleTags:!0,headingsOffset:-i},CONFIG.toc)),t.find(".toc-list-item").length>0&&t.css("visibility","visible"),Fluid.events.registerRefreshCallback((function(){if("tocbot"in window){tocbot.refresh();var t=jQuery("#toc");if(0===t.length||!tocbot)return;t.find(".toc-list-item").length>0&&t.css("visibility","visible")}}))}}))</script><script src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js"></script><script>Fluid.plugins.codeWidget()</script><script>Fluid.utils.createScript("https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js",(function(){window.anchors.options={placement:CONFIG.anchorjs.placement,visible:CONFIG.anchorjs.visible},CONFIG.anchorjs.icon&&(window.anchors.options.icon=CONFIG.anchorjs.icon);var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(window.anchors.options.class="anchorjs-link-left"),window.anchors.add(o.join(", ")),Fluid.events.registerRefreshCallback((function(){if("anchors"in window){anchors.removeAll();var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(anchors.options.class="anchorjs-link-left"),anchors.add(o.join(", "))}}))}))</script><script>Fluid.utils.createScript("https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js",(function(){Fluid.plugins.fancyBox()}))</script><script>Fluid.plugins.imageCaption()</script><script defer src="/js/leancloud.js"></script><script src="/js/local-search.js"></script><script src="//cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/source/js/timeDate.js"></script><script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script><script src="/js/boot.js"></script><noscript><div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div></noscript><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d=OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:!1,models:[{path:"https://cdn.jsdelivr.net/gh/cmyk359/MyCDN/Hexo/static/live2d/Frieren/Frieren.model3.json",motionPreloadStrategy:"IDLE",position:[-60,-100],scale:.06,stageStyle:{width:250,height:350}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:!1,tips:{style:{width:200,height:90,left:"calc(50% - 20px)",top:"-100px","font-size":"14px"},idleTips:{interval:15e3,message:function(){return axios.get("https://v1.hitokoto.cn?c=i").then((function(t){return t.data.hitokoto})).catch((function(t){console.error(t)}))}}}})</script></body></html>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> testmd5 <span class="hljs-keyword">WHERE</span><span class="hljs-string">&#x27;name=&#x27;</span>xiaoming<span class="hljs-string">&#x27;AND pwd=MD5(&#x27;</span><span class="hljs-number">123456</span><span class="hljs-string">&#x27;);</span></code></pre></div></div><hr><div><div class="post-metas my-3"><div class="post-meta mr-3 d-flex align-items-center"><i class="iconfont icon-category"></i> <span class="category-chains"><span class="category-chain"><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a></span></span></div><div class="post-meta"><i class="iconfont icon-tags"></i> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="print-no-link">#数据库</a> <a href="/tags/MySQL/" class="print-no-link">#MySQL</a></div></div><div class="license-box my-3"><div class="license-title"><div>MySQL（一）</div><div>https://catpaws.top/8d742da7/</div></div><div class="license-meta"><div class="license-meta-item"><div>作者</div><div>猫爪在上</div></div><div class="license-meta-item license-meta-date"><div>发布于</div><div>2024年12月8日</div></div><div class="license-meta-item"><div>许可协议</div><div><a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/"><span class="hint--top hint--rounded" aria-label="BY - 署名"><i class="iconfont icon-cc-by"></i></span></a></div></div></div><div class="license-icon iconfont"></div></div><div class="post-prevnext my-3"><article class="post-prev col-6"><a href="/bd62c17f/" title="MySQL（二）"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">MySQL（二）</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/978a1655/" title="八、排序"><span class="hidden-mobile">八、排序</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article id="comments" lazyload><div id="twikoo"></div><script type="text/javascript">Fluid.utils.loadComments("#comments",(function(){Fluid.utils.createScript("https://cdn.smartcis.cn/npm/twikoo@1.6.40/dist/twikoo.all.min.js",(function(){var t=Object.assign({envId:"https://catpaws-comments.netlify.app/.netlify/functions/twikoo",region:"ap-shanghai",path:"window.location.pathname"},{el:"#twikoo",path:"window.location.pathname",onCommentLoaded:function(){Fluid.utils.listenDOMLoaded((function(){var t="#twikoo .tk-content img:not(.tk-owo-emotion)";Fluid.plugins.imageCaption(t),Fluid.plugins.fancyBox(t)}))}});twikoo.init(t)}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="side-col d-none d-lg-block col-lg-2"><aside class="sidebar" style="margin-left:-1rem"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i> <span>目录</span></p><div class="toc-body" id="toc-body"></div></div></aside></div></div></div><script>Fluid.utils.createScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js",(function(){mermaid.initialize({theme:"default"}),Fluid.utils.listenDOMLoaded((function(){Fluid.events.registerRefreshCallback((function(){"mermaid"in window&&mermaid.init()}))}))}))</script><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer><div class="footer-inner"><div class="footer-content"><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a><br>人山人海，欢迎你的到来 <i class="iconfont icon-love"></i><br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></div></div></footer><script src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js"></script><link rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js"></script><script src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js"></script><script>!function(t,e){var i=Fluid.plugins.typing,n=e.getElementById("subtitle");n&&i&&i(n.getAttribute("data-typed-text"))}(window,document)</script><script src="/js/img-lazyload.js"></script><script>Fluid.utils.createScript("https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js",(function(){var t=jQuery("#toc");if(0!==t.length&&window.tocbot){var i=jQuery("#board-ctn").offset().top;window.tocbot.init(Object.assign({tocSelector:"#toc-body",contentSelector:".markdown-body",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",scrollSmooth:!0,includeTitleTags:!0,headingsOffset:-i},CONFIG.toc)),t.find(".toc-list-item").length>0&&t.css("visibility","visible"),Fluid.events.registerRefreshCallback((function(){if("tocbot"in window){tocbot.refresh();var t=jQuery("#toc");if(0===t.length||!tocbot)return;t.find(".toc-list-item").length>0&&t.css("visibility","visible")}}))}}))</script><script src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js"></script><script>Fluid.plugins.codeWidget()</script><script>Fluid.utils.createScript("https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js",(function(){window.anchors.options={placement:CONFIG.anchorjs.placement,visible:CONFIG.anchorjs.visible},CONFIG.anchorjs.icon&&(window.anchors.options.icon=CONFIG.anchorjs.icon);var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(window.anchors.options.class="anchorjs-link-left"),window.anchors.add(o.join(", ")),Fluid.events.registerRefreshCallback((function(){if("anchors"in window){anchors.removeAll();var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(anchors.options.class="anchorjs-link-left"),anchors.add(o.join(", "))}}))}))</script><script>Fluid.utils.createScript("https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js",(function(){Fluid.plugins.fancyBox()}))</script><script>Fluid.plugins.imageCaption()</script><script defer src="/js/leancloud.js"></script><script src="/js/local-search.js"></script><script src="//img.catpaws.top/blog-source/js/timeDate.js"></script><script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script><script src="/js/boot.js"></script><noscript><div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div></noscript><script data-pjax src="https://unpkg.com/oh-my-live2d"></script><script>const oml2d=OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:!1,models:[{path:"http://img.catpaws.top/blog-source/live2d/Frieren/Frieren.model3.json",motionPreloadStrategy:"IDLE",position:[-60,-100],scale:.06,stageStyle:{width:250,height:350}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:!1,tips:{style:{width:200,height:90,left:"calc(50% - 20px)",top:"-100px","font-size":"14px"},idleTips:{interval:15e3,message:function(){return axios.get("https://v1.hitokoto.cn?c=i").then((function(t){return t.data.hitokoto})).catch((function(t){console.error(t)}))}}}})</script></body></html>

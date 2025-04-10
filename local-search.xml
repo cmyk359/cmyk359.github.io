@@ -4,25 +4,6 @@
   
   
   <entry>
-    <title>十、动态规划（子序列问题）</title>
-    <link href="/d1640fbc/"/>
-    <url>/d1640fbc/</url>
-    
-    <content type="html"><![CDATA[<meta name = "referrer", content = "no-referrer"/><h2 id="一最长递增子序列">一、最长递增子序列</h2><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250410195726169-2025-4-1019:59:31.png" style="zoom:80%;" /></p><p><ahref="https://leetcode.cn/problems/longest-increasing-subsequence/">Leetcode题目链接</a></p><div class="note note-info">            <p>首先明确两个概念：</p><ul><li>子序列：是指从给定序列中去除一些元素（也可能不去除）后，剩余元素组成的序列。重要的是，这个过程中剩余元素的<strong>相对顺序保持不变</strong>。</li><li>子串：串中任意个<strong>连续的字符</strong>组成的子序列称为该串的子串。</li></ul>          </div><p>动归五部曲</p><ol type="1"><li><p>确定dp数组及下标的含义</p><p>dp[i] 表示以nums[i]结尾的最长上升子序列的长度</p></li><li><p>确定递推公式</p><p>用<code>j</code>遍历从0到i-1各个位置的元素。</p><p>若nums[i] &gt;nums[j]，则可以在以nums[j]为结尾的上升子序列的基础上，再增加一个nums[i]，得到更长的上升子序列，其长度为dp[j]+1。取各个位置能与nums[i]构成的上升子序列中长度的最大值，即为<code>dp[i]</code>。所以递推公式为</p><p><code>if(nums[i] &gt; num[j])  dp[i] = max(dp[i], dp[j] + 1)</code></p></li><li><p>初始化dp数组</p><p>任意单个数字都可以算作长度为1的上升子序列，故dp[i]的初始值都是1</p></li><li><p>确定遍历顺序</p><p>dp[i]是由0到i-1各个位置的最长上升子序列推导而来，故一定是从前向后遍历i（外层）。</p><p>遍历[0,i-1]范围内的元素，从前向后或从后向前均可，只要都遍历到即可，故也采用从前向后遍历j（内层）</p></li><li><p>举例推导dp数组</p></li></ol><p>最终的结果并不一定是dp[nums.length -1]，因为最长的上升子序列可能并不是以最后一个元素结尾的，应该取所有dp[i]的最大值。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">lengthOfLIS</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;    <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> nums.length;    <span class="hljs-comment">//dp[i] 表示以nums[i]结尾的最长上升子序列的长度</span>    <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[len];    Arrays.fill(dp,<span class="hljs-number">1</span>); <span class="hljs-comment">//都初始化为1</span>    <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> dp[<span class="hljs-number">0</span>];    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; len; i++) &#123;        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; i; j++) &#123;            <span class="hljs-keyword">if</span> (nums[i] &gt; nums[j])                dp[i] = Math.max(dp[i], dp[j] + <span class="hljs-number">1</span>);        &#125;        result = Math.max(result, dp[i]); <span class="hljs-comment">//取最长的子序列长度</span>    &#125;    <span class="hljs-keyword">return</span> result;&#125;</code></pre></div><p>复杂度分析</p><ul><li><p>时间复杂度：<span class="math inline">\(O(n^2)\)</span>，其中 n为数组 nums 的长度。动态规划的状态数为 n，计算状态 dp[i] 时，需要 <spanclass="math inline">\(O(n)\)</span> 的时间遍历 dp[0…i−1]的所有状态，所以总时间复杂度为 <spanclass="math inline">\(O(n^2)\)</span>。</p></li><li><p>空间复杂度：<spanclass="math inline">\(O(n)\)</span>，需要额外使用长度为 n 的 dp数组。</p></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>算法学习</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Java并发编程</title>
     <link href="/eb9166f8/"/>
     <url>/eb9166f8/</url>

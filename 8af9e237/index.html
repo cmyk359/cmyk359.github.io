@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="https://catpaws.top/blog-resource/imgs/webicon.png"><link rel="icon" href="https://catpaws.top/blog-resource/imgs/webicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="author" content="猫爪在上"><meta name="keywords" content=""><meta name="description" content="在⽇常开发中单表的CRUD功能代码重复度很⾼，也没有什么难度。⽽这部分代码量往往⽐较⼤，开发起来⽐较费时。因此，⽬前企业中都会使⽤⼀些组件来简化或省略单表的CRUD开发⼯作。⽬前在国内使⽤较多的⼀个 组件就是MybatisPlus。 MybatisPlus不仅仅可以简化单表操作，⽽且还对Mybatis的功能有很多的增强。可以让我们的 开发更加的简单，⾼效。 官网 一、快速开始 为了"><meta property="og:type" content="article"><meta property="og:title" content="MybatisPlus"><meta property="og:url" content="https://catpaws.top/8af9e237/index.html"><meta property="og:site_name" content="猫爪在上の书桌"><meta property="og:description" content="在⽇常开发中单表的CRUD功能代码重复度很⾼，也没有什么难度。⽽这部分代码量往往⽐较⼤，开发起来⽐较费时。因此，⽬前企业中都会使⽤⼀些组件来简化或省略单表的CRUD开发⼯作。⽬前在国内使⽤较多的⼀个 组件就是MybatisPlus。 MybatisPlus不仅仅可以简化单表操作，⽽且还对Mybatis的功能有很多的增强。可以让我们的 开发更加的简单，⾼效。 官网 一、快速开始 为了"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250204193824831-2025-2-419:38:49.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250509165605231-2025-5-916:56:06.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250509214151473-2025-5-921:42:12.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250509233512030-2025-5-923:35:13.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510115203952-2025-5-1011:52:24.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510115730028-2025-5-1011:57:31.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510115857292-2025-5-1012:05:59.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510120115681-2025-5-1012:01:16.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510130900570-2025-5-1013:09:01.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510130736240-2025-5-1013:07:37.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510131859324-2025-5-1013:19:00.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510132013885-2025-5-1013:20:15.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250510132219515-2025-5-1013:22:20.png"><meta property="article:published_time" content="2024-12-21T14:40:20.000Z"><meta property="article:modified_time" content="2025-08-25T01:45:49.001Z"><meta property="article:author" content="猫爪在上"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250204193824831-2025-2-419:38:49.png"><title>MybatisPlus - 猫爪在上の书桌</title><link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css"><link rel="stylesheet" href="/css/main.css"><link id="highlight-css" rel="stylesheet" href="/css/highlight.css"><link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/font.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/poem.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/shubiao.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/loader.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/twikoo_beautify.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/indeximg-hover.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/wave.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/blurpicload.css"><script id="fluid-configs">var Fluid=window.Fluid||{};Fluid.ctx=Object.assign({},Fluid.ctx);var CONFIG={hostname:"catpaws.top",root:"/",version:"1.9.8",typing:{enable:!0,typeSpeed:70,cursorChar:"_",loop:!1,scope:[]},anchorjs:{enable:!0,element:"h1,h2,h3,h4,h5,h6",placement:"left",visible:"hover",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},code_language:{enable:!0,default:"TEXT"},copy_btn:!0,image_caption:{enable:!0},image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,placement:"right",headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:0},lazyload:{enable:!0,loading_img:"https://catpaws.top/blog-resource/imgs/transparent.svg",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,follow_dnt:!0,baidu:null,google:{measurement_id:null},tencent:{sid:null,cid:null},leancloud:{app_id:"TNTPv22capMq3aFV9S0sLqSm-gzGzoHsz",app_key:"G2BBAxXmiixopVg5mIJ2sxXR",server_url:"https://leancloud.catpaws.top",path:"window.location.pathname",ignore_local:!1},umami:{src:null,website_id:null,domains:null,start_time:"2024-01-01T00:00:00.000Z",token:null,api_server:null}},search_path:"/local-search.xml",include_content_in_search:!0};if(CONFIG.web_analytics.follow_dnt){var dntVal=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;Fluid.ctx.dnt=dntVal&&(dntVal.startsWith("1")||dntVal.startsWith("yes")||dntVal.startsWith("on"))}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loader-container"><div class="loader"><div class="wrapper"><div class="catContainer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 733 673" class="catbody"><path fill="#212121" d="M111.002 139.5C270.502 -24.5001 471.503 2.4997 621.002 139.5C770.501 276.5 768.504 627.5 621.002 649.5C473.5 671.5 246 687.5 111.002 649.5C-23.9964 611.5 -48.4982 303.5 111.002 139.5Z"></path><path fill="#212121" d="M184 9L270.603 159H97.3975L184 9Z"></path><path fill="#212121" d="M541 0L627.603 150H454.397L541 0Z"></path></svg> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 158 564" class="tail"><path fill="#191919" d="M5.97602 76.066C-11.1099 41.6747 12.9018 0 51.3036 0V0C71.5336 0 89.8636 12.2558 97.2565 31.0866C173.697 225.792 180.478 345.852 97.0691 536.666C89.7636 553.378 73.0672 564 54.8273 564V564C16.9427 564 -5.4224 521.149 13.0712 488.085C90.2225 350.15 87.9612 241.089 5.97602 76.066Z"></path></svg><div class="text"><span class="bigzzz">Z</span> <span class="zzz">Z</span></div></div><div class="wallContainer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 500 126" class="wall"><line stroke-width="6" stroke="#7C7C7C" y2="3" x2="450" y1="3" x1="50"></line><line stroke-width="6" stroke="#7C7C7C" y2="85" x2="400" y1="85" x1="100"></line><line stroke-width="6" stroke="#7C7C7C" y2="122" x2="375" y1="122" x1="125"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="500" y1="43"></line><line stroke-width="6" stroke="#7C7C7C" y2="1.99391" x2="115.5" y1="43.0061" x1="115.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.00002" x2="189" y1="43.0122" x1="189"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.00612" x2="262.5" y1="43.0183" x1="262.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.01222" x2="336" y1="43.0244" x1="336"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.01833" x2="409.5" y1="43.0305" x1="409.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="153" y1="84.0122" x1="153"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="228" y1="84.0122" x1="228"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="303" y1="84.0122" x1="303"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="378" y1="84.0122" x1="378"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="192" y1="125.012" x1="192"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="267" y1="125.012" x1="267"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="342" y1="125.012" x1="342"></line></svg></div></div></div></div><header><div class="header-inner" style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><strong>猫爪在上の书桌</strong> </a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/about/" target="_self"><i class="iconfont icon-addrcard"></i> <span>个人主页</span></a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="iconfont icon-books"></i> <span>博客</span></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="/" target="_self"><i class="iconfont icon-pen"></i> <span>文章</span> </a><a class="dropdown-item" href="/archives/" target="_self"><i class="iconfont icon-archive-fill"></i> <span>归档</span> </a><a class="dropdown-item" href="/categories/" target="_self"><i class="iconfont icon-category-fill"></i> <span>分类</span> </a><a class="dropdown-item" href="/tags/" target="_self"><i class="iconfont icon-tags-fill"></i> <span>标签</span></a></div></li><li class="nav-item"><a class="nav-link" href="/messages/" target="_self"><i class="iconfont icon-comment"></i> <span>留言板</span></a></li><li class="nav-item"><a class="nav-link" href="/timeline/" target="_self"><i class="iconfont icon-images"></i> <span>时光轴</span></a></li><li class="nav-item"><a class="nav-link" href="/links/" target="_self"><i class="iconfont icon-link-fill"></i> <span>友链</span></a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search"><i class="iconfont icon-search"></i></a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle"><i class="iconfont icon-dark" id="color-toggle-icon"></i></a></li></ul></div></div></nav><div id="banner" class="banner" parallax="true" style="background:url(https://catpaws.top/blog-resource/imgs/article-bg.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="banner-text text-center fade-in-up"><div class="h2"><span id="subtitle" data-typed-text="MybatisPlus"></span></div><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2024-12-21 22:40" pubdate>2024年12月21日 晚上</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 6.6k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 56 分钟 </span><span id="leancloud-page-views-container" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="leancloud-page-views"></span> 次</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="side-col d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div id="board"><article class="post-content mx-auto"><h1 id="seo-header">MybatisPlus</h1><p id="updated-time" class="note note-info">本文最后更新于 2025年8月25日 上午</p><div class="markdown-body"><meta name="referrer" , content="no-referrer"><p>在⽇常开发中单表的CRUD功能代码重复度很⾼，也没有什么难度。⽽这部分代码量往往⽐较⼤，开发起来⽐较费时。因此，⽬前企业中都会使⽤⼀些组件来简化或省略单表的CRUD开发⼯作。⽬前在国内使⽤较多的⼀个 组件就是MybatisPlus。</p><p>MybatisPlus不仅仅可以简化单表操作，⽽且还对Mybatis的功能有很多的增强。可以让我们的 开发更加的简单，⾼效。</p><p><a target="_blank" rel="noopener" href="https://www.baomidou.com/">官网</a></p><h1 id="一快速开始">一、快速开始</h1><p>为了⽅便测试，我们先创建⼀个新的项⽬，并准备⼀些基础数据。</p><h2 id="环境准备">1.1、环境准备</h2><p>新建一个SpringBoot项目：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/微服务%20Image%5B2%5D-2025-2-418:58:00.jpg" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>导入数据库表</p><div class="spoiler collapsed"><div class="spoiler-title">address.sql</div><div class="spoiler-content"><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">/*</span>
+<span class="hljs-comment"> Navicat Premium Data Transfer</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> Source Server         : aa</span>
+<span class="hljs-comment"> Source Server Type    : MySQL</span>
+<span class="hljs-comment"> Source Server Version : 80016</span>
+<span class="hljs-comment"> Source Host           : localhost:3306</span>
+<span class="hljs-comment"> Source Schema         : mp</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> Target Server Type    : MySQL</span>
+<span class="hljs-comment"> Target Server Version : 80016</span>
+<span class="hljs-comment"> File Encoding         : 65001</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> Date: 04/02/2025 18:59:25</span>
+<span class="hljs-comment">*/</span>
+
+<span class="hljs-keyword">SET</span> NAMES utf8mb4;
+<span class="hljs-keyword">SET</span> FOREIGN_KEY_CHECKS <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-comment">-- Table structure for address</span>
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">EXISTS</span> `address`;
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `address`  (
+  `id` <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> AUTO_INCREMENT,
+  `user_id` <span class="hljs-type">bigint</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;用户ID&#x27;</span>,
+  `province` <span class="hljs-type">varchar</span>(<span class="hljs-number">10</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;省&#x27;</span>,
+  `city` <span class="hljs-type">varchar</span>(<span class="hljs-number">10</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;市&#x27;</span>,
+  `town` <span class="hljs-type">varchar</span>(<span class="hljs-number">10</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;县/区&#x27;</span>,
+  `mobile` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;手机&#x27;</span>,
+  `street` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;详细地址&#x27;</span>,
+  `contact` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;联系人&#x27;</span>,
+  `is_default` bit(<span class="hljs-number">1</span>) <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> b<span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;是否是默认 1默认 0否&#x27;</span>,
+  `notes` <span class="hljs-type">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;备注&#x27;</span>,
+  `deleted` bit(<span class="hljs-number">1</span>) <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> b<span class="hljs-string">&#x27;0&#x27;</span> COMMENT <span class="hljs-string">&#x27;逻辑删除&#x27;</span>,
+  <span class="hljs-keyword">PRIMARY</span> KEY (`id`) <span class="hljs-keyword">USING</span> BTREE,
+  INDEX `user_id`(`user_id`) <span class="hljs-keyword">USING</span> BTREE
+) ENGINE <span class="hljs-operator">=</span> InnoDB AUTO_INCREMENT <span class="hljs-operator">=</span> <span class="hljs-number">70</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> <span class="hljs-operator">=</span> utf8 <span class="hljs-keyword">COLLATE</span> <span class="hljs-operator">=</span> utf8_general_ci ROW_FORMAT <span class="hljs-operator">=</span> Compact;
+
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-comment">-- Records of address</span>
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">59</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;北京&#x27;</span>, <span class="hljs-string">&#x27;北京&#x27;</span>, <span class="hljs-string">&#x27;朝阳区&#x27;</span>, <span class="hljs-string">&#x27;13900112222&#x27;</span>, <span class="hljs-string">&#x27;金燕龙办公楼&#x27;</span>, <span class="hljs-string">&#x27;Rose&#x27;</span>, b<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;1&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">60</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;北京&#x27;</span>, <span class="hljs-string">&#x27;北京&#x27;</span>, <span class="hljs-string">&#x27;朝阳区&#x27;</span>, <span class="hljs-string">&#x27;13700221122&#x27;</span>, <span class="hljs-string">&#x27;修正大厦&#x27;</span>, <span class="hljs-string">&#x27;Jack&#x27;</span>, b<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">61</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;上海&#x27;</span>, <span class="hljs-string">&#x27;上海&#x27;</span>, <span class="hljs-string">&#x27;浦东新区&#x27;</span>, <span class="hljs-string">&#x27;13301212233&#x27;</span>, <span class="hljs-string">&#x27;航头镇航头路&#x27;</span>, <span class="hljs-string">&#x27;Jack&#x27;</span>, b<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">63</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;广东&#x27;</span>, <span class="hljs-string">&#x27;佛山&#x27;</span>, <span class="hljs-string">&#x27;永春&#x27;</span>, <span class="hljs-string">&#x27;13301212233&#x27;</span>, <span class="hljs-string">&#x27;永春武馆&#x27;</span>, <span class="hljs-string">&#x27;Rose&#x27;</span>, b<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">64</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;浙江&#x27;</span>, <span class="hljs-string">&#x27;杭州&#x27;</span>, <span class="hljs-string">&#x27;拱墅区&#x27;</span>, <span class="hljs-string">&#x27;13567809102&#x27;</span>, <span class="hljs-string">&#x27;浙江大学&#x27;</span>, <span class="hljs-string">&#x27;Hope&#x27;</span>, b<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">65</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;浙江&#x27;</span>, <span class="hljs-string">&#x27;杭州&#x27;</span>, <span class="hljs-string">&#x27;拱墅区&#x27;</span>, <span class="hljs-string">&#x27;13967589201&#x27;</span>, <span class="hljs-string">&#x27;左岸花园&#x27;</span>, <span class="hljs-string">&#x27;Hope&#x27;</span>, b<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">66</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;湖北&#x27;</span>, <span class="hljs-string">&#x27;武汉&#x27;</span>, <span class="hljs-string">&#x27;汉口&#x27;</span>, <span class="hljs-string">&#x27;13967519202&#x27;</span>, <span class="hljs-string">&#x27;天天花园&#x27;</span>, <span class="hljs-string">&#x27;Thomas&#x27;</span>, b<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">67</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;浙江&#x27;</span>, <span class="hljs-string">&#x27;杭州&#x27;</span>, <span class="hljs-string">&#x27;拱墅区&#x27;</span>, <span class="hljs-string">&#x27;13967589201&#x27;</span>, <span class="hljs-string">&#x27;左岸花园&#x27;</span>, <span class="hljs-string">&#x27;Hopey&#x27;</span>, b<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">68</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;湖北&#x27;</span>, <span class="hljs-string">&#x27;武汉&#x27;</span>, <span class="hljs-string">&#x27;汉口&#x27;</span>, <span class="hljs-string">&#x27;13967519202&#x27;</span>, <span class="hljs-string">&#x27;天天花园&#x27;</span>, <span class="hljs-string">&#x27;Thomas&#x27;</span>, b<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">69</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&#x27;浙江&#x27;</span>, <span class="hljs-string">&#x27;杭州&#x27;</span>, <span class="hljs-string">&#x27;拱墅区&#x27;</span>, <span class="hljs-string">&#x27;13967589201&#x27;</span>, <span class="hljs-string">&#x27;左岸花园&#x27;</span>, <span class="hljs-string">&#x27;Hopey&#x27;</span>, b<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `address` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">70</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&#x27;湖北&#x27;</span>, <span class="hljs-string">&#x27;武汉&#x27;</span>, <span class="hljs-string">&#x27;汉口&#x27;</span>, <span class="hljs-string">&#x27;13967519202&#x27;</span>, <span class="hljs-string">&#x27;天天花园&#x27;</span>, <span class="hljs-string">&#x27;Thomas&#x27;</span>, b<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-keyword">NULL</span>, b<span class="hljs-string">&#x27;0&#x27;</span>);
+
+<span class="hljs-keyword">SET</span> FOREIGN_KEY_CHECKS <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+</code></pre></div></div></div><div class="spoiler collapsed"><div class="spoiler-title">tb_user.sql</div><div class="spoiler-content"><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">/*</span>
+<span class="hljs-comment"> Navicat Premium Data Transfer</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> Source Server         : aa</span>
+<span class="hljs-comment"> Source Server Type    : MySQL</span>
+<span class="hljs-comment"> Source Server Version : 80016</span>
+<span class="hljs-comment"> Source Host           : localhost:3306</span>
+<span class="hljs-comment"> Source Schema         : mp</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> Target Server Type    : MySQL</span>
+<span class="hljs-comment"> Target Server Version : 80016</span>
+<span class="hljs-comment"> File Encoding         : 65001</span>
+<span class="hljs-comment"></span>
+<span class="hljs-comment"> Date: 04/02/2025 18:59:32</span>
+<span class="hljs-comment">*/</span>
+
+<span class="hljs-keyword">SET</span> NAMES utf8mb4;
+<span class="hljs-keyword">SET</span> FOREIGN_KEY_CHECKS <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-comment">-- Table structure for tb_user</span>
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">EXISTS</span> `tb_user`;
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> `tb_user`  (
+  `id` <span class="hljs-type">bigint</span>(<span class="hljs-number">19</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="hljs-string">&#x27;用户id&#x27;</span>,
+  `username` <span class="hljs-type">varchar</span>(<span class="hljs-number">50</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;用户名&#x27;</span>,
+  `password` <span class="hljs-type">varchar</span>(<span class="hljs-number">128</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;密码&#x27;</span>,
+  `phone` <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> utf8 <span class="hljs-keyword">COLLATE</span> utf8_general_ci <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;注册手机号&#x27;</span>,
+  `info` json <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;详细信息&#x27;</span>,
+  `status` <span class="hljs-type">int</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">1</span> COMMENT <span class="hljs-string">&#x27;使用状态（1正常 2冻结）&#x27;</span>,
+  `balance` <span class="hljs-type">int</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">NULL</span> COMMENT <span class="hljs-string">&#x27;账户余额&#x27;</span>,
+  `create_time` datetime(<span class="hljs-number">0</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>(<span class="hljs-number">0</span>) COMMENT <span class="hljs-string">&#x27;创建时间&#x27;</span>,
+  `update_time` datetime(<span class="hljs-number">0</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>(<span class="hljs-number">0</span>) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">UPDATE</span> <span class="hljs-built_in">CURRENT_TIMESTAMP</span>(<span class="hljs-number">0</span>) COMMENT <span class="hljs-string">&#x27;更新时间&#x27;</span>,
+  <span class="hljs-keyword">PRIMARY</span> KEY (`id`) <span class="hljs-keyword">USING</span> BTREE,
+  <span class="hljs-keyword">UNIQUE</span> INDEX `username`(`username`) <span class="hljs-keyword">USING</span> BTREE
+) ENGINE <span class="hljs-operator">=</span> InnoDB AUTO_INCREMENT <span class="hljs-operator">=</span> <span class="hljs-number">10</span> <span class="hljs-type">CHARACTER</span> <span class="hljs-keyword">SET</span> <span class="hljs-operator">=</span> utf8 <span class="hljs-keyword">COLLATE</span> <span class="hljs-operator">=</span> utf8_general_ci COMMENT <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;用户表&#x27;</span> ROW_FORMAT <span class="hljs-operator">=</span> Compact;
+
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-comment">-- Records of tb_user</span>
+<span class="hljs-comment">-- ----------------------------</span>
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `tb_user` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Jack&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;13900112224&#x27;</span>, <span class="hljs-string">&#x27;&#123;\&quot;age\&quot;: 20, \&quot;intro\&quot;: \&quot;佛系青年\&quot;, \&quot;gender\&quot;: \&quot;male\&quot;&#125;&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1400</span>, <span class="hljs-string">&#x27;2023-05-19 20:50:21&#x27;</span>, <span class="hljs-string">&#x27;2024-05-31 16:38:32&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `tb_user` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">2</span>, <span class="hljs-string">&#x27;Rose&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;13900112223&#x27;</span>, <span class="hljs-string">&#x27;&#123;\&quot;age\&quot;: 19, \&quot;intro\&quot;: \&quot;青涩少女\&quot;, \&quot;gender\&quot;: \&quot;female\&quot;&#125;&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">200</span>, <span class="hljs-string">&#x27;2023-05-19 21:00:23&#x27;</span>, <span class="hljs-string">&#x27;2024-05-31 10:31:23&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `tb_user` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">3</span>, <span class="hljs-string">&#x27;Hope&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;13900112222&#x27;</span>, <span class="hljs-string">&#x27;&#123;\&quot;age\&quot;: 25, \&quot;intro\&quot;: \&quot;上进青年\&quot;, \&quot;gender\&quot;: \&quot;male\&quot;&#125;&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">100000</span>, <span class="hljs-string">&#x27;2023-06-19 22:37:44&#x27;</span>, <span class="hljs-string">&#x27;2024-05-31 18:19:56&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `tb_user` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;Thomas&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;17701265258&#x27;</span>, <span class="hljs-string">&#x27;&#123;\&quot;age\&quot;: 29, \&quot;intro\&quot;: \&quot;伏地魔\&quot;, \&quot;gender\&quot;: \&quot;male\&quot;&#125;&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">400</span>, <span class="hljs-string">&#x27;2023-06-19 23:44:45&#x27;</span>, <span class="hljs-string">&#x27;2024-05-31 10:31:23&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `tb_user` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">6</span>, <span class="hljs-string">&#x27;Lucy&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;18688990011&#x27;</span>, <span class="hljs-string">&#x27;&#123;\&quot;age\&quot;: 24, \&quot;intro\&quot;: \&quot;英文老师\&quot;, \&quot;gender\&quot;: \&quot;female\&quot;&#125;&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">200</span>, <span class="hljs-string">&#x27;2024-05-30 11:34:06&#x27;</span>, <span class="hljs-string">&#x27;2024-05-30 11:34:06&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `tb_user` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">7</span>, <span class="hljs-string">&#x27;xiaoming&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;18688990011&#x27;</span>, <span class="hljs-string">&#x27;&#123;\&quot;age\&quot;: 24, \&quot;intro\&quot;: \&quot;英文老师\&quot;, \&quot;gender\&quot;: \&quot;female\&quot;&#125;&#x27;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;2024-05-31 11:25:41&#x27;</span>, <span class="hljs-string">&#x27;2024-05-31 17:17:34&#x27;</span>);
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> `tb_user` <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">9</span>, <span class="hljs-string">&#x27;xiaomei&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;18688990011&#x27;</span>, <span class="hljs-string">&#x27;&#123;\&quot;age\&quot;: 24, \&quot;intro\&quot;: \&quot;英文老师\&quot;, \&quot;gender\&quot;: \&quot;female\&quot;&#125;&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">200</span>, <span class="hljs-string">&#x27;2024-05-31 11:28:52&#x27;</span>, <span class="hljs-string">&#x27;2024-05-31 11:28:52&#x27;</span>);
+
+<span class="hljs-keyword">SET</span> FOREIGN_KEY_CHECKS <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+</code></pre></div></div></div><p>最后，在 <code>application.yaml</code> 中修改jdbc参数为⾃⼰的数据库参数.</p><h2 id="快速开始">1.2、快速开始</h2><p>要实现User表的CRUD，只需要下⾯⼏步：</p><ol type="1"><li>引⼊MybatisPlus依赖</li><li>定义Mapper</li></ol><h3 id="引入依赖">引入依赖</h3><p>MybatisPlus提供了starter，实现了⾃动Mybatis以及MybatisPlus的⾃动装配功能，坐标如下：</p><div class="code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.baomidou<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.5.3.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre></div><p>由于这个starter包含对mybatis的⾃动装配，因此完全可以替换掉Mybatis的starter。 最终，项⽬的依赖如下：</p><div class="code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.baomidou<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.5.3.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>runtime<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">optional</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">optional</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre></div><h3 id="定义mapper">定义Mapper</h3><p>为了简化单表CRUD，MybatisPlus提供了⼀个基础的 <code>BaseMapper</code> 接⼝，其中已经实现了单表的CRUD：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/微服务%20Image%5B5%5D-2025-2-419:06:43.jpg" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>⾃定义的Mapper只要继承了这个 BaseMapper ，就⽆需⾃⼰实现单表CRUD了。修改mp-demo中的 <code>UserMapper</code> 接⼝，让其继承<code>BaseMapper</code> ：</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.mp.mapper;
+        <span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;
+        <span class="hljs-keyword">import</span> com.itheima.mp.domain.po.User;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">UserMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseMapper</span>&lt;User&gt; &#123;
+&#125;</code></pre></div><h3 id="测试">测试</h3><p>新建⼀个测试类，编写⼏个单元测试，测试基本的CRUD功能：</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.mp.mapper;
+<span class="hljs-keyword">import</span> com.itheima.mp.domain.po.User;
+<span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;
+<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="hljs-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;
+<span class="hljs-keyword">import</span> java.time.LocalDateTime;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-meta">@SpringBootTest</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">UserMapperTest</span> &#123;
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> UserMapper userMapper;
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">testInsert</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();
+        user.setId(<span class="hljs-number">5L</span>);
+        user.setUsername(<span class="hljs-string">&quot;Lucy&quot;</span>);
+        user.setPassword(<span class="hljs-string">&quot;123&quot;</span>);
+        user.setPhone(<span class="hljs-string">&quot;18688990011&quot;</span>);
+        user.setBalance(<span class="hljs-number">200</span>);
+        user.setInfo(<span class="hljs-string">&quot;&#123;\&quot;age\&quot;: 24, \&quot;intro\&quot;: \&quot;英⽂⽼师\&quot;, \&quot;gender\&quot;:</span>
+<span class="hljs-string">                \&quot;female\&quot;&#125;&quot;</span>);
+        user.setCreateTime(LocalDateTime.now());
+        user.setUpdateTime(LocalDateTime.now());
+        <span class="hljs-comment">//插入数据</span>
+        userMapper.insert(user);
+    &#125;
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSelectById</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> userMapper.selectById(<span class="hljs-number">5L</span>);
+        System.out.println(<span class="hljs-string">&quot;user = &quot;</span> + user);
+    &#125;
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSelectByIds</span><span class="hljs-params">()</span> &#123;
+        List&lt;User&gt; users = userMapper.selectBatchIds(List.of(<span class="hljs-number">1L</span>, <span class="hljs-number">2L</span>, <span class="hljs-number">3L</span>, <span class="hljs-number">4L</span>,
+                <span class="hljs-number">5L</span>));
+        users.forEach(System.out::println);
+    &#125;
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">testUpdateById</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();
+        user.setId(<span class="hljs-number">5L</span>);
+        user.setBalance(<span class="hljs-number">20000</span>);
+        userMapper.updateById(user);
+    &#125;
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">testDelete</span><span class="hljs-params">()</span> &#123;
+        userMapper.deleteById(<span class="hljs-number">5L</span>);
+    &#125;
+&#125;</code></pre></div><p>查看日志输出，可见只需要继承BaseMapper就能省去所有的单表CRUD</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250204191153484-2025-2-419:11:57.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><h2 id="常见注解">1.3、常见注解</h2><p>在刚刚的⼊⻔案例中，我们仅仅引⼊了依赖，继承了BaseMapper就能使⽤MybatisPlus，⾮常简单。但是问题来了： MybatisPlus如何知道我们要查询的是哪张表？表中有哪些字段呢？</p><p>因为UserMapper在继承BaseMapper的时候指定了一个泛型，泛型中的User就是与数据库对应的PO.</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250204193824831-2025-2-419:38:49.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>MyBatisPlus通过扫描实体类，并基于反射获取实体类信息作为数据库表信息，从而生成SQL的。默认情况下：</p><ul><li>MybatisPlus会把PO实体的<strong>类名驼峰转下划线</strong>作为<u>表名</u></li><li>MybatisPlus会把PO实体的所有<strong>变量名驼峰转下划线</strong>作为<u>表的字段名</u>，并根据变量类型推断字段类型</li><li>MybatisPlus会把<strong>名为id的字段</strong>作为<u>主键</u></li></ul><p>但很多情况下，默认的实现与实际场景不符，因此MybatisPlus提供了一些注解便于我们声明表信息</p><p><a target="_blank" rel="noopener" href="https://www.baomidou.com/reference/annotation/">官方文档</a></p><h3 id="tablename"><span class="citation" data-cites="TableName">@TableName</span></h3><ul><li>描述：表名注解，标识实体类对应的表</li><li>使用位置：实体类</li></ul><p>默认情况下将User类名驼峰转下划线得到的表名 与 实际表名 tb_user不同，此时需要使用@TableName注解指定表名</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509164803137-2025-5-916:48:04.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><h3 id="tableid"><span class="citation" data-cites="TableId">@TableId</span></h3><ul><li>描述：主键注解，标识实体类中的主键字段</li><li>使用位置：实体类的主键字段</li></ul><p><code>TableId</code>注解支持两个属性：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509165209265-2025-5-916:52:10.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>IdType支持的常用类型有</p><ul><li>AUTO ：利⽤数据库的id⾃增⻓</li><li>INPUT ：⼿动⽣成id</li><li>ASSIGN_ID ：雪花算法⽣成 Long 类型的全局唯⼀id，这是<strong>默认</strong>的ID策略</li></ul><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509165605231-2025-5-916:56:06.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><h3 id="tablefield"><span class="citation" data-cites="TableField">@TableField</span></h3><p>用来指定表中的普通字段信息</p><p>使用@TableField的常见场景：</p><ul><li>成员变量名与数据库字段名不一致</li><li>成员变量名以is开头，且是布尔值。MybatisPlus 识别字段时会把 is 去除，这就导致与数据库不符。</li><li>成员变量名与数据库关键字冲突。使⽤ <span class="citation" data-cites="TableField">@TableField</span> 注解给字段名添加转义字符： ``</li><li>成员变量不是数据库字段</li></ul><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509170000127-2025-5-917:00:01.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><h2 id="常见配置">1.4、常见配置</h2><p>MybatisPlus也⽀持基于yaml⽂件的⾃定义配置，详⻅<a target="_blank" rel="noopener" href="https://www.baomidou.com/reference/">官⽅⽂档</a></p><p>⼤多数的配置都有默认值，因此我们都⽆需配置。但还有⼀些是没有默认值的，例如:</p><ul><li><p>实体类的别名扫描包</p></li><li><p>全局id类型</p></li><li><p>MyBatisPlus也⽀持⼿写SQL的，⽽mapper⽂件的读取地址可以⾃⼰配置</p></li></ul><div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">mybatis-plus:</span>
+	<span class="hljs-comment">#Mapper.xml⽂件地址，当前这个是默认值。</span>
+	<span class="hljs-attr">mapper-locations:</span> <span class="hljs-string">&quot;classpath*:/mapper/**/*.xml&quot;</span> 
+	<span class="hljs-attr">type-aliases-package:</span> <span class="hljs-string">com.itheima.mp.domain.po</span>
+	<span class="hljs-attr">global-config:</span>
+		<span class="hljs-attr">db-config:</span>
+			<span class="hljs-attr">id-type:</span> <span class="hljs-string">auto</span> <span class="hljs-comment"># 全局id类型为⾃增⻓</span></code></pre></div><h1 id="二核心功能">二、核心功能</h1><h2 id="条件构造器">2.1、条件构造器</h2><p>除了新增以外，修改、删除、查询的SQL语句都需要指定where条件。因此BaseMapper中提供的相关方法除了以 id 作为 where 条件以外，还⽀持更加复杂的 where 条件。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509172134896-2025-5-917:36:02.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>参数中的 Wrapper 就是条件构造的抽象类，其下有很多默认实现，继承关系如图：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509172242323-2025-5-917:36:26.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><hr><p>Wrapper 的⼦类 AbstractWrapper 提供了where中包含的所有条件构造⽅法：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509173738147-2025-5-917:37:39.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>QueryWrapper在AbstractWrapper的基础上拓展了⼀个select⽅法，允许指定查询字段：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509173522590-2025-5-917:35:24.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>UpdateWrapper在AbstractWrapper的基础上拓展了⼀个set⽅法，允许指定SQL中的SET部分：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509173542078-2025-5-917:35:43.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>而LambdaUpdateWrapper和LambdaQueryWrapper是基于 Lambda 表达式的Wrapper，用法与前两个一样。它们通过 Lambda 表达式引用实体字段，避免了硬编码，推荐使用。</p><h3 id="基于lambdaquerywrapper的查询">基于LambdaQueryWrapper的查询</h3><p>QueryWrapper和LambdaQueryWrapper通常用来构建select、delete、update的<strong>where条件部分</strong></p><p>需求：查询出名字中带o的，存款大于等于1000元的人的id、username、info、balance字段</p><p>对应的sql语句如下</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> id, username, info, balance
+<span class="hljs-keyword">FROM</span> <span class="hljs-keyword">user</span>
+<span class="hljs-keyword">WHERE</span> name <span class="hljs-keyword">like</span> ? <span class="hljs-keyword">AND</span> balance <span class="hljs-operator">&gt;=</span> ?</code></pre></div><p>使用QueryWrapper构造查询条件</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">testQueryWrapper</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-comment">//1、构建查询条件</span>
+    QueryWrapper&lt;User&gt; queryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">QueryWrapper</span>&lt;&gt;();
+    queryWrapper.select(<span class="hljs-string">&quot;id&quot;</span>,<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;info&quot;</span>,<span class="hljs-string">&quot;balance&quot;</span>)
+        .like(<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;o&quot;</span>)
+        .ge(<span class="hljs-string">&quot;balance&quot;</span>,<span class="hljs-string">&quot;1000&quot;</span>);
+    <span class="hljs-comment">//2、查询</span>
+    List&lt;User&gt; userList = userMapper.selectList(queryWrapper);
+    System.out.println(userList);
+&#125;</code></pre></div><p>使用LambdaQueryWrapper优化在使用QueryWrapper中硬编码的方式，字段名通过变量的 gettter 方法引用指定，底层使用反射获取字段名称。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-keyword">void</span> <span class="hljs-title function_">testLambdaQueryWrapper</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-comment">//1、构建查询条件</span>
+    LambdaQueryWrapper&lt;User&gt; queryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();
+    queryWrapper.select(User::getId,User::getUsername,User::getInfo,User::getBalance)
+        .like(User::getUsername,<span class="hljs-string">&quot;o&quot;</span>) <span class="hljs-comment">// 字段名通过方法引用指定</span>
+        .ge(User::getBalance,<span class="hljs-string">&quot;1000&quot;</span>);
+    <span class="hljs-comment">//2、查询</span>
+    List&lt;User&gt; userList = userMapper.selectList(queryWrapper);
+    System.out.println(userList);
+&#125;</code></pre></div><h3 id="基于lambdaupdatewrapper的更新">基于LambdaUpdateWrapper的更新</h3><p>Updatewrapper和LambdaUpdatewrapper用于构建 UPDATE 或 DELETE 操作的条件（WHERE 子句 + SET 字段）。</p><p>需求：更新id为1，2，4的用户的余额，扣200</p><p>对应的SQL语句如下：</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">User</span>
+<span class="hljs-keyword">SET</span> balance <span class="hljs-operator">=</span> balance <span class="hljs-operator">-</span> <span class="hljs-number">200</span>
+<span class="hljs-keyword">WHERE</span> id <span class="hljs-keyword">in</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);</code></pre></div><p>基于BaseMapper中的update⽅法更新时只能直接赋值，对于⼀些复杂的需求就难以实现。本例中SET的赋值结果是基于字段现有值的，这个时候就要利⽤UpdateWrapper中的setSql功能了：</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-keyword">void</span> <span class="hljs-title function_">testLambdaUpdateWrapper</span><span class="hljs-params">()</span> &#123;
+    List&lt;Long&gt; ids = List.of(<span class="hljs-number">1L</span>,<span class="hljs-number">2L</span>,<span class="hljs-number">4L</span>);
+    LambdaUpdateWrapper&lt;User&gt; updateWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaUpdateWrapper</span>&lt;&gt;();
+    updateWrapper.setSql(<span class="hljs-string">&quot;balance = balance - 200&quot;</span>)
+        .in(User::getId,ids);
+    userMapper.update(<span class="hljs-literal">null</span>,updateWrapper);
+&#125;</code></pre></div><h2 id="自定义sql">2.2、自定义SQL</h2><p>在UpdateWrapper的学习案例中，编写了如下的代码：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509214151473-2025-5-921:42:12.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>这种写法在某些企业也是不允许的，因为SQL语句最好都维护在持久层，⽽不是业务层。MyBatisPlus擅长的是复杂查询条件的处理，使用条件构造器能够用很短的代码完成复杂动态SQL的生成，而查询条件之前的内容用MP编写比较复杂，有时可能不符合开发规范。</p><p>所以，MybatisPlus提供了⾃定义SQL功能，可以利用MyBatisPlus的Wrapper来构建复杂的Where条件，再结合Mapper.xml中编写SQL语句中剩下的部分，两者结合发挥各自的优势。</p><p>使用步骤：</p><ol type="1"><li><p>基于Wrapper构建where条件</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">testCustomSql</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-comment">//1、查询条件</span>
+    List&lt;Long&gt; ids = List.of(<span class="hljs-number">1L</span>,<span class="hljs-number">2L</span>,<span class="hljs-number">4L</span>);
+    <span class="hljs-type">int</span> <span class="hljs-variable">amount</span> <span class="hljs-operator">=</span> <span class="hljs-number">200</span>;
+    LambdaUpdateWrapper&lt;User&gt; updateWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaUpdateWrapper</span>&lt;User&gt;().in(User::getId,ids);;
+    <span class="hljs-comment">//2、执行自定义方法，传递wrapper参数</span>
+    userMapper.updateBalanceByIds(updateWrapper,amount);
+&#125;</code></pre></div></li><li><p>在mapper自定义方法，方法参数中用Param注解声明wrapper变量名称，<span style="color:red">必须是ew</span> 或者使用<code>Constants.WRAPPER</code></p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">UserMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseMapper</span>&lt;User&gt; &#123;
+
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateBalanceByIds</span><span class="hljs-params">(<span class="hljs-meta">@Param(Constants.WRAPPER)</span> LambdaUpdateWrapper&lt;User&gt; updateWrapper, <span class="hljs-type">int</span> amount)</span>;
+&#125;
+</code></pre></div></li><li><p>自定义SQL，并使用Wrapper条件</p><div class="code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateBalanceByIds&quot;</span>&gt;</span>
+    update tb_user set balance = balance - #&#123;amount&#125; $&#123;ew.customSqlSegment&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span></code></pre></div></li></ol><h2 id="service接口">2.3、Service接口</h2><p>MybatisPlus不仅提供了BaseMapper，还提供了通⽤的Service接⼝及默认实现，封装了⼀些常⽤的service模板⽅法。</p><p>通⽤接⼝为 IService ，默认实现为 ServiceImpl ，其中封装的⽅法分为以下⼏类：</p><ul><li>save ：新增</li><li>remove ：删除</li><li>update ：更新</li><li>get ：查询单个结果</li><li>list ：查询集合结果</li><li>count ：计数</li><li>page ：分⻚查询</li></ul><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509221022441-2025-5-922:11:12.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>使用流程：让我们自定义的service接口继承IService接口以拓展⽅法，同时让自定义的service实现类继承ServiceImpl，这样就不⽤⾃⼰实现 IService 中的接⼝了。例如：</p><ol type="1"><li><p>定义 IUserService ，继承 IService</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IUserService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IService</span>&lt;User&gt; &#123;
+	<span class="hljs-comment">// 拓展⾃定义⽅法</span>
+&#125;</code></pre></div></li><li><p>编写 UserServiceImpl 类，继承 ServiceImpl ，需要指定所使用的Mapper和实体类</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IUserServiceImpl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ServiceImpl</span>&lt;UserMapper,User&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IUserService</span>  &#123;
+    <span class="hljs-comment">//实现自定义方法</span>
+&#125;</code></pre></div><div class="note note-info"><p>继承 ServiceImpl ，需要指定所使用的Mapper和实体类。在ServiceImpl内部已声明了一个对应类型的Mapper属性，取名为baseMapper。所以在自定义的service实现类中不需要再手动注入Mapper了，直接使用即可。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509225359314-2025-5-922:54:00.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p></div></li></ol><p>对于一些简单的功能，如新增用户、根据id查询用户等，可以在Controller层直接调用Service接口中的对应方法即可，⽆需编写任何service层代码。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RequestMapping(&quot;/users&quot;)</span>
+<span class="hljs-meta">@Api(tags = &quot;用户相关接口&quot;)</span>
+<span class="hljs-meta">@RequiredArgsConstructor</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserController</span> &#123;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> IUserService userService; <span class="hljs-comment">//通过LomBok注解，使用构造函数实现注入</span>
+
+    <span class="hljs-meta">@PostMapping</span>
+    <span class="hljs-meta">@ApiOperation(&quot;新增用户&quot;)</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">saveUser</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span>  UserFormDTO userFormDTO)</span> &#123;
+        <span class="hljs-comment">//1、属性拷贝</span>
+        <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();
+        BeanUtils.copyProperties(userFormDTO,user);
+        <span class="hljs-comment">//2、新增</span>
+        userService.save(user);
+    &#125;
+
+    <span class="hljs-meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span>
+    <span class="hljs-meta">@ApiOperation(&quot;删除用户&quot;)</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteUser</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long id)</span> &#123;
+        userService.removeById(id);
+    &#125;
+
+    <span class="hljs-meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span>
+    <span class="hljs-meta">@ApiOperation(&quot;根据查询用户&quot;)</span>
+    <span class="hljs-keyword">public</span> UserVO <span class="hljs-title function_">queryUser</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long id)</span> <span class="hljs-keyword">throws</span> Exception &#123;
+        <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> userService.getById(id);
+        <span class="hljs-keyword">return</span> BeanUtil.copyProperties(user,UserVO.class);
+    &#125;
+&#125;</code></pre></div><p>对于一些功能复杂的接口，可能需要在Service层做业务逻辑判断，此时则需要在service中⾃定义实现了。比如：根据id扣减余额。首先需要根据id查询到这个用户，判断用户的账户状态是否正常，有没有被冻结，再判断用户余额是否充足，最后执行扣减余额。</p><p>这些业务逻辑都要在service层来做，另外更新余额需要⾃定义SQL，要在mapper中来实现。因此，除了要编写controller以外，具体的业务还要在service和mapper中编写。</p><ol type="1"><li><p>⾸先在UserController中定义⼀个⽅法：</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@PutMapping(&quot;/&#123;id&#125;/deduction/&#123;money&#125;&quot;)</span>
+<span class="hljs-meta">@ApiOperation(&quot;根据id扣减余额&quot;)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deductBalance</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id, <span class="hljs-meta">@PathVariable(&quot;money&quot;)</span> Integer money)</span> <span class="hljs-keyword">throws</span> Exception &#123;
+    userService.deductBalance(id,money);
+&#125;</code></pre></div></li><li><p>在UserService接⼝中扩展处理方法</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IUserService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IService</span>&lt;User&gt; &#123;
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">deductBalance</span><span class="hljs-params">( Long id,  Integer money)</span> <span class="hljs-keyword">throws</span> Exception;
+&#125;</code></pre></div></li><li><p>在UserServiceImpl实现类中实现该方法</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Service</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">IUserServiceImpl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ServiceImpl</span>&lt;UserMapper,User&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IUserService</span>  &#123;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 根据id扣减余额</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> money</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deductBalance</span><span class="hljs-params">(Long id, Integer money)</span> <span class="hljs-keyword">throws</span> Exception&#123;
+        <span class="hljs-comment">//1、获取用户对象</span>
+        <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> getById(id);
+        <span class="hljs-comment">//2、校验账户状态</span>
+        <span class="hljs-keyword">if</span> (user == <span class="hljs-literal">null</span> || user.getStatus() == UserStatus.FROZEN) &#123;
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Exception</span>(<span class="hljs-string">&quot;用户状态异常&quot;</span>);
+        &#125;
+        <span class="hljs-comment">//3、校验余额状态</span>
+        <span class="hljs-keyword">if</span> (user.getBalance() &lt; money) &#123;
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Exception</span>(<span class="hljs-string">&quot;用户余额不足&quot;</span>);
+        &#125;
+        <span class="hljs-comment">// 4.扣减余额</span>
+        baseMapper.deductMoneyById(id, money);
+    &#125;
+</code></pre></div></li><li><p>最后在mapper中定义对应方法，操作数据库</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Update(&quot;UPDATE user SET balance = balance - #&#123;money&#125; WHERE id = #&#123;id&#125;&quot;)</span>
+<span class="hljs-keyword">void</span> <span class="hljs-title function_">deductMoneyById</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;id&quot;)</span> Long id, <span class="hljs-meta">@Param(&quot;money&quot;)</span> Integer money)</span>;</code></pre></div></li></ol><h3 id="lambdaquery">LambdaQuery</h3><p>IService接口提供的 <strong>LambdaQuery</strong> 和 <strong>LambdaUpdate</strong> 是通过 Lambda 表达式构建查询和更新条件的<strong>链式</strong> API，无需显式创建 Wrapper 对象，可以直接内联动态判断，利用方法参数直接控制条件是否生效，避免了外部if判断。</p><p>通过 <code>lambdaQuery()</code> 方法创建链式查询条件，支持所有 <code>LambdaQueryWrapper</code> 的功能，但写法更简洁。能够完成复杂查询，如需要根据参数动态构建查询以及分页查询。</p><p>例如：实现一个根据复杂条件查询用户的接口，查询条件如下：</p><ul><li>name：用户名关键字，可以为空</li><li>status：用户状态，可以为空</li><li>minBalance：最小余额，可以为空</li><li>maxBalance：最大余额，可以为空</li></ul><p>如果使用MyBatis，需要编写动态SQL，使用if标签判断传入的查询字段是否为空，不为空时再加入查询条件</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250509233512030-2025-5-923:35:13.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>使用MyBatisPlus，利用IService中的LambdaQuery实现</p><ol type="1"><li><p>Controller层</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/list&quot;)</span>
+<span class="hljs-meta">@ApiOperation(&quot;根据条件批量查询用户&quot;)</span>
+<span class="hljs-keyword">public</span> List&lt;UserVO&gt; <span class="hljs-title function_">queryUsers</span><span class="hljs-params">(UserQueryDTO userQueryDTO)</span> &#123;
+    <span class="hljs-keyword">return</span> userService.queryUsers(userQueryDTO);
+&#125;</code></pre></div></li><li><p>Service接口</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IUserService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IService</span>&lt;User&gt; &#123;
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">deductBalance</span><span class="hljs-params">( Long id,  Integer money)</span> <span class="hljs-keyword">throws</span> Exception;
+
+    List&lt;UserVO&gt; <span class="hljs-title function_">queryUsers</span><span class="hljs-params">(UserQueryDTO userQueryDTO)</span>;
+&#125;</code></pre></div></li><li><p>Service实现类</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> List&lt;UserVO&gt; <span class="hljs-title function_">queryUsers</span><span class="hljs-params">(UserQueryDTO userQueryDTO)</span> &#123;
+
+    <span class="hljs-comment">//使用lambdaQuery构造查询条件并执行</span>
+    List&lt;User&gt; list = lambdaQuery()
+        <span class="hljs-comment">// 动态条件，利用方法参数直接控制条件是否生效</span>
+        .like(userQueryDTO.getName() != <span class="hljs-literal">null</span>, User::getUsername, userQueryDTO.getName()) 
+        .eq(userQueryDTO.getStatus() != <span class="hljs-literal">null</span>, User::getStatus, userQueryDTO.getStatus())
+        .ge(userQueryDTO.getMinBalance() != <span class="hljs-literal">null</span>, User::getBalance, userQueryDTO.getMinBalance())
+        .le(userQueryDTO.getMaxBalance() != <span class="hljs-literal">null</span>, User::getBalance, userQueryDTO.getMaxBalance())
+        .list();<span class="hljs-comment">//返回集合结果。根据前面构建的条件，可以返回一个或多个，也可以进行计数</span>
+
+
+    <span class="hljs-keyword">return</span> BeanUtil.copyToList(list,UserVO.class);
+&#125;</code></pre></div><div class="code-wrapper"><pre><code class="hljs pgsql">   
+   
+
+### LambdaUpdate
+
+通过 lambdaUpdate() 方法创建链式更新条件，支持字段更新和条件过滤。
+
+&#123;% note <span class="hljs-built_in">warning</span>%&#125;
+
+使用 lambdaUpdate 设置完字段更新逻辑和更新条件后，在调用链中最后要调用**<span class="hljs-keyword">update</span>**完成更新操作。
+
+&#123;% endnote%&#125;
+
+例如：改造根据id修改用户余额的接口，如果扣减后余额为<span class="hljs-number">0</span>，则将用户status修改为冻结状态（<span class="hljs-number">2</span>）
+
+​```java
+<span class="hljs-built_in">public</span> <span class="hljs-type">void</span> deductBalance(Long id, <span class="hljs-type">Integer</span> <span class="hljs-type">money</span>) throws <span class="hljs-keyword">Exception</span>&#123;
+        //<span class="hljs-number">1</span>、获取用户对象
+        <span class="hljs-keyword">User</span> <span class="hljs-keyword">user</span> = getById(id);
+        //<span class="hljs-number">2</span>、校验账户状态
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">user</span> == <span class="hljs-keyword">null</span> || <span class="hljs-keyword">user</span>.getStatus() == UserStatus.FROZEN) &#123;
+            throw <span class="hljs-built_in">new</span> <span class="hljs-keyword">Exception</span>(&quot;用户状态异常&quot;);
+        &#125;
+        //<span class="hljs-number">3</span>、校验余额状态
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">user</span>.getBalance() &lt; <span class="hljs-type">money</span>) &#123;
+            throw <span class="hljs-built_in">new</span> <span class="hljs-keyword">Exception</span>(&quot;用户余额不足&quot;);
+        &#125;
+        //<span class="hljs-number">4</span>、修改余额
+        <span class="hljs-type">int</span> remainBalance = <span class="hljs-keyword">user</span>.getBalance() - <span class="hljs-type">money</span>;
+        lambdaUpdate().<span class="hljs-keyword">set</span>(<span class="hljs-keyword">User</span>::getBalance,remainBalance) //修改余额
+                .<span class="hljs-keyword">set</span>(remainBalance == <span class="hljs-number">0</span>,<span class="hljs-keyword">User</span>::getStatus,UserStatus.FROZEN)//若余额减为零，则设置账号状态为冻结
+                .eq(<span class="hljs-keyword">User</span>::getBalance,<span class="hljs-keyword">user</span>.getBalance()) //乐观锁：更新时，balance和之前一样时才更新
+                .eq(<span class="hljs-keyword">User</span>::getId,id)
+                .<span class="hljs-keyword">update</span>(); //最终调用<span class="hljs-keyword">update</span>完成更新操作
+    &#125;</code></pre></div></li></ol><h1 id="三扩展功能">三、扩展功能</h1><h2 id="代码生成">3.1、代码生成</h2><p>在使⽤MybatisPlus以后，基础的 Mapper 、 Service 、 PO 代码相对固定，重复编写也⽐较⿇烦。因此MybatisPlus官⽅提供了代码⽣成器根据数据库表结构⽣成 PO 、 Mapper 、 Service 等相关代码。只不过代码⽣成器同样要编码使⽤，也很⿇烦。</p><p>IDEA中的⼀款 MybatisPlus 的插件，它可以基于图形化界⾯完成 MybatisPlus 的代码⽣成，⾮常简单。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510115203952-2025-5-1011:52:24.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>安装完后，重启IDEA即可使用。</p><p>首先要配置数据库地址，在Idea顶部菜单中，找到other ，选择Config Database ：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510115650783-2025-5-1011:56:51.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>在弹出的窗⼝中填写数据库连接的基本信息，点击ok保存</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510115730028-2025-5-1011:57:31.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>再次点击Idea顶部菜单中的other，然后选择 Code Generator生成代码，在其中根据自己需要进行配置。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510115857292-2025-5-1012:05:59.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><h2 id="静态工具">3.2、静态工具</h2><p>有的时候Service之间也会相互调⽤，为了避免出现循环依赖问题，MybatisPlus提供⼀个静态⼯具类： <code>Db</code> ，其中的⼀些静态方法与 IService 中⽅法签名基本⼀致。由于是静态方法，在使用时要传入要操作的泛型。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510120115681-2025-5-1012:01:16.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>需求：改造根据id用户查询的接⼝，查询用户的同时返回用户收货地址列表</p><ol type="1"><li><p>添加⼀个收货地址的VO对象</p><div class="spoiler collapsed"><div class="spoiler-title">AddressVO</div><div class="spoiler-content"><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Data</span>
+<span class="hljs-meta">@ApiModel(description = &quot;收货地址VO&quot;)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressVO</span>&#123;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;id&quot;)</span>
+    <span class="hljs-keyword">private</span> Long id;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;用户ID&quot;)</span>
+    <span class="hljs-keyword">private</span> Long userId;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;省&quot;)</span>
+    <span class="hljs-keyword">private</span> String province;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;市&quot;)</span>
+    <span class="hljs-keyword">private</span> String city;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;县/区&quot;)</span>
+    <span class="hljs-keyword">private</span> String town;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;手机&quot;)</span>
+    <span class="hljs-keyword">private</span> String mobile;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;详细地址&quot;)</span>
+    <span class="hljs-keyword">private</span> String street;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;联系人&quot;)</span>
+    <span class="hljs-keyword">private</span> String contact;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;是否是默认 1默认 0否&quot;)</span>
+    <span class="hljs-keyword">private</span> Boolean isDefault;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;备注&quot;)</span>
+    <span class="hljs-keyword">private</span> String notes;
+&#125;</code></pre></div></div></div></li><li><p>改造原来的UserVO，添加⼀个地址属性</p><div class="spoiler collapsed"><div class="spoiler-title">UserVO</div><div class="spoiler-content"><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Data</span>
+<span class="hljs-meta">@ApiModel(description = &quot;用户VO实体&quot;)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserVO</span> &#123;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;用户id&quot;)</span>
+    <span class="hljs-keyword">private</span> Long id;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;用户名&quot;)</span>
+    <span class="hljs-keyword">private</span> String username;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;详细信息&quot;)</span>
+    <span class="hljs-keyword">private</span> UserInfo info;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;使用状态（1正常 2冻结）&quot;)</span>
+    <span class="hljs-keyword">private</span> UserStatus status;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;账户余额&quot;)</span>
+    <span class="hljs-keyword">private</span> Integer balance;
+
+    <span class="hljs-meta">@ApiModelProperty(&quot;用户收货地址&quot;)</span>
+    <span class="hljs-keyword">private</span> List&lt;AddressVO&gt; addresses;
+&#125;</code></pre></div></div></div></li><li><p>修改UserController中根据id查询用户的业务接⼝</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span>
+<span class="hljs-meta">@ApiOperation(&quot;查询用户及其收货地址&quot;)</span>
+<span class="hljs-keyword">public</span> UserVO <span class="hljs-title function_">queryUser</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long id)</span> <span class="hljs-keyword">throws</span> Exception &#123;
+    <span class="hljs-keyword">return</span> userService.queryUserAndAddressById(id);
+&#125;</code></pre></div></li><li><p>由于查询业务复杂，所以要在service层来实现。在IUserService中定义⽅法</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IUserService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IService</span>&lt;User&gt; &#123;
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">deductBalance</span><span class="hljs-params">( Long id,  Integer money)</span> <span class="hljs-keyword">throws</span> Exception;
+    <span class="hljs-comment">//根据用户id查询用户及其收货地址</span>
+    UserVO <span class="hljs-title function_">queryUserAndAddressById</span><span class="hljs-params">(Long id)</span> <span class="hljs-keyword">throws</span> Exception;
+&#125;</code></pre></div></li><li><p>在UserServiceImpl中实现该⽅法</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> UserVO <span class="hljs-title function_">queryUserAndAddressById</span><span class="hljs-params">(Long id)</span> <span class="hljs-keyword">throws</span> Exception &#123;
+    <span class="hljs-comment">//1、查询用户</span>
+    <span class="hljs-type">User</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> getById(id);
+    <span class="hljs-keyword">if</span> (user == <span class="hljs-literal">null</span> || user.getStatus() == UserStatus.FROZEN) &#123;
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Exception</span>(<span class="hljs-string">&quot;用户状态异常&quot;</span>);
+    &#125;
+    <span class="hljs-comment">//2、使用静态工具查询地址</span>
+    List&lt;Address&gt; addressList = Db.lambdaQuery(Address.class)
+        							.eq(Address::getUserId, id)
+        							.list();
+
+    <span class="hljs-comment">//3、封装VO</span>
+    <span class="hljs-comment">//转化User为UserVO</span>
+    <span class="hljs-type">UserVO</span> <span class="hljs-variable">userVO</span> <span class="hljs-operator">=</span> BeanUtil.copyProperties(user, UserVO.class);
+    <span class="hljs-keyword">if</span> (CollUtil.isNotEmpty(addressList)) &#123;
+        <span class="hljs-comment">//转化Address为AddressVO</span>
+        userVO.setAddresses(BeanUtil.copyToList(addressList, AddressVO.class));
+    &#125;
+    <span class="hljs-keyword">return</span> userVO;
+&#125;</code></pre></div></li></ol><p>在查询地址时，我们采用了Db的静态方法，因此避免了在UserService中注入AddressService，减少了循环依赖的⻛险。</p><h2 id="逻辑删除">3.3、逻辑删除</h2><p>逻辑删除就是基于代码逻辑模拟删除效果，但并不会真正删除数据。思路如下：</p><ul><li>在表中添加一个字段标记数据是否被删除</li><li>当删除数据时把标记置为1</li><li>查询时只查询标记为0的数据</li></ul><p>例如，逻辑删除字段是deleted，则在删除、更新和查询操作时都需要额外添加一个判断deleted字段的条件。</p><ul><li><p>删除操作</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">SET</span> deleted <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> deleted <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;</code></pre></div></li><li><p>查询操作</p><div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> deleted <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;</code></pre></div></li></ul><p>MybatisPlus提供了逻辑删除功能，<strong>无需改变方法调用的方式</strong>，而是在底层自动修改CRUD的语句。我们要做的就是在application.yaml文件中配置逻辑删除的字段名称和值即可：</p><div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">mybatis-plus:</span>
+  <span class="hljs-attr">global-config:</span>
+    <span class="hljs-attr">db-config:</span>
+      <span class="hljs-attr">logic-delete-field:</span> <span class="hljs-string">deleted</span>  <span class="hljs-comment">#配置全局逻辑删除的实体字段名，字段类型可以是boolean,integer</span>
+      <span class="hljs-attr">logic-delete-value:</span> <span class="hljs-number">1</span> <span class="hljs-comment">#逻辑已删除对应的值（默认是1）</span>
+      <span class="hljs-attr">logic-not-delete-value:</span> <span class="hljs-number">0</span> <span class="hljs-comment">#逻辑未删除对应的值（默认是0）</span></code></pre></div><p>例如，在Address表中已经添加了逻辑删除字段<code>deleted</code>，测试MyBatisPlus的逻辑删除功能，看是否自动给SQL语句添加了关于<code>deleted</code>字段的判断</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510123347041-2025-5-1012:33:48.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootTest</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AddressServiceImplTest</span> &#123;
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> IAddressService addressService;
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLogicDelete</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-comment">//逻辑删除id为60的地址</span>
+        addressService.removeById(<span class="hljs-number">60</span>);
+		<span class="hljs-comment">//再次查询</span>
+        addressService.getById(<span class="hljs-number">60</span>);
+    &#125;
+&#125;</code></pre></div><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510123909931-2025-5-1012:39:11.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><hr><p>逻辑删除本身也有自己的问题，比如：</p><ul><li>会导致数据库表垃圾数据越来越多，影响查询效率</li><li>SQL中全都需要对逻辑删除字段做判断，影响查询效率</li></ul><p>因此，不太推荐采用逻辑删除功能，如果数据不能删除，可以采用把数据迁移到其它表的办法。</p><h2 id="枚举处理器">3.4、枚举处理器</h2><p>User类中有⼀个用户状态字段：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510125137138-2025-5-1012:51:38.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload></p><p>像这种字段我们⼀般会定义⼀个枚举，做业务判断的时候就可以直接基于枚举做⽐较。但是我们数据库采⽤的是 int 类型，对应的PO也是 Integer 。因此业务操作时必须⼿动把 枚举 与 Integer转换，非常麻烦。</p><p>因此，MybatisPlus提供了⼀个处理枚举的类型转换器，可以帮我们<strong>把枚举类型与数据库类型⾃动转换</strong>。</p><p>首先，定义一个用户状态的枚举类UserStatus，再把 User 类和UserVO中的 status 字段改为 UserStatus 类型。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">UserStatus</span> &#123;
+    <span class="hljs-comment">//初始化枚举实例</span>
+    NORMAL(<span class="hljs-number">1</span>,<span class="hljs-string">&quot;正常&quot;</span>),
+    FROZEN(<span class="hljs-number">2</span>,<span class="hljs-string">&quot;冻结&quot;</span>)
+    ;
+    <span class="hljs-comment">//属性</span>
+    <span class="hljs-meta">@EnumValue</span> <span class="hljs-comment">//将value字段的值作为数据库中的值</span>
+    <span class="hljs-keyword">private</span> Integer value;
+    <span class="hljs-meta">@JsonValue</span>  <span class="hljs-comment">//前端展示desc属性</span>
+    <span class="hljs-keyword">private</span> String desc;
+	<span class="hljs-comment">//构造方法</span>
+    UserStatus(Integer value, String desc) &#123;
+        <span class="hljs-built_in">this</span>.value = value;
+        <span class="hljs-built_in">this</span>.desc = desc;
+    &#125;
+&#125;
+
+<span class="hljs-meta">@Data</span>
+<span class="hljs-meta">@TableName(value = &quot;tb_user&quot;, autoResultMap = true)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;
+    <span class="hljs-comment">//....省略</span>
+    
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 使用状态（1正常 2冻结）</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-keyword">private</span> UserStatus status;
+&#125;
+
+<span class="hljs-comment">//UserVO的修改略</span></code></pre></div><p>要让 MybatisPlus 处理枚举与数据库类型⾃动转换，必须告诉它<u>枚举中的哪个字段的值作为数据库值</u>。MybatisPlus 提供了 <code>@EnumValue</code> 注解来标记枚举属性。</p><p>然后，在application.yaml⽂件中配置枚举处理器，由它完成指定字段和数据表中属性的转化。</p><div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">mybatis-plus:</span>
+  <span class="hljs-attr">configuration:</span>
+    <span class="hljs-comment">#配置枚举类型处理器</span>
+    <span class="hljs-attr">default-enum-type-handler:</span> <span class="hljs-string">com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler</span>
+</code></pre></div><p>最终，查询出的 User 类的 status 字段会是枚举类型（NORMAL、FROZEN），向前端返回时也返回对应的枚举类型。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510130900570-2025-5-1013:09:01.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>由于SpringMVC默认使用Jackson作为JSON处理器，可以在UserStatus的属性上添加<code>@JsonValue</code> 注解标记JSON序列化时展⽰的字段，比如在desc属性上添加该字段，向前端返回的就是（正常、冻结）</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510130736240-2025-5-1013:07:37.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><h2 id="json处理器">3.5、JSON处理器</h2><p>数据库的user表中有⼀个 info 字段，是JSON类型</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510131859324-2025-5-1013:19:00.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>格式如下：</p><div class="code-wrapper"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">20</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;intro&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;佛系⻘年&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;gender&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;male&quot;</span><span class="hljs-punctuation">&#125;</span></code></pre></div><p>而目前 User 实体类中却是 String 类型：</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510132013885-2025-5-1013:20:15.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>此时，要读取info中的属性时就⾮常不⽅便。如果要⽅便获取，info的类型最好是⼀个Map或者实体类。而⼀旦我们把 info 改为 对象 类型，就需要在写入数据库时手动转为 String ，再读取数据库时，手动转换为对象 ，这会非常麻烦。</p><p>因此MybatisPlus提供了很多特殊类型字段的类型处理器，解决特殊字段类型与数据库类型转换的问题。例如处理JSON就可以使⽤ JacksonTypeHandler 处理器。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250510132219515-2025-5-1013:22:20.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>首先定义一个UserInfo实体类来与info字段的属性匹配：</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Data</span>
+<span class="hljs-meta">@NoArgsConstructor</span>
+<span class="hljs-meta">@AllArgsConstructor(staticName = &quot;of&quot;)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserInfo</span> &#123;
+    <span class="hljs-keyword">private</span> Integer age;
+    <span class="hljs-keyword">private</span> String intro;
+    <span class="hljs-keyword">private</span> String gender;
+&#125;</code></pre></div><p>接下来，将User类的info字段修改为UserInfo类型，并使用<code>@TableField</code>注解为该属性指定类型处理器；并且在<code>@TableName</code>注解中 设置autoResultMap = true，完成数据库JSON类型与JAVA实体之间的自动类型转换。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Data</span>
+<span class="hljs-meta">@TableName(value = &quot;tb_user&quot;, autoResultMap = true)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;
+	<span class="hljs-comment">//其他属性略</span>
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 详细信息</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-meta">@TableField(typeHandler = JacksonTypeHandler.class)</span> <span class="hljs-comment">//设置类型处理器</span>
+    <span class="hljs-keyword">private</span> UserInfo info;
+&#125;</code></pre></div><h1 id="四插件功能">四、插件功能</h1><h2 id="分页插件">4.1、分页插件</h2><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas my-3"><div class="post-meta mr-3 d-flex align-items-center"><i class="iconfont icon-category"></i> <span class="category-chains"><span class="category-chain"><a href="/categories/JavaWeb/" class="category-chain-item">JavaWeb</a></span></span></div></div><div class="license-box my-3"><div class="license-title"><div>MybatisPlus</div><div>https://catpaws.top/8af9e237/</div></div><div class="license-meta"><div class="license-meta-item"><div>作者</div><div>猫爪在上</div></div><div class="license-meta-item license-meta-date"><div>发布于</div><div>2024年12月21日</div></div><div class="license-meta-item"><div>许可协议</div><div><a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/"><span class="hint--top hint--rounded" aria-label="BY - 署名"><i class="iconfont icon-cc-by"></i></span></a></div></div></div><div class="license-icon iconfont"></div></div><div class="post-prevnext my-3"><article class="post-prev col-6"><a href="/e0606bbf/" title="Redis - 实战篇"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">Redis - 实战篇</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/bcfabe89/" title="Redis - 基础篇"><span class="hidden-mobile">Redis - 基础篇</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article id="comments" lazyload><div id="twikoo"></div><script type="text/javascript">Fluid.utils.loadComments("#comments",(function(){Fluid.utils.createScript("https://catpaws.top/blog-resource/twikoo1.6.42/twikoo.all.min.js",(function(){var t=Object.assign({envId:"https://catpaws-comments.netlify.app/.netlify/functions/twikoo",region:"ap-shanghai",path:"window.location.pathname"},{el:"#twikoo",path:"window.location.pathname",onCommentLoaded:function(){Fluid.utils.listenDOMLoaded((function(){var t="#twikoo .tk-content img:not(.tk-owo-emotion)";Fluid.plugins.imageCaption(t),Fluid.plugins.fancyBox(t)}))}});twikoo.init(t)}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="side-col d-none d-lg-block col-lg-2"><aside class="sidebar" style="margin-left:-1rem"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i> <span>目录</span></p><div class="toc-body" id="toc-body"></div></div></aside></div></div></div><script>Fluid.utils.createScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js",(function(){mermaid.initialize({theme:"default"}),Fluid.utils.listenDOMLoaded((function(){Fluid.events.registerRefreshCallback((function(){"mermaid"in window&&mermaid.init()}))}))}))</script><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer><div class="footer-inner"><div class="footer-content">人山人海，欢迎你的到来 <i class="iconfont icon-love"></i><br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><br><span><a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">本站由<img src="/img/upyun_logo.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="width:auto;height:auto">提供CDN加速/云存储服务</a></span></div><div class="beian"><span><a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">陕ICP备2025059828号 </a></span><span><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61032302000087" rel="nofollow noopener" class="beian-police" target="_blank"><span style="visibility:hidden;width:0">|</span> <img src="/img/police_beian.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload alt="police-icon"> <span>陕公网安备61032302000087号</span></a></span></div></div></footer><script src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js"></script><link rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js"></script><script src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js"></script><script>!function(t,e){var i=Fluid.plugins.typing,n=e.getElementById("subtitle");n&&i&&i(n.getAttribute("data-typed-text"))}(window,document)</script><script src="/js/img-lazyload.js"></script><script>Fluid.utils.createScript("https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js",(function(){var t=jQuery("#toc");if(0!==t.length&&window.tocbot){var i=jQuery("#board-ctn").offset().top;window.tocbot.init(Object.assign({tocSelector:"#toc-body",contentSelector:".markdown-body",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",scrollSmooth:!0,includeTitleTags:!0,headingsOffset:-i},CONFIG.toc)),t.find(".toc-list-item").length>0&&t.css("visibility","visible"),Fluid.events.registerRefreshCallback((function(){if("tocbot"in window){tocbot.refresh();var t=jQuery("#toc");if(0===t.length||!tocbot)return;t.find(".toc-list-item").length>0&&t.css("visibility","visible")}}))}}))</script><script src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js"></script><script>Fluid.plugins.codeWidget()</script><script>Fluid.utils.createScript("https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js",(function(){window.anchors.options={placement:CONFIG.anchorjs.placement,visible:CONFIG.anchorjs.visible},CONFIG.anchorjs.icon&&(window.anchors.options.icon=CONFIG.anchorjs.icon);var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(window.anchors.options.class="anchorjs-link-left"),window.anchors.add(o.join(", ")),Fluid.events.registerRefreshCallback((function(){if("anchors"in window){anchors.removeAll();var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(anchors.options.class="anchorjs-link-left"),anchors.add(o.join(", "))}}))}))</script><script>Fluid.utils.createScript("https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js",(function(){Fluid.plugins.fancyBox()}))</script><script>Fluid.plugins.imageCaption()</script><script defer src="/js/leancloud.js"></script><script src="/js/local-search.js"></script><script src="//catpaws.top/blog-resource/js/timeDate.js"></script><script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script><script src="//catpaws.top/blog-resource/js/loader.js"></script><script src="//catpaws.top/blog-resource/js/blurpicload.js"></script><script src="//catpaws.top/blog-resource/js/axios.min.js"></script><script src="/js/boot.js"></script><noscript><div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div></noscript><script data-pjax src="https://catpaws.top/blog-resource/live2d/index.min.js"></script><script>const oml2d=OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:!1,models:[{path:"https://catpaws.top/blog-resource/live2d/Frieren/Frieren.model3.json",motionPreloadStrategy:"IDLE",position:[-60,-100],scale:.06,stageStyle:{width:250,height:350}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:!1,tips:{style:{width:200,height:90,left:"calc(50% - 20px)",top:"-100px","font-size":"14px"}}})</script></body></html>

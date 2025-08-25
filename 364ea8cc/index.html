@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="https://catpaws.top/blog-resource/imgs/webicon.png"><link rel="icon" href="https://catpaws.top/blog-resource/imgs/webicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="author" content="猫爪在上"><meta name="keywords" content=""><meta name="description" content="参考书籍：《重学设计模式》推荐学习网站：https:&#x2F;&#x2F;refactoringguru.cn&#x2F;design-patterns            一、设计模式介绍 什么是设计模式？ 设计模式是系统服务设计中针对常见场景的一种解决方案，可以解决功能逻辑开发中遇到的共性问题。 设计模式是一种开发设计指导思想，每一种设计模式都是解决某一类问题的概念模型，所以在实际"><meta property="og:type" content="article"><meta property="og:title" content="设计模式"><meta property="og:url" content="https://catpaws.top/364ea8cc/index.html"><meta property="og:site_name" content="猫爪在上の书桌"><meta property="og:description" content="参考书籍：《重学设计模式》推荐学习网站：https:&#x2F;&#x2F;refactoringguru.cn&#x2F;design-patterns            一、设计模式介绍 什么是设计模式？ 设计模式是系统服务设计中针对常见场景的一种解决方案，可以解决功能逻辑开发中遇到的共性问题。 设计模式是一种开发设计指导思想，每一种设计模式都是解决某一类问题的概念模型，所以在实际"><meta property="og:locale" content="zh_CN"><meta property="article:published_time" content="2025-05-20T03:07:41.000Z"><meta property="article:modified_time" content="2025-05-20T13:50:22.217Z"><meta property="article:author" content="猫爪在上"><meta name="twitter:card" content="summary_large_image"><title>设计模式 - 猫爪在上の书桌</title><link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css"><link rel="stylesheet" href="/css/main.css"><link id="highlight-css" rel="stylesheet" href="/css/highlight.css"><link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/font.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/poem.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/shubiao.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/loader.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/twikoo_beautify.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/indeximg-hover.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/wave.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/blurpicload.css"><script id="fluid-configs">var Fluid=window.Fluid||{};Fluid.ctx=Object.assign({},Fluid.ctx);var CONFIG={hostname:"catpaws.top",root:"/",version:"1.9.8",typing:{enable:!0,typeSpeed:70,cursorChar:"_",loop:!1,scope:[]},anchorjs:{enable:!0,element:"h1,h2,h3,h4,h5,h6",placement:"left",visible:"hover",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},code_language:{enable:!0,default:"TEXT"},copy_btn:!0,image_caption:{enable:!0},image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,placement:"right",headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:0},lazyload:{enable:!0,loading_img:"https://catpaws.top/blog-resource/imgs/transparent.svg",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,follow_dnt:!0,baidu:null,google:{measurement_id:null},tencent:{sid:null,cid:null},leancloud:{app_id:"TNTPv22capMq3aFV9S0sLqSm-gzGzoHsz",app_key:"G2BBAxXmiixopVg5mIJ2sxXR",server_url:"https://leancloud.catpaws.top",path:"window.location.pathname",ignore_local:!1},umami:{src:null,website_id:null,domains:null,start_time:"2024-01-01T00:00:00.000Z",token:null,api_server:null}},search_path:"/local-search.xml",include_content_in_search:!0};if(CONFIG.web_analytics.follow_dnt){var dntVal=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;Fluid.ctx.dnt=dntVal&&(dntVal.startsWith("1")||dntVal.startsWith("yes")||dntVal.startsWith("on"))}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loader-container"><div class="loader"><div class="wrapper"><div class="catContainer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 733 673" class="catbody"><path fill="#212121" d="M111.002 139.5C270.502 -24.5001 471.503 2.4997 621.002 139.5C770.501 276.5 768.504 627.5 621.002 649.5C473.5 671.5 246 687.5 111.002 649.5C-23.9964 611.5 -48.4982 303.5 111.002 139.5Z"></path><path fill="#212121" d="M184 9L270.603 159H97.3975L184 9Z"></path><path fill="#212121" d="M541 0L627.603 150H454.397L541 0Z"></path></svg> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 158 564" class="tail"><path fill="#191919" d="M5.97602 76.066C-11.1099 41.6747 12.9018 0 51.3036 0V0C71.5336 0 89.8636 12.2558 97.2565 31.0866C173.697 225.792 180.478 345.852 97.0691 536.666C89.7636 553.378 73.0672 564 54.8273 564V564C16.9427 564 -5.4224 521.149 13.0712 488.085C90.2225 350.15 87.9612 241.089 5.97602 76.066Z"></path></svg><div class="text"><span class="bigzzz">Z</span> <span class="zzz">Z</span></div></div><div class="wallContainer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 500 126" class="wall"><line stroke-width="6" stroke="#7C7C7C" y2="3" x2="450" y1="3" x1="50"></line><line stroke-width="6" stroke="#7C7C7C" y2="85" x2="400" y1="85" x1="100"></line><line stroke-width="6" stroke="#7C7C7C" y2="122" x2="375" y1="122" x1="125"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="500" y1="43"></line><line stroke-width="6" stroke="#7C7C7C" y2="1.99391" x2="115.5" y1="43.0061" x1="115.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.00002" x2="189" y1="43.0122" x1="189"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.00612" x2="262.5" y1="43.0183" x1="262.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.01222" x2="336" y1="43.0244" x1="336"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.01833" x2="409.5" y1="43.0305" x1="409.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="153" y1="84.0122" x1="153"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="228" y1="84.0122" x1="228"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="303" y1="84.0122" x1="303"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="378" y1="84.0122" x1="378"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="192" y1="125.012" x1="192"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="267" y1="125.012" x1="267"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="342" y1="125.012" x1="342"></line></svg></div></div></div></div><header><div class="header-inner" style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><strong>猫爪在上の书桌</strong> </a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/about/" target="_self"><i class="iconfont icon-addrcard"></i> <span>个人主页</span></a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="iconfont icon-books"></i> <span>博客</span></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="/" target="_self"><i class="iconfont icon-pen"></i> <span>文章</span> </a><a class="dropdown-item" href="/archives/" target="_self"><i class="iconfont icon-archive-fill"></i> <span>归档</span> </a><a class="dropdown-item" href="/categories/" target="_self"><i class="iconfont icon-category-fill"></i> <span>分类</span> </a><a class="dropdown-item" href="/tags/" target="_self"><i class="iconfont icon-tags-fill"></i> <span>标签</span></a></div></li><li class="nav-item"><a class="nav-link" href="/messages/" target="_self"><i class="iconfont icon-comment"></i> <span>留言板</span></a></li><li class="nav-item"><a class="nav-link" href="/timeline/" target="_self"><i class="iconfont icon-images"></i> <span>时光轴</span></a></li><li class="nav-item"><a class="nav-link" href="/links/" target="_self"><i class="iconfont icon-link-fill"></i> <span>友链</span></a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search"><i class="iconfont icon-search"></i></a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle"><i class="iconfont icon-dark" id="color-toggle-icon"></i></a></li></ul></div></div></nav><div id="banner" class="banner" parallax="true" style="background:url(https://catpaws.top/blog-resource/imgs/article-bg.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="banner-text text-center fade-in-up"><div class="h2"><span id="subtitle" data-typed-text="设计模式"></span></div><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2025-05-20 11:07" pubdate>2025年5月20日 上午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 6.2k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 52 分钟 </span><span id="leancloud-page-views-container" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="leancloud-page-views"></span> 次</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="side-col d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div id="board"><article class="post-content mx-auto"><h1 id="seo-header">设计模式</h1><p id="updated-time" class="note note-info">本文最后更新于 2025年5月20日 晚上</p><div class="markdown-body"><div class="note note-info"><p>参考书籍：《重学设计模式》</p><p>推荐学习网站：https://refactoringguru.cn/design-patterns</p></div><h1 id="一设计模式介绍">一、设计模式介绍</h1><p>什么是设计模式？</p><p>设计模式是系统服务设计中针对常见场景的一种解决方案，可以解决功能逻辑开发中遇到的<strong>共性问题</strong>。</p><p>设计模式是一种开发设计指导思想，每一种设计模式都是解决某一类问题的<strong>概念模型</strong>，所以在实际的使用过程中，不要拘泥于某种已经存在的固定代码格式，而要根据实际的业务场景做出改变。</p><hr><p>设计模式有哪些种类？</p><p>可以把设计模式按照其实现形式归为三类：</p><ul><li><strong>创建型模式</strong>：提供创建对象的机制，提升已有代码的灵活性和可复用性。</li><li><strong>结构型模式</strong>：介绍如何将对象和类组装成较大的结构，并同时保持结构的灵活和高效。</li><li><strong>行为模式</strong>：负责对象间的高效沟通和职责传递委派。</li></ul><hr><p>如何学习设计模式？</p><p>设计模式本身是一种指导思想，它没有一种完全固定的实现方式，也不是已经落地的可参考的技术方案。就像建造一座大厦，原料虽然都是砖、石头、水泥、砂浆，都在图纸上设计出了卧室、厨房、卫浴、书房，但每一栋楼的造型都不同，如果按照不同的年代划分，风格将更加迥异。</p><p>很多人没有学会或领会设计模式，正是因为看理论书籍的学习过程是在别人总结的经验上倒推实现方案得来的，没有做到融会贯通。就像即使知道汽车是怎么开的，但如果没驾驶过几千公里，司机能记住的也只是理论，上路后依然会手忙脚乱！ 要学会设计模式，就需要从具体的实战案例入手，<strong>针对同一个需求，用不同的实现方需式来实现</strong>。体会设计模式如何把一个类加 if else的实现方式优化为可扩展、易维护的服务模型。再通过多次练习和实操，把设计模式的思想学透、学懂。当然，这里还需要一定的刻苦练习，最终才能在设计模式的基础上构建出更加合理的代码。</p><h1 id="二六大设计原则">二、六大设计原则</h1><h2 id="单一职责原则">2.1、单一职责原则</h2><h3 id="定义">定义</h3><p>单一职责原则（Single Responsibility Principle，SRP）又称单一功能原则，它规定一个类应该只有一个发生变化的原因。简单来说就是，一个类应该只负责一项职责（功能），而不是承担多个不相关的职责。</p><p>一个类应该专注于做好一件事，避免因多个职责的耦合导致代码难以维护。</p><h3 id="模拟场景">模拟场景</h3><p>以一个视频网站用户分类的例子为例。</p><p>当在各类视频网站看电影、电视剧时，网站针对不同的用户类型，会在用户观看时给出不同的服务反馈，如以下三种。</p><ul><li>访客用户，一般只可以观看480P视频，并时刻提醒用户注册会员能观看高清视频。这表示视频业务发展需要拉客，以获取更多的新注册用户。</li><li>普通会员，可以观看 720P 超清视频，但不能屏蔽视频中出现的广告。这表示视频业务发展需要盈利。</li><li>VIP会员（属于付费用户），既可以观看1080P 蓝光视频，又可以关闭或跳过广告。</li></ul><h3 id="违背原则方案">违背原则方案</h3><p>根据需求场景直接编码，在一个类中实现一个最简单的基本功能，即根据不同的用户类型，判断用户可以观看视频的类型。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">VideoUserService</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">serveGrade</span><span class="hljs-params">(String userType)</span> &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;VIP会员&quot;</span>.equals(userType)) &#123;
+            System.out.println(<span class="hljs-string">&quot;VIP会员，视频1080p蓝光&quot;</span>);
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;普通会员&quot;</span>.equals(userType)) &#123;
+            System.out.println(<span class="hljs-string">&quot;普通会员，视频720p超清&quot;</span>);
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;访客用户&quot;</span>.equals(userType)) &#123;
+            System.out.println(<span class="hljs-string">&quot;访客用户，视频480p高清&quot;</span>);
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-comment">//测试</span>
+<span class="hljs-meta">@Test</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test_serveGrade</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">VideoUserService</span> <span class="hljs-variable">userService</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">VideoUserService</span>();
+        userService.serveGrade(<span class="hljs-string">&quot;VIP会员&quot;</span>);
+        userService.serveGrade(<span class="hljs-string">&quot;普通会员&quot;</span>);
+        userService.serveGrade(<span class="hljs-string">&quot;访客用户&quot;</span>);
+&#125;</code></pre></div><p>这一个类里包含着多个不同的行为，也就是多种用户职责。如果在这样的类上继续扩展功能或添加逻辑，就会显得非常臃肿。</p><h3 id="单一职责原则改善代码">单一职责原则改善代码</h3><p>为了满足不断迭代的需求，就不能使用一个类把所有职责行为混为一谈，而是需要提供一个上层的接口类，对不同的差异化用户给出单独的实现类，拆分各自的职责边界。</p><p>定义出上层接口<code>IVideoUserService</code>，统一定义需要实现的功能，包括：视频清晰级别接口definition、广告播放方式接口 advertisement。三种不同类型的用户就可以分别实现自己的服务类，做到职责统一。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IVideoUserService</span>&#123;
+    <span class="hljs-comment">//视频清晰级别：480P、720P、1080P</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">definition</span><span class="hljs-params">()</span>;
+
+    <span class="hljs-comment">//广告播放模式：有广告、无广告</span>
+    <span class="hljs-keyword">void</span> <span class="hljs-title function_">advertisement</span><span class="hljs-params">()</span>;
+&#125;</code></pre></div><ul><li><p>实现类，访客用户。这个类实现的是访客用户在视频网站中的形态，比如这类用户只能观看480P高清视频，同时需要观看广告。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GuestVideoUserService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IVideoUserService</span> &#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">definition</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;访客用户，视频480p高清&quot;</span>);
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">advertisement</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;访客用户，视频有广告&quot;</span>);
+    &#125;
+&#125;</code></pre></div></li><li><p>实现类，普通会员。这个类实现的是普通会员在视频网站中的形态，也就是注册用户可以观看 720P 超清视频，另外也需要观看广告。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">OrdinaryVideoUserService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IVideoUserService</span> &#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">definition</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;普通会员，视频720p超清&quot;</span>);
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">advertisement</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;普通用户，视频有广告&quot;</span>);
+    &#125;
+&#125;</code></pre></div></li><li><p>实现类，VIP会员。这个类实现的是VIP会员在视频网站中的形态。因为这类用户已经是付费用户，所以可以观看更高清的视频，同时不需要观看广告。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">VIPVideoUserService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IVideoUserService</span> &#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">definition</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;VIP会员，视频1080p蓝光&quot;</span>);
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">advertisement</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;VIP会员，视频无广告&quot;</span>);
+    &#125;
+&#125;</code></pre></div></li></ul><p>通过利用单一职责原则的代码优化后，现在每个类都只负责自己的用户行为。后续无论扩展新的功能还是需要在某个时刻修改某个用户行为类，都可以非常方便地开发和维护。</p><p>在项目开发的过程中，尽可能保证接口的定义、类的实现以及方法开发保持单一职责，对项目后期的迭代和维护会有很大的帮助。</p><h2 id="开闭原则">2.2、开闭原则</h2><h3 id="定义-1">定义</h3><p>在面向对象编程领域中，开闭原则规定软件中的<u>对象、类、模块和函数</u><strong>对扩展应该是开放的，但对于修改是封闭的</strong>。这意味着应该用抽象定义结构，用具体实现扩展细节，以此确保软件系统开发和维护过程的可靠性。</p><p>开闭原则的核心思想也可以理解为<strong>面向抽象编程</strong>。对于外部的调用方来说，只要能体现出面向抽象编程，定义出接口并实现其方法，即不修改原有方法体，只通过继承方式进行扩展，都可以体现出开闭原则。</p><h3 id="模拟场景-1">模拟场景</h3><p>这里计算三种形状的面积，如长方形、三角形、圆形，它们在类中已经按照固定的公式实现，其中圆形面积公式中π=3.14。但后续由于π值取的精度对于某些场景是不足的，需要扩展。接下来就通过模拟这个场景体现开闭原则。</p><ul><li><p>定义接口，其中分别定义了三种求面积的接口。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ICalculationArea</span>&#123;
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     *  计算面积，长方形</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> x 长</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> y 宽</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 面积</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-type">double</span> <span class="hljs-title function_">rectangle</span><span class="hljs-params">(<span class="hljs-type">double</span> x, <span class="hljs-type">double</span> y)</span>;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 计算面积，三角形</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> × 边长 ×</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> y 边长 y</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> z 边长 z</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 面积</span>
+<span class="hljs-comment">     *  海伦公式：s=√[p（p-a）（p-b）（p-c）.其中 p=（a+b+c）/2</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-type">double</span> <span class="hljs-title function_">triangle</span><span class="hljs-params">(<span class="hljs-type">double</span> x, <span class="hljs-type">double</span> y, <span class="hljs-type">double</span> z)</span>;
+
+    <span class="hljs-comment">/**</span>
+<span class="hljs-comment">     * 计算面积，圆形</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@param</span> r 半径</span>
+<span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 面积</span>
+<span class="hljs-comment">     * 圆面积公式：S=nr2</span>
+<span class="hljs-comment">     */</span>
+    <span class="hljs-type">double</span> <span class="hljs-title function_">circular</span><span class="hljs-params">(<span class="hljs-type">double</span> r)</span>;
+&#125;</code></pre></div></li><li><p>实现类。在实现类中，分别实现三种类型的面积计算。其中，圆形面积的π 值取的是 3.14D，这也是要扩展精度的方法和体现开闭原则的地方。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CalculationArea</span> <span class="hljs-keyword">implements</span>  <span class="hljs-title class_">ICalculationArea</span> &#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> π = <span class="hljs-number">3.14D</span>;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">rectangle</span><span class="hljs-params">(<span class="hljs-type">double</span> x, <span class="hljs-type">double</span> y)</span> &#123;
+        <span class="hljs-keyword">return</span> x * y;
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">triangle</span><span class="hljs-params">(<span class="hljs-type">double</span> x, <span class="hljs-type">double</span> y, <span class="hljs-type">double</span> z)</span> &#123;
+        <span class="hljs-type">double</span> p= (x+y+z) /<span class="hljs-number">2</span>;
+        <span class="hljs-keyword">return</span> Math. sqrt (p* (p -x) *(p-y)* (p -z));
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">circular</span><span class="hljs-params">(<span class="hljs-type">double</span> r)</span> &#123;
+        <span class="hljs-keyword">return</span> π * r * r;
+    &#125;
+&#125;</code></pre></div></li></ul><h3 id="违背原则方案-1">违背原则方案</h3><p>如果不考虑开闭原则，也不思考这种方法在整个工程服务中的使用情况，那么直接修改π值就可以了；但这样做就会破坏整个工程服务的稳定性，也会造成一些风险。</p><p>例如，用原来精度的π值计算出的圆形面积本可以满足需求，但是因为精度加长破坏了原有精度下的稳定性，就像齿轮间的啮合程度、方向盘的间隙等。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//直接修改π的值</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> π = <span class="hljs-number">3.141592653D</span>;
+<span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">circular</span><span class="hljs-params">(<span class="hljs-type">double</span> r)</span> &#123;
+    <span class="hljs-keyword">return</span> π * r * r;
+&#125;</code></pre></div><h3 id="开闭原则改善代码">开闭原则改善代码</h3><p>按照开闭原则方式实现起来并不复杂，它的主要目的是不能因为个例需求的变化而改变预定的实现类（<strong>对修改关闭</strong>），除非预定的实现类有错误。</p><p>实现过程是继承父类扩展需要的方法，同时可以保留原有的方法，新增自己需要的方法。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CalculationAreaExt</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">CalculationArea</span> &#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">static</span> <span class="hljs-type">double</span> π = <span class="hljs-number">3.141592653D</span>;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">circular</span><span class="hljs-params">(<span class="hljs-type">double</span> r)</span> &#123;
+        <span class="hljs-keyword">return</span> π * r * r;
+    &#125;
+&#125;</code></pre></div><p>扩展后的方法已经把求圆形面积的精度增长，需要使用此方法的用户可以直接调用。而其他的方法，如长方形面积、三角形面积，则可以继续使用。</p><h2 id="里氏替换原则">2.3、里氏替换原则</h2><h3 id="定义-2">定义</h3><p>里氏替换原则（LSP） 指出：继承必须确保超类所拥有的性质在子类中仍然成立。</p><p>如果 S 是 T 的子类型，那么所有 T 类型的对象都可以在不破坏程序的情况下被 S 类型的对象替换。</p><p>简单来说，<strong>子类可以扩展父类的功能，但不能改变父类原有的功能</strong>。也就是说：当子类继承父类时，除添加新的方法且完成新增功能外，尽量不要重写父类的方法。这句话包含了四点含义：</p><ul><li>子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法。</li><li>子类可以增加自己特有的方法。</li><li>当子类的方法重载父类的方法时，方法的前置条件（即方法的输入参数）要比父类的方法更宽松。</li><li>当子类的方法实现父类的方法（重写、重载或实现抽象方法）时，方法的后置条件（即方法的输出或返回值）要比父类的方法更严格或与父类的方法相等。</li></ul><div class="note note-info"><p>里氏替换原则是实现多态性的基础。多态性允许我们以父类的形式使用子类对象，但这一前提是子类必须完全遵循父类的行为规范。只有这样，程序才能在父类和子类之间无缝切换，而不会产生问题。</p></div><hr><p>里氏替换原则的作用：</p><ul><li>里氏替换原则是实现开闭原则的重要方式之一。</li><li>解决了继承中重写父类造成的可复用性变差的问题。</li><li>是动作正确性的保证，即类的扩展不会给已有的系统引入新的错误，降低了代码出错的可能性。</li><li>加强程序的健壮性，同时变更时可以做到非常好的兼容性，提高程序的维护性、可扩展性，降低需求变更时引入的风险。</li></ul><h3 id="模拟场景-2">模拟场景</h3><p>一个常见的反例是“正方形-矩形”问题。如果我们有一个Rectangle类和一个Square类，并且考虑用Square类（正方形）继承Rectangle类。</p><h3 id="违背原则的方案">违背原则的方案</h3><p>在继承之后，正方形需要满足矩形的所有行为和特性。然而，正方形有一个特殊性质：它的宽和高必须相等。为了让Square类保持这个性质，必须重写setWidth和setHeight方法，使得在设置任意一边的长度时，另一边的长度也自动调整为相同的值。</p><p>这就导致了一个问题：如果程序中本来是使用Rectangle对象的地方，换成Square对象后，程序的行为可能会发生变化。</p><p>因此，Square 继承 Rectangle 违反了里氏替换原则。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Rectangle</span> &#123;
+    <span class="hljs-keyword">protected</span> <span class="hljs-type">int</span> width;
+    <span class="hljs-keyword">protected</span> <span class="hljs-type">int</span> height;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setWidth</span><span class="hljs-params">(<span class="hljs-type">int</span> width)</span> &#123;
+        <span class="hljs-built_in">this</span>.width = width;
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setHeight</span><span class="hljs-params">(<span class="hljs-type">int</span> height)</span> &#123;
+        <span class="hljs-built_in">this</span>.height = height;
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getArea</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> width * height;
+    &#125;
+&#125;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Rectangle</span> &#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setWidth</span><span class="hljs-params">(<span class="hljs-type">int</span> width)</span> &#123;
+        <span class="hljs-built_in">this</span>.width = width;
+        <span class="hljs-built_in">this</span>.height = width;  <span class="hljs-comment">// 正方形必须保持长宽相等</span>
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setHeight</span><span class="hljs-params">(<span class="hljs-type">int</span> height)</span> &#123;
+        <span class="hljs-built_in">this</span>.height = height;
+        <span class="hljs-built_in">this</span>.width = height;  <span class="hljs-comment">// 正方形必须保持长宽相等</span>
+    &#125;
+&#125;
+</code></pre></div><p>测试：<code>testRectangleArea()</code> 方法假设 <code>setWidth()</code> 和 <code>setHeight()</code> 是独立的，但 <code>Square</code> 强制修改两者，导致结果不符合预期。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;
+    <span class="hljs-comment">// 这个方法期望矩形的面积是 width * height</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testRectangleArea</span><span class="hljs-params">(Rectangle rectangle)</span> &#123;
+        rectangle.setWidth(<span class="hljs-number">5</span>);
+        rectangle.setHeight(<span class="hljs-number">4</span>);
+        System.out.println(<span class="hljs-string">&quot;Expected Area: 20, Actual Area: &quot;</span> + rectangle.getArea());
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;
+        <span class="hljs-type">Rectangle</span> <span class="hljs-variable">rect</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Rectangle</span>();
+        testRectangleArea(rect);  <span class="hljs-comment">// 输出: Expected Area: 20, Actual Area: 20 ✅</span>
+
+        <span class="hljs-type">Rectangle</span> <span class="hljs-variable">square</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Square</span>();
+        testRectangleArea(square);  <span class="hljs-comment">// 输出: Expected Area: 20, Actual Area: 16 ❌</span>
+    &#125;
+&#125;
+</code></pre></div><h3 id="里氏替换原则改善代码">里氏替换原则改善代码</h3><p>为了解决正方形和矩形之间不合理的继承关系，我们可以采用<strong>组合或接口</strong>，而不是继承（inheritance）的设计方式。</p><p>思路：创建一个公共的接口或抽象类Shape，定义所有形状共有的行为，比如计算面积的方法getArea()；让正方形和矩形都实现这个接口，各自独立实现计算逻辑。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Shape</span> &#123;
+    <span class="hljs-type">int</span> <span class="hljs-title function_">getArea</span><span class="hljs-params">()</span>;
+&#125;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Rectangle</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> &#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> width;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> height;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setWidth</span><span class="hljs-params">(<span class="hljs-type">int</span> width)</span> &#123;
+        <span class="hljs-built_in">this</span>.width = width;
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setHeight</span><span class="hljs-params">(<span class="hljs-type">int</span> height)</span> &#123;
+        <span class="hljs-built_in">this</span>.height = height;
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getArea</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> width * height;
+    &#125;
+&#125;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Square</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Shape</span> &#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> side;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setSide</span><span class="hljs-params">(<span class="hljs-type">int</span> side)</span> &#123;
+        <span class="hljs-built_in">this</span>.side = side;
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getArea</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> side * side;
+    &#125;
+&#125;
+</code></pre></div><h2 id="迪米特最少知道法则原则">2.4、迪米特(最少知道)法则原则</h2><h3 id="定义-3">定义</h3><p>迪米特法则又称为最少知道原则，是指一个对象类对于其他对象类来说，知道得越少越好。也就是说，两个类之间不要有过多的耦合关系，保持最少关联性。</p><p>迪米特法则有一句经典语录：只和朋友通信，不和陌生人说话。也就是说，有内在关联的类要内聚，没有直接关系的类要低耦合。</p><h3 id="模拟场景-3">模拟场景</h3><p>通过模拟学生、老师、校长之间关系的例子来说明迪米特法则。老师需要负责具体某一个学生的学习情况，而校长会关心老师所在班级的总体成绩，不会过问具体某一个学生的学习情况。</p><p>下面模拟这样的例子，如果校长想知道一个班级的总分和平均分，是应该找老师要，还是跟每一个学生要再进行统计呢？显然是应该找具体的班主任老师。我们在实际开发时，容易忽略这样的真实情况，开发出逻辑错误的程序。</p><h3 id="违背原则方案-2">违背原则方案</h3><p>首先定义—个学生信息类,这个类比较简单,包括学生姓名、考试排名、总分</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span>&#123;
+	<span class="hljs-keyword">private</span> String name; <span class="hljs-comment">//学生姓名</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> rank; <span class="hljs-comment">//考试排名（总排名）   </span>
+    <span class="hljs-keyword">private</span> <span class="hljs-type">double</span> grade;<span class="hljs-comment">//总分</span>
+	
+    <span class="hljs-comment">//...get/set</span>
+&#125;</code></pre></div><p>之后再定义出老师类，在老师类里初始化学生的信息，以及提供基本的信息获取接口。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Teacher</span> &#123;
+    <span class="hljs-keyword">private</span> String name;  <span class="hljs-comment">//教师姓名</span>
+    <span class="hljs-keyword">private</span> String clazz;  <span class="hljs-comment">//班级</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Student&gt; studentList; <span class="hljs-comment">//学生列表</span>
+
+    <span class="hljs-keyword">static</span> &#123;
+        studentList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;花花&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">589</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;豆豆&quot;</span>, <span class="hljs-number">54</span>, <span class="hljs-number">356</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;秋雅&quot;</span>, <span class="hljs-number">23</span>, <span class="hljs-number">439</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;皮皮&quot;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">665</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;蛋蛋&quot;</span>, <span class="hljs-number">19</span>, <span class="hljs-number">509</span>));
+
+    &#125;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Teacher</span><span class="hljs-params">(String name, String clazz)</span> &#123;
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.clazz = clazz;
+    &#125;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> List&lt;Student&gt; <span class="hljs-title function_">getStudentList</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> studentList;
+    &#125;
+    
+	<span class="hljs-comment">//...get/set</span>
+&#125;</code></pre></div><p>接下来定义校长类，校长管理全局，并在校长类中获取学生人数、总分、平均分等。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Principal</span> &#123;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-type">Teacher</span> <span class="hljs-variable">teacher</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Teacher</span>(<span class="hljs-string">&quot;丽华&quot;</span>, <span class="hljs-string">&quot;3年1班&quot;</span>);
+
+    <span class="hljs-comment">// 查询班级信息，总分数、学生人数、平均值</span>
+    <span class="hljs-keyword">public</span> Map&lt;String, Object&gt; <span class="hljs-title function_">queryClazzInfo</span><span class="hljs-params">(String clazzId)</span> &#123;
+        <span class="hljs-comment">// 获取班级信息；学生总人数、总分、平均分</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">stuCount</span> <span class="hljs-operator">=</span> clazzStudentCount();
+        <span class="hljs-type">double</span> <span class="hljs-variable">totalScore</span> <span class="hljs-operator">=</span> clazzTotalScore();
+        <span class="hljs-type">double</span> <span class="hljs-variable">averageScore</span> <span class="hljs-operator">=</span> clazzAverageScore();
+
+        <span class="hljs-comment">// 组装对象，实际业务开发会有对应的类</span>
+        Map&lt;String, Object&gt; mapObj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+        mapObj.put(<span class="hljs-string">&quot;班级&quot;</span>, teacher.getClazz());
+        mapObj.put(<span class="hljs-string">&quot;老师&quot;</span>, teacher.getName());
+        mapObj.put(<span class="hljs-string">&quot;学生人数&quot;</span>, stuCount);
+        mapObj.put(<span class="hljs-string">&quot;班级总分数&quot;</span>, totalScore);
+        mapObj.put(<span class="hljs-string">&quot;班级平均分&quot;</span>, averageScore);
+        <span class="hljs-keyword">return</span> mapObj;
+    &#125;
+
+    <span class="hljs-comment">// 总分</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">clazzTotalScore</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-type">double</span> <span class="hljs-variable">totalScore</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (Student stu : teacher.getStudentList()) &#123;
+            totalScore += stu.getGrade();
+        &#125;
+        <span class="hljs-keyword">return</span> totalScore;
+    &#125;
+
+    <span class="hljs-comment">// 平均分</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">clazzAverageScore</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-type">double</span> <span class="hljs-variable">totalScore</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (Student stu : teacher.getStudentList()) &#123;
+            totalScore += stu.getGrade();
+        &#125;
+        <span class="hljs-keyword">return</span> totalScore / teacher.getStudentList().size();
+    &#125;
+
+    <span class="hljs-comment">// 班级人数</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">clazzStudentCount</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> teacher.getStudentList().size();
+    &#125;
+
+&#125;</code></pre></div><p>以上就是通过校长管理所有学生，老师只提供了非常简单的信息。虽然可以查询到结果，但是违背了迪米特法则，因为校长需要了解每个学生的情况。如果所有班级都让校长类统计，代码就会变得非常臃肿，也不易于维护利扩展。</p><h3 id="迪米特法则改善代码">迪米特法则改善代码</h3><p>从以上的实现方式我们发现，不该让校长直接管理学生，校长应该管理老师，由老师提供相应的学生信息查询服务。那么，接下来我们就把校长要的信息交给老师类去处理，这样每一位老师都会提供相应的功能，校长类只需要调用使用即可，而不需要了解每一位学生的分数。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Teacher</span> &#123;
+
+    <span class="hljs-keyword">private</span> String name;                <span class="hljs-comment">// 老师名称</span>
+    <span class="hljs-keyword">private</span> String clazz;               <span class="hljs-comment">// 班级</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Student&gt; studentList;  <span class="hljs-comment">// 学生</span>
+
+    <span class="hljs-keyword">static</span> &#123;
+        studentList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;花花&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">589</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;豆豆&quot;</span>, <span class="hljs-number">54</span>, <span class="hljs-number">356</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;秋雅&quot;</span>, <span class="hljs-number">23</span>, <span class="hljs-number">439</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;皮皮&quot;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">665</span>));
+        studentList.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;蛋蛋&quot;</span>, <span class="hljs-number">19</span>, <span class="hljs-number">502</span>));
+    &#125;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Teacher</span><span class="hljs-params">(String name, String clazz)</span> &#123;
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.clazz = clazz;
+    &#125;
+    
+    <span class="hljs-comment">// 总分</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">clazzTotalScore</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-type">double</span> <span class="hljs-variable">totalScore</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (Student stu : studentList) &#123;
+            totalScore += stu.getGrade();
+        &#125;
+        <span class="hljs-keyword">return</span> totalScore;
+    &#125;
+
+    <span class="hljs-comment">// 平均分</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">clazzAverageScore</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-type">double</span> <span class="hljs-variable">totalScore</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (Student stu : studentList) &#123;
+            totalScore += stu.getGrade();
+        &#125;
+        <span class="hljs-keyword">return</span> totalScore / studentList.size();
+    &#125;
+
+    <span class="hljs-comment">// 班级人数</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">clazzStudentCount</span><span class="hljs-params">()</span>&#123;
+        <span class="hljs-keyword">return</span> studentList.size();
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> name;
+    &#125;
+
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getClazz</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> clazz;
+    &#125;
+&#125;</code></pre></div><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Principal</span> &#123;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-type">Teacher</span> <span class="hljs-variable">teacher</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Teacher</span>(<span class="hljs-string">&quot;丽华&quot;</span>, <span class="hljs-string">&quot;3年1班&quot;</span>);
+
+    <span class="hljs-comment">// 查询班级信息，总分数、学生人数、平均值</span>
+    <span class="hljs-keyword">public</span> Map&lt;String, Object&gt; <span class="hljs-title function_">queryClazzInfo</span><span class="hljs-params">(String clazzId)</span> &#123;
+        <span class="hljs-comment">// 获取班级信息；学生总人数、总分、平均分</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">stuCount</span> <span class="hljs-operator">=</span> teacher.clazzStudentCount();
+        <span class="hljs-type">double</span> <span class="hljs-variable">totalScore</span> <span class="hljs-operator">=</span> teacher.clazzTotalScore();
+        <span class="hljs-type">double</span> <span class="hljs-variable">averageScore</span> <span class="hljs-operator">=</span> teacher.clazzAverageScore();
+
+        <span class="hljs-comment">// 组装对象，实际业务开发会有对应的类</span>
+        Map&lt;String, Object&gt; mapObj = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+        mapObj.put(<span class="hljs-string">&quot;班级&quot;</span>, teacher.getClazz());
+        mapObj.put(<span class="hljs-string">&quot;老师&quot;</span>, teacher.getName());
+        mapObj.put(<span class="hljs-string">&quot;学生人数&quot;</span>, stuCount);
+        mapObj.put(<span class="hljs-string">&quot;班级总分数&quot;</span>, totalScore);
+        mapObj.put(<span class="hljs-string">&quot;班级平均分&quot;</span>, averageScore);
+        <span class="hljs-keyword">return</span> mapObj;
+    &#125;
+
+&#125;
+</code></pre></div><h2 id="接口隔离原则">2.5、接口隔离原则</h2><h3 id="section"></h3><p>《代码整洁之道》的作者Robert C.Martin于2002年给“接口隔离原则”的定义是：<strong>客户端不应该被迫依赖于它不使用的方法</strong>。该原则还有另外一个定义：<strong>一个类对另一个类的依赖应该建立在最小的接口上</strong>。</p><p>接口隔离原则（Interface Segregation Principle，ISP）要求程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法。</p><p>在具体应用接口隔离原则时，应该根据以下几个规则衡量。</p><ul><li>接口尽量小，但是要有限度。一个接口只服务于一个子模块或业务逻辑。</li><li>为依赖接口的类定制服务。只提供调用者需要的方法，屏蔽不需要的方法。</li><li>了解环境，拒绝盲从。每个项目或产品都有选定的环境因素，环境不同，接口拆分的标准就不同，要深入了解业务逻辑。</li><li>提高内聚，减少对外交互。让接口用最少的方法完成最多的事情。</li></ul><p>接口隔离是为了高内聚、低耦合。在实际的业务开发中，通常会先定义好需要开发的接口，并由各个服务类实现。但如果没有经过考虑和设计，就很可能造成一个接口中包括众多的接口方法，而这些接口并不一定在每一个类中都需要实现。这样的接口很难维护，也不易于扩展，每一次修改验证都有潜在的风险。</p><h2 id="依赖倒置原则">2.6、依赖倒置原则</h2><h3 id="定义-4">定义</h3><p>依赖倒置原则（Dependence Inversion Principle，DIP）是指在设计代码架构时，高层模块不应该依赖于底层模块，二者都应该依赖于抽象。抽象不应该依赖于细节，细节应该依赖于抽象。</p><h3 id="场景模拟">场景模拟</h3><p>在互联网的营销活动中，经常为了拉新和促活，会做一些抽奖活动。这些抽奖活动的规则会随着业务的不断发展而调整，如随机抽奖、权重抽奖等。其中，权重是指用户在当前系统中的一个综合排名，比如活跃度、贡献度等。 下面模拟出抽奖的一个系统服务，如果是初次搭建这样的系统会怎么实现？这个系统是否有良好的扩展性和可维护性，同时在变动和新增业务时测试的复杂度是否高？这些都是在系统服务设计时需要考虑的问题。</p><h3 id="违背原则方案-3">违背原则方案</h3><p>先用最直接的方式，即按照不同的抽奖逻辑定义出不同的接口，让外部的服务调用。</p><ul><li><p>用户类：包括了用户姓名和对应的权重，方便满足不同的抽奖方式。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BetUser</span> &#123;
+
+    <span class="hljs-keyword">private</span> String userName;  <span class="hljs-comment">// 用户姓名</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> userWeight;   <span class="hljs-comment">// 用户权重</span>
+
+	<span class="hljs-comment">//constructor, getter, setter ....</span>
+&#125;
+</code></pre></div></li><li><p>在一个类中用两个接口实现两种不同的抽奖逻辑</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawControl</span> &#123;
+
+    <span class="hljs-comment">// 随机抽取指定数量的用户，作为中奖用户</span>
+    <span class="hljs-keyword">public</span> List&lt;BetUser&gt; <span class="hljs-title function_">doDrawRandom</span><span class="hljs-params">(List&lt;BetUser&gt; list, <span class="hljs-type">int</span> count)</span> &#123;
+        <span class="hljs-comment">// 集合数量很小直接返回</span>
+        <span class="hljs-keyword">if</span> (list.size() &lt;= count) <span class="hljs-keyword">return</span> list;
+        <span class="hljs-comment">// 乱序集合</span>
+        Collections.shuffle(list);
+        <span class="hljs-comment">// 取出指定数量的中奖用户</span>
+        List&lt;BetUser&gt; prizeList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(count);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; count; i++) &#123;
+            prizeList.add(list.get(i));
+        &#125;
+        <span class="hljs-keyword">return</span> prizeList;
+    &#125;
+
+    <span class="hljs-comment">// 权重排名获取指定数量的用户，作为中奖用户</span>
+    <span class="hljs-keyword">public</span> List&lt;BetUser&gt; <span class="hljs-title function_">doDrawWeight</span><span class="hljs-params">(List&lt;BetUser&gt; list, <span class="hljs-type">int</span> count)</span> &#123;
+        <span class="hljs-comment">// 按照权重排序</span>
+        list.sort((o1, o2) -&gt; &#123;
+            <span class="hljs-type">int</span> <span class="hljs-variable">e</span> <span class="hljs-operator">=</span> o2.getUserWeight() - o1.getUserWeight();
+            <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == e) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">return</span> e &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
+        &#125;);
+        <span class="hljs-comment">// 取出指定数量的中奖用户</span>
+        List&lt;BetUser&gt; prizeList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(count);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; count; i++) &#123;
+            prizeList.add(list.get(i));
+        &#125;
+        <span class="hljs-keyword">return</span> prizeList;
+    &#125;
+
+&#125;
+</code></pre></div></li></ul><p>首先，这样的实现方式扩展起来很麻烦，每次扩展都需要新增接口，同时对于调用方来说需要新增调用接口的代码。其次，对于这个服务类来说，随着接口数量的增加，代码行数会不断地暴增，最后难以维护。</p><h3 id="依赖倒置原则改善代码">依赖倒置原则改善代码</h3><p>既然上述方式不具备良好的扩展性，那么用依赖倒置、面向抽象编程的方式实现。</p><ul><li><p>首先定义抽奖功能的接口，任何一个实现方都可以实现自己的抽奖逻辑。</p><p>接口中包括了需要传输的 抽奖用户集合，以及中奖用户数量。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IDraw</span> &#123;
+
+    <span class="hljs-comment">// 获取中奖用户接口</span>
+    List&lt;BetUser&gt; <span class="hljs-title function_">prize</span><span class="hljs-params">(List&lt;BetUser&gt; list, <span class="hljs-type">int</span> count)</span>;
+
+&#125;
+</code></pre></div></li><li><p>随机抽奖实现</p><p>这部分随机抽奖逻辑与上面的抽奖方式逻辑是一样的，只不过放到接口实现中了</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawRandom</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IDraw</span> &#123;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> List&lt;BetUser&gt; <span class="hljs-title function_">prize</span><span class="hljs-params">(List&lt;BetUser&gt; list, <span class="hljs-type">int</span> count)</span> &#123;
+        <span class="hljs-comment">// 集合数量很小直接返回</span>
+        <span class="hljs-keyword">if</span> (list.size() &lt;= count) <span class="hljs-keyword">return</span> list;
+        <span class="hljs-comment">// 乱序集合</span>
+        Collections.shuffle(list);
+        <span class="hljs-comment">// 取出指定数量的中奖用户</span>
+        List&lt;BetUser&gt; prizeList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(count);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; count; i++) &#123;
+            prizeList.add(list.get(i));
+        &#125;
+        <span class="hljs-keyword">return</span> prizeList;
+    &#125;
+
+&#125;</code></pre></div></li><li><p>权重抽奖实现</p><p>权重抽奖也是一样，把这些都放到自己的接口实现中。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawWeightRank</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IDraw</span> &#123;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> List&lt;BetUser&gt; <span class="hljs-title function_">prize</span><span class="hljs-params">(List&lt;BetUser&gt; list, <span class="hljs-type">int</span> count)</span> &#123;
+        <span class="hljs-comment">// 按照权重排序</span>
+        list.sort((o1, o2) -&gt; &#123;
+            <span class="hljs-type">int</span> <span class="hljs-variable">e</span> <span class="hljs-operator">=</span> o2.getUserWeight() - o1.getUserWeight();
+            <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> == e) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">return</span> e &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;
+        &#125;);
+        <span class="hljs-comment">// 取出指定数量的中奖用户</span>
+        List&lt;BetUser&gt; prizeList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(count);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; count; i++) &#123;
+            prizeList.add(list.get(i));
+        &#125;
+        <span class="hljs-keyword">return</span> prizeList;
+    &#125;
+
+&#125;
+</code></pre></div></li><li><p>创建抽奖服务</p><p>在这个类中体现了依赖倒置的重要性，可以把任何一种抽奖逻辑传递给这个类。这样实现的好处是可以不断地扩展，但是不需要在外部新增调用接口，降低了一套代码的维护成本，并提高了可扩展性及可维护性。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DrawService</span> &#123;
+
+    <span class="hljs-keyword">private</span> IDraw draw;
+
+    <span class="hljs-keyword">public</span> List&lt;BetUser&gt; <span class="hljs-title function_">doDraw</span><span class="hljs-params">(IDraw draw, List&lt;BetUser&gt; betUserList, <span class="hljs-type">int</span> count)</span> &#123;
+        <span class="hljs-keyword">return</span> draw.prize(betUserList, count);
+    &#125;
+&#125;</code></pre></div></li></ul><h1 id="三创建型模式">三、创建型模式</h1><h1 id="四结构型模式">四、结构型模式</h1><h1 id="五行为模式">五、行为模式</h1><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas my-3"><div class="post-meta mr-3 d-flex align-items-center"><i class="iconfont icon-category"></i> <span class="category-chains"><span class="category-chain"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">计算机基础</a></span></span></div></div><div class="license-box my-3"><div class="license-title"><div>设计模式</div><div>https://catpaws.top/364ea8cc/</div></div><div class="license-meta"><div class="license-meta-item"><div>作者</div><div>猫爪在上</div></div><div class="license-meta-item license-meta-date"><div>发布于</div><div>2025年5月20日</div></div><div class="license-meta-item"><div>许可协议</div><div><a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/"><span class="hint--top hint--rounded" aria-label="BY - 署名"><i class="iconfont icon-cc-by"></i></span></a></div></div></div><div class="license-icon iconfont"></div></div><div class="post-prevnext my-3"><article class="post-prev col-6"><a href="/c82a5987/" title="一、数组"><i class="iconfont icon-arrowleft"></i> <span class="hidden-mobile">一、数组</span> <span class="visible-mobile">上一篇</span></a></article><article class="post-next col-6"><a href="/eb9166f8/" title="Java并发编程"><span class="hidden-mobile">Java并发编程</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article id="comments" lazyload><div id="twikoo"></div><script type="text/javascript">Fluid.utils.loadComments("#comments",(function(){Fluid.utils.createScript("https://catpaws.top/blog-resource/twikoo1.6.42/twikoo.all.min.js",(function(){var t=Object.assign({envId:"https://catpaws-comments.netlify.app/.netlify/functions/twikoo",region:"ap-shanghai",path:"window.location.pathname"},{el:"#twikoo",path:"window.location.pathname",onCommentLoaded:function(){Fluid.utils.listenDOMLoaded((function(){var t="#twikoo .tk-content img:not(.tk-owo-emotion)";Fluid.plugins.imageCaption(t),Fluid.plugins.fancyBox(t)}))}});twikoo.init(t)}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="side-col d-none d-lg-block col-lg-2"><aside class="sidebar" style="margin-left:-1rem"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i> <span>目录</span></p><div class="toc-body" id="toc-body"></div></div></aside></div></div></div><script>Fluid.utils.createScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js",(function(){mermaid.initialize({theme:"default"}),Fluid.utils.listenDOMLoaded((function(){Fluid.events.registerRefreshCallback((function(){"mermaid"in window&&mermaid.init()}))}))}))</script><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer><div class="footer-inner"><div class="footer-content">人山人海，欢迎你的到来 <i class="iconfont icon-love"></i><br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><br><span><a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">本站由<img src="/img/upyun_logo.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="width:auto;height:auto">提供CDN加速/云存储服务</a></span></div><div class="beian"><span><a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">陕ICP备2025059828号 </a></span><span><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61032302000087" rel="nofollow noopener" class="beian-police" target="_blank"><span style="visibility:hidden;width:0">|</span> <img src="/img/police_beian.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload alt="police-icon"> <span>陕公网安备61032302000087号</span></a></span></div></div></footer><script src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js"></script><link rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js"></script><script src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js"></script><script>!function(t,e){var i=Fluid.plugins.typing,n=e.getElementById("subtitle");n&&i&&i(n.getAttribute("data-typed-text"))}(window,document)</script><script src="/js/img-lazyload.js"></script><script>Fluid.utils.createScript("https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js",(function(){var t=jQuery("#toc");if(0!==t.length&&window.tocbot){var i=jQuery("#board-ctn").offset().top;window.tocbot.init(Object.assign({tocSelector:"#toc-body",contentSelector:".markdown-body",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",scrollSmooth:!0,includeTitleTags:!0,headingsOffset:-i},CONFIG.toc)),t.find(".toc-list-item").length>0&&t.css("visibility","visible"),Fluid.events.registerRefreshCallback((function(){if("tocbot"in window){tocbot.refresh();var t=jQuery("#toc");if(0===t.length||!tocbot)return;t.find(".toc-list-item").length>0&&t.css("visibility","visible")}}))}}))</script><script src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js"></script><script>Fluid.plugins.codeWidget()</script><script>Fluid.utils.createScript("https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js",(function(){window.anchors.options={placement:CONFIG.anchorjs.placement,visible:CONFIG.anchorjs.visible},CONFIG.anchorjs.icon&&(window.anchors.options.icon=CONFIG.anchorjs.icon);var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(window.anchors.options.class="anchorjs-link-left"),window.anchors.add(o.join(", ")),Fluid.events.registerRefreshCallback((function(){if("anchors"in window){anchors.removeAll();var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(anchors.options.class="anchorjs-link-left"),anchors.add(o.join(", "))}}))}))</script><script>Fluid.utils.createScript("https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js",(function(){Fluid.plugins.fancyBox()}))</script><script>Fluid.plugins.imageCaption()</script><script defer src="/js/leancloud.js"></script><script src="/js/local-search.js"></script><script src="//catpaws.top/blog-resource/js/timeDate.js"></script><script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script><script src="//catpaws.top/blog-resource/js/loader.js"></script><script src="//catpaws.top/blog-resource/js/blurpicload.js"></script><script src="//catpaws.top/blog-resource/js/axios.min.js"></script><script src="/js/boot.js"></script><noscript><div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div></noscript><script data-pjax src="https://catpaws.top/blog-resource/live2d/index.min.js"></script><script>const oml2d=OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:!1,models:[{path:"https://catpaws.top/blog-resource/live2d/Frieren/Frieren.model3.json",motionPreloadStrategy:"IDLE",position:[-60,-100],scale:.06,stageStyle:{width:250,height:350}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:!1,tips:{style:{width:200,height:90,left:"calc(50% - 20px)",top:"-100px","font-size":"14px"}}})</script></body></html>

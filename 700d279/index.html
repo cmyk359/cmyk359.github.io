@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="auto"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="https://catpaws.top/blog-resource/imgs/logo.jpg"><link rel="icon" href="https://catpaws.top/blog-resource/imgs/logo.jpg"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><meta name="theme-color" content="#2f4154"><meta name="author" content="猫爪在上"><meta name="keywords" content=""><meta name="description" content="有效的括号  思路：依次读取s中的字符，若是左括号，则入栈；若是右括号，则弹出栈顶括号判断是否匹配。 匹配失败的情况：  栈顶括号与当前括号不匹配 将s遍历完，栈不为空，则左括号单身。 s遍历过程中，栈为空，则右括号单身  public boolean isValid(String s) &#123;     Deque&lt;Character&gt; stack &#x3D; ne"><meta property="og:type" content="article"><meta property="og:title" content="五、栈与队列"><meta property="og:url" content="https://catpaws.top/700d279/index.html"><meta property="og:site_name" content="猫爪在上の书桌"><meta property="og:description" content="有效的括号  思路：依次读取s中的字符，若是左括号，则入栈；若是右括号，则弹出栈顶括号判断是否匹配。 匹配失败的情况：  栈顶括号与当前括号不匹配 将s遍历完，栈不为空，则左括号单身。 s遍历过程中，栈为空，则右括号单身  public boolean isValid(String s) &#123;     Deque&lt;Character&gt; stack &#x3D; ne"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250907104942188-2025-9-910:52:09.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20240811164748125-2024-8-1116:47:48.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250909121641854-2025-9-912_16_48-2025-9-912:35:11.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250909164228926-2025-9-916:42:31.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/calculator3-2025-9-918:31:38.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/%E6%97%A0%E6%A0%87%E9%A2%98-2025-9-922:55:25.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911115015025-2025-9-1111:50:18.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911121006649-2025-9-1112:10:08.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911154443978-2025-9-1115:44:47.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911092401377-2025-9-1109:24:29.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911214256191-2025-9-1121:42:58.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911214322645-2025-9-1121:43:23.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911212950738-2025-9-1121:29:54.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250912110107459-2025-9-1211:01:43.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250911224840034-2025-9-1122:48:41.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250912120452068-2025-9-1212:04:58.png"><meta property="og:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250912121530252-2025-9-1212:15:31.png"><meta property="article:published_time" content="2025-09-07T01:56:39.000Z"><meta property="article:modified_time" content="2025-09-12T07:32:35.209Z"><meta property="article:author" content="猫爪在上"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://gitee.com/cmyk359/img/raw/master/img/image-20250907104942188-2025-9-910:52:09.png"><title>五、栈与队列 - 猫爪在上の书桌</title><link rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css"><link rel="stylesheet" href="/css/main.css"><link id="highlight-css" rel="stylesheet" href="/css/highlight.css"><link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/font.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/poem.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/shubiao.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/loader.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/twikoo_beautify.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/indeximg-hover.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/wave.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/blurpicload.css"><link rel="stylesheet" href="//catpaws.top/blog-resource/css/reward/iconfont.css"><script id="fluid-configs">var Fluid=window.Fluid||{};Fluid.ctx=Object.assign({},Fluid.ctx);var CONFIG={hostname:"catpaws.top",root:"/",version:"1.9.8",typing:{enable:!0,typeSpeed:70,cursorChar:"_",loop:!1,scope:[]},anchorjs:{enable:!0,element:"h1,h2,h3,h4,h5,h6",placement:"left",visible:"hover",icon:""},progressbar:{enable:!0,height_px:3,color:"#29d",options:{showSpinner:!1,trickleSpeed:100}},code_language:{enable:!0,default:"TEXT"},copy_btn:!0,image_caption:{enable:!0},image_zoom:{enable:!0,img_url_replace:["",""]},toc:{enable:!0,placement:"right",headingSelector:"h1,h2,h3,h4,h5,h6",collapseDepth:0},lazyload:{enable:!0,loading_img:"https://catpaws.top/blog-resource/imgs/transparent.svg",onlypost:!1,offset_factor:2},web_analytics:{enable:!0,follow_dnt:!0,baidu:null,google:{measurement_id:null},tencent:{sid:null,cid:null},leancloud:{app_id:"TNTPv22capMq3aFV9S0sLqSm-gzGzoHsz",app_key:"G2BBAxXmiixopVg5mIJ2sxXR",server_url:"https://leancloud.catpaws.top",path:"window.location.pathname",ignore_local:!1},umami:{src:null,website_id:null,domains:null,start_time:"2024-01-01T00:00:00.000Z",token:null,api_server:null}},search_path:"/local-search.xml",include_content_in_search:!0};if(CONFIG.web_analytics.follow_dnt){var dntVal=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack;Fluid.ctx.dnt=dntVal&&(dntVal.startsWith("1")||dntVal.startsWith("yes")||dntVal.startsWith("on"))}</script><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loader-container"><div class="loader"><div class="wrapper"><div class="catContainer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 733 673" class="catbody"><path fill="#212121" d="M111.002 139.5C270.502 -24.5001 471.503 2.4997 621.002 139.5C770.501 276.5 768.504 627.5 621.002 649.5C473.5 671.5 246 687.5 111.002 649.5C-23.9964 611.5 -48.4982 303.5 111.002 139.5Z"></path><path fill="#212121" d="M184 9L270.603 159H97.3975L184 9Z"></path><path fill="#212121" d="M541 0L627.603 150H454.397L541 0Z"></path></svg> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 158 564" class="tail"><path fill="#191919" d="M5.97602 76.066C-11.1099 41.6747 12.9018 0 51.3036 0V0C71.5336 0 89.8636 12.2558 97.2565 31.0866C173.697 225.792 180.478 345.852 97.0691 536.666C89.7636 553.378 73.0672 564 54.8273 564V564C16.9427 564 -5.4224 521.149 13.0712 488.085C90.2225 350.15 87.9612 241.089 5.97602 76.066Z"></path></svg><div class="text"><span class="bigzzz">Z</span> <span class="zzz">Z</span></div></div><div class="wallContainer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 500 126" class="wall"><line stroke-width="6" stroke="#7C7C7C" y2="3" x2="450" y1="3" x1="50"></line><line stroke-width="6" stroke="#7C7C7C" y2="85" x2="400" y1="85" x1="100"></line><line stroke-width="6" stroke="#7C7C7C" y2="122" x2="375" y1="122" x1="125"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="500" y1="43"></line><line stroke-width="6" stroke="#7C7C7C" y2="1.99391" x2="115.5" y1="43.0061" x1="115.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.00002" x2="189" y1="43.0122" x1="189"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.00612" x2="262.5" y1="43.0183" x1="262.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.01222" x2="336" y1="43.0244" x1="336"></line><line stroke-width="6" stroke="#7C7C7C" y2="2.01833" x2="409.5" y1="43.0305" x1="409.5"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="153" y1="84.0122" x1="153"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="228" y1="84.0122" x1="228"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="303" y1="84.0122" x1="303"></line><line stroke-width="6" stroke="#7C7C7C" y2="43" x2="378" y1="84.0122" x1="378"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="192" y1="125.012" x1="192"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="267" y1="125.012" x1="267"></line><line stroke-width="6" stroke="#7C7C7C" y2="84" x2="342" y1="125.012" x1="342"></line></svg></div></div></div></div><header><div class="header-inner" style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/"><strong>猫爪在上の书桌</strong> </a><button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/about/" target="_self"><i class="iconfont icon-addrcard"></i> <span>个人主页</span></a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="iconfont icon-books"></i> <span>博客</span></a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="/" target="_self"><i class="iconfont icon-pen"></i> <span>文章</span> </a><a class="dropdown-item" href="/archives/" target="_self"><i class="iconfont icon-archive-fill"></i> <span>归档</span> </a><a class="dropdown-item" href="/categories/" target="_self"><i class="iconfont icon-category-fill"></i> <span>分类</span> </a><a class="dropdown-item" href="/tags/" target="_self"><i class="iconfont icon-tags-fill"></i> <span>标签</span></a></div></li><li class="nav-item"><a class="nav-link" href="/messages/" target="_self"><i class="iconfont icon-comment"></i> <span>留言板</span></a></li><li class="nav-item"><a class="nav-link" href="/timeline/" target="_self"><i class="iconfont icon-images"></i> <span>时光轴</span></a></li><li class="nav-item"><a class="nav-link" href="/links/" target="_self"><i class="iconfont icon-link-fill"></i> <span>友链</span></a></li><li class="nav-item" id="search-btn"><a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search"><i class="iconfont icon-search"></i></a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle"><i class="iconfont icon-dark" id="color-toggle-icon"></i></a></li></ul></div></div></nav><div id="banner" class="banner" parallax="true" style="background:url(https://catpaws.top/blog-resource/imgs/article-bg.jpg) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="banner-text text-center fade-in-up"><div class="h2"><span id="subtitle" data-typed-text="五、栈与队列"></span></div><div class="mt-3"><span class="post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2025-09-07 09:56" pubdate>2025年9月7日 上午</time></span></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 8.4k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 71 分钟 </span><span id="leancloud-page-views-container" class="post-meta" style="display:none"><i class="iconfont icon-eye" aria-hidden="true"></i> <span id="leancloud-page-views"></span> 次</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></div></div></div></header><main><div class="container-fluid nopadding-x"><div class="row nomargin-x"><div class="side-col d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-x-md"><div class="container nopadding-x-md" id="board-ctn"><div id="board"><article class="post-content mx-auto"><h1 id="seo-header">五、栈与队列</h1><p id="updated-time" class="note note-info">本文最后更新于 2025年9月12日 下午</p><div class="markdown-body"><meta name="referrer" , content="no-referrer"><h2 id="有效的括号"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-parentheses/">有效的括号</a></h2><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250907104942188-2025-9-910:52:09.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>思路：依次读取s中的字符，若是左括号，则入栈；若是右括号，则弹出栈顶括号判断是否匹配。</p><p>匹配失败的情况：</p><ul><li>栈顶括号与当前括号不匹配</li><li>将s遍历完，栈不为空，则左括号单身。</li><li>s遍历过程中，栈为空，则右括号单身</li></ul><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValid</span><span class="hljs-params">(String s)</span> &#123;
+    Deque&lt;Character&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;
+        <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i);
+        <span class="hljs-comment">//遇到左括号，则入栈</span>
+        <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;(&#x27;</span> || c == <span class="hljs-string">&#x27;&#123;&#x27;</span> || c == <span class="hljs-string">&#x27;[&#x27;</span>) &#123; 
+            stack.push(c);
+            <span class="hljs-keyword">continue</span>;
+        &#125;
+        <span class="hljs-comment">//遇到右括号，则弹出栈顶的左括号判断是否匹配</span>
+        <span class="hljs-keyword">if</span> (stack.isEmpty()) <span class="hljs-comment">//右括号单身</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+        <span class="hljs-type">char</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> stack.pop();    
+        <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;)&#x27;</span> &amp;&amp; r != <span class="hljs-string">&#x27;(&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;&#125;&#x27;</span> &amp;&amp; r != <span class="hljs-string">&#x27;&#123;&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;]&#x27;</span> &amp;&amp; r != <span class="hljs-string">&#x27;[&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    &#125;
+    <span class="hljs-comment">//最终，若栈为空，则所有括号都匹配，否则有左括号单身</span>
+    <span class="hljs-keyword">return</span> stack.isEmpty();
+&#125;</code></pre></div><hr><p>进阶🤣：</p><ul><li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/generate-parentheses/">括号生成</a></li><li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-valid-parentheses/">最长有效括号</a></li><li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-invalid-parentheses/">删除无效的括号</a></li></ul><h2 id="删除字符串中的所有相邻重复项消消乐"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/">删除字符串中的所有相邻重复项（消消乐）</a></h2><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20240811164748125-2024-8-1116:47:48.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><blockquote><p>匹配问题都是栈的强项</p></blockquote><p>思路一：使用栈来处理。遍历字符串S，当栈为空时，将当前字符入栈；当栈不为空时，判断栈顶元素与当前字符是否匹配：</p><ul><li>若匹配，则栈顶元素出栈，继续遍历下一字符。</li><li>若不匹配，则将当前元素入栈。</li></ul><p>最终，将栈中剩余字符组成的字符串<strong>反转</strong>后返回即可。</p><div class="note note-info"><p>其实使用双端队列更合适，每次从队尾进行入队和出队操作，最终直接返回队列中字符组成的字符串即可。</p></div><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">removeDuplicates</span><span class="hljs-params">(String s)</span> &#123;
+    <span class="hljs-keyword">if</span> (s.length() == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> s;
+    Deque&lt;Character&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;
+        <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i);
+        <span class="hljs-keyword">if</span> (stack.isEmpty() || stack.peek() != c)
+            stack.push(c);
+        <span class="hljs-keyword">else</span> 
+            stack.pop();
+    &#125;
+    <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();
+    <span class="hljs-keyword">while</span>(!stack.isEmpty()) &#123;
+        sb.append(stack.pop());
+    &#125;
+    <span class="hljs-keyword">return</span> sb.reverse().toString();
+&#125;</code></pre></div><hr><p>思路二：使用快慢指针。快指针遍历字符串中的每个字符，慢指针构造最终结果字符串。每次将fast位置字符放到slow所指位置，再判断当前加入的字符和前一个字符是否相同：</p><ul><li>若相同则slow--，下次加入的字符覆盖掉当前相同的字符</li><li>否则slow++，指出下一个加入的位置。</li></ul><blockquote><p>由于java中的String是不可变的，不可避免的要将其转换为char数组进行处理；而对于c++中的string，修改操作直接在原对象上进行，空间复杂度为O(1).</p></blockquote><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">removeDuplicates</span><span class="hljs-params">(String s)</span> &#123;
+    <span class="hljs-type">char</span>[] chs = s.toCharArray();
+    <span class="hljs-type">int</span> <span class="hljs-variable">slow</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, fast = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (fast &lt; chs.length) &#123;
+        chs[slow] = chs[fast];
+        <span class="hljs-keyword">if</span> (slow &gt; <span class="hljs-number">0</span> &amp;&amp; chs[slow] == chs[slow - <span class="hljs-number">1</span>])
+            slow--;
+        <span class="hljs-keyword">else</span>
+            slow++;
+        fast++;
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(chs, <span class="hljs-number">0</span>, slow);
+&#125;</code></pre></div><h2 id="逆波兰表达式求值"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/evaluate-reverse-polish-notation/">逆波兰表达式求值</a></h2><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250909121641854-2025-9-912_16_48-2025-9-912:35:11.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>逆波兰表达式即后缀表达式，表达式求值是栈的经典应用。</p><p>思路详见：<a href="https://catpaws.top/d403458d/#栈在表达式求值中的应用">栈在表达式求值中的应用</a></p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">evalRPN</span><span class="hljs-params">(String[] tokens)</span> &#123;
+    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
+    <span class="hljs-type">String</span> <span class="hljs-variable">operators</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;+-*/&quot;</span>;
+    <span class="hljs-keyword">for</span> (String s : tokens) &#123;
+        <span class="hljs-comment">//遇到数字，则入栈</span>
+        <span class="hljs-keyword">if</span> (!operators.contains(s))
+            stack.push(Integer.valueOf(s));
+        <span class="hljs-comment">//遇到运算符，则弹出栈顶两个元素执行相应运算</span>
+        <span class="hljs-keyword">else</span> &#123; 
+            <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> stack.pop(); <span class="hljs-comment">//先弹出的是右操作数</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">midRes</span> <span class="hljs-operator">=</span> calculate(stack.pop(), right, s);
+            stack.push(midRes);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> stack.pop();
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, String operator)</span> &#123;
+    <span class="hljs-keyword">if</span> (operator.equals(<span class="hljs-string">&quot;+&quot;</span>))
+        <span class="hljs-keyword">return</span> left + right;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (operator.equals(<span class="hljs-string">&quot;-&quot;</span>))
+        <span class="hljs-keyword">return</span> left - right;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (operator.equals(<span class="hljs-string">&quot;*&quot;</span>))
+        <span class="hljs-keyword">return</span> left * right;
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> left / right;
+&#125;</code></pre></div><div class="note note-warning"><p>踩坑：由于自己的粗心，在 <code>calculate</code> 方法中，使用 <code>==</code> 进行String字符串比较，而不是用 <code>equals</code> 方法。<code>==</code> 比较的是字符串对象的引用，而不是内容。由于输入中的运算符字符串对象与代码中的字符串字面量不是同一个对象，这些比较几乎总是返回 <code>false</code>，因此无论实际运算符是什么，都会执行除法操作，最终经过几次运算出现了除数为零的错误。</p><p>总结：== 和 equals的使用</p><p><code>==</code> 是java中比较运算符，它有两种使用场景</p><ul><li>对于<strong>基本数据类型</strong>，比较的是值是否相等</li><li>对于<strong>引用类型</strong>，比较的是对象的内存地址是否相同（即是否指向同一个对象）</li></ul><p><code>equals()</code> 是 Object 类的方法，用于比较两个对象的内容是否相等：</p><ul><li>默认行为：与 <code>==</code> 相同，比较对象引用</li><li>许多类（如 String、Integer）重写了 equals() 方法，使其比较对象内容</li></ul><p>因此：对应基本数据类型的比较，总是使用 <code>==</code>；字符串比较，总是使用 <code>equals()</code>；在对象的比较中，若需要比较引用，使用 <code>==</code>，若需要比较内容，使用 <code>equals()</code>。同时使用 <code>Objects.equals()</code>比较能避免 NullPointerException</p></div><hr><p>进阶：</p><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/basic-calculator/">基本计算器</a></p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250909164228926-2025-9-916:42:31.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>如何处理一元运算符<code>-</code>：当判断出当前是一元运算后，先手动往操作数栈中入栈一个0</p><p>一元负号出现的正确条件：</p><ol type="1"><li>表达式开头，例如"-1"</li><li>左括号后，例如"(-1+2)"</li><li>运算符后，例如"1+ -2"</li></ol><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(String s)</span> &#123;
+    Deque&lt;Integer&gt; nums = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<span class="hljs-comment">//操作数栈</span>
+    Deque&lt;Character&gt; operators = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<span class="hljs-comment">//运算符栈</span>
+
+    <span class="hljs-comment">//预处理，删除所有空格</span>
+    s = s.replaceAll(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>);
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;
+        <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i);
+
+        <span class="hljs-comment">//遇到数字</span>
+        <span class="hljs-keyword">if</span> (Character.isDigit(c)) &#123;
+            <span class="hljs-comment">// 读取完整数字</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">while</span> (i &lt; s.length() &amp;&amp; Character.isDigit(s.charAt(i))) &#123;
+                num = num * <span class="hljs-number">10</span> + (s.charAt(i) - <span class="hljs-string">&#x27;0&#x27;</span>);
+                i++;
+            &#125;
+            nums.push(num);
+            i--; <span class="hljs-comment">// 因为for循环会i++，所以这里减一</span>
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;(&#x27;</span>) &#123; <span class="hljs-comment">//遇到左括号</span>
+            operators.push(c);
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;)&#x27;</span>) &#123; <span class="hljs-comment">//遇到右括号</span>
+            <span class="hljs-comment">//依次从运算符栈中弹出运算符，直至弹出左括号;同时从操作数栈中弹出两个操作数进行相应运算，运算结果压入操作数栈顶</span>
+            <span class="hljs-keyword">while</span> (operators.peek() != <span class="hljs-string">&#x27;(&#x27;</span>) &#123;
+                <span class="hljs-type">char</span> <span class="hljs-variable">op</span> <span class="hljs-operator">=</span> operators.pop();
+                <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.pop(); <span class="hljs-comment">//先出栈的是右操作数</span>
+                <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> nums.pop();
+                nums.push(applyOp(op, right, left));
+            &#125;
+            operators.pop(); <span class="hljs-comment">// 弹出左括号</span>
+        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">//遇到运算符</span>
+            <span class="hljs-comment">// 依次从运算符栈中弹运算符，直至栈顶为左括号或栈为空,同时从操作数栈中弹出两个操作数进行相应运算，运算结果压入操作数栈顶, 最后将当前运算符压入运算符栈</span>
+
+            <span class="hljs-comment">// 处理一元负号</span>
+            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;-&#x27;</span> &amp;&amp; isUnary(s, i)) &#123;
+                nums.push(<span class="hljs-number">0</span>);
+            &#125;
+            <span class="hljs-comment">// 这里只有加减，优先级相同，所以可以弹出所有非&#x27;(&#x27;的运算符</span>
+            <span class="hljs-keyword">while</span> (!operators.isEmpty() &amp;&amp; operators.peek() != <span class="hljs-string">&#x27;(&#x27;</span>) &#123;
+                nums.push(applyOp(operators.pop(), nums.pop(), nums.pop()));
+            &#125;
+            operators.push(c);
+        &#125;
+    &#125;
+	<span class="hljs-comment">// 处理剩余的运算符</span>
+    <span class="hljs-keyword">while</span> (!operators.isEmpty()) &#123;
+        nums.push(applyOp(operators.pop(), nums.pop(), nums.pop()));
+    &#125;
+    <span class="hljs-keyword">return</span> nums.pop();
+&#125;
+<span class="hljs-comment">// 判断是否为一元负号</span>
+<span class="hljs-type">boolean</span> <span class="hljs-title function_">isUnary</span><span class="hljs-params">(String s, <span class="hljs-type">int</span> i)</span> &#123;
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-type">char</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> s.charAt(i - <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> prev == <span class="hljs-string">&#x27;(&#x27;</span> || prev == <span class="hljs-string">&#x27;+&#x27;</span> || prev == <span class="hljs-string">&#x27;-&#x27;</span> || prev == <span class="hljs-string">&#x27;*&#x27;</span> || prev == <span class="hljs-string">&#x27;/&#x27;</span>;
+&#125;
+
+<span class="hljs-comment">//先传入的是右操作数</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">applyOp</span><span class="hljs-params">(<span class="hljs-type">char</span> operator, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> left)</span> &#123;
+    <span class="hljs-keyword">if</span> (operator == <span class="hljs-string">&#x27;+&#x27;</span>)
+        <span class="hljs-keyword">return</span> left + right;
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> left - right;
+&#125;</code></pre></div><p>另一种解法：</p><div class="spoiler collapsed"><div class="spoiler-title">递归解法</div><div class="spoiler-content"><p>使用一个递归函数recursion来处理当前括号内的子表达式，天然地处理了括号的嵌套</p><ul><li><code>res</code>：累计当前表达式的结果</li><li><code>tmp</code>：暂存当前正在解析的数字</li><li><code>sign</code>：记录当前数字的符号（1表示正，-1表示负）</li></ul><p>遇到数字则计算当前数字（连续数字字符组成整数）。</p><p>遇到加号或减号，则将当前数字乘以sign加到结果中，然后重置tmp为0，并更新sign。</p><p>遇到左括号，递归处理括号内的表达式，并将递归结果乘以当前的sign加到结果中。</p><p>遇到右括号，返回当前结果加上当前数字乘以sign（因为右括号前可能还有数字没加）。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> i;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> n;
+    <span class="hljs-keyword">private</span> String s;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(String s)</span> &#123;
+        i = <span class="hljs-number">0</span>;
+        n = s.length();
+        <span class="hljs-built_in">this</span>.s = s;
+
+        <span class="hljs-keyword">return</span> recursion();
+    &#125;
+	
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">recursion</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> <span class="hljs-variable">sign</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+
+        <span class="hljs-keyword">while</span> (i &lt; n) &#123;
+            <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i);
+
+            <span class="hljs-keyword">switch</span> (c) &#123;
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27; &#x27;</span>:
+                    i++;
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;+&#x27;</span>:
+                    res += tmp * sign;
+                    tmp = <span class="hljs-number">0</span>;
+                    sign = <span class="hljs-number">1</span>;
+                    i++;
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;-&#x27;</span>:
+                    res += tmp * sign;
+                    tmp = <span class="hljs-number">0</span>;
+                    sign = -<span class="hljs-number">1</span>;
+                    i++;
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;(&#x27;</span>:
+                    i++;
+                    res += recursion() * sign;
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;)&#x27;</span>:
+                    i++;
+                    <span class="hljs-keyword">return</span> res + tmp * sign;
+                <span class="hljs-keyword">default</span>:
+                    tmp = tmp * <span class="hljs-number">10</span> + (c - <span class="hljs-string">&#x27;0&#x27;</span>);
+                    i++;
+            &#125;
+        &#125;
+
+        <span class="hljs-keyword">return</span> res + tmp * sign;
+    &#125;
+&#125;</code></pre></div></div></div><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/basic-calculator-iii/description/">基本计算器III</a></p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/calculator3-2025-9-918:31:38.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>相比于<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/basic-calculator/">基本计算器</a>，只是多了乘除运算，在其基础上加一个优先级判断即可。当遇到运算符时，依次从运算符栈中弹出优先级&gt;=当前运算符的元素，直至栈顶为左括号或栈为空。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(String s)</span> &#123;
+    Deque&lt;Integer&gt; nums = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<span class="hljs-comment">//操作数栈</span>
+    Deque&lt;Character&gt; operators = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<span class="hljs-comment">//运算符栈</span>
+
+    <span class="hljs-comment">//预处理，删除所有空格</span>
+    s = s.replaceAll(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>);
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;
+        <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i);
+
+        <span class="hljs-comment">//遇到数字</span>
+        <span class="hljs-keyword">if</span> (Character.isDigit(c)) &#123;
+            <span class="hljs-comment">// 读取完整数字</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">while</span> (i &lt; s.length() &amp;&amp; Character.isDigit(s.charAt(i))) &#123;
+                num = num * <span class="hljs-number">10</span> + (s.charAt(i) - <span class="hljs-string">&#x27;0&#x27;</span>);
+                i++;
+            &#125;
+            nums.push(num);
+            i--; <span class="hljs-comment">// 因为for循环会i++，所以这里减一</span>
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;(&#x27;</span>) &#123; <span class="hljs-comment">//遇到左括号</span>
+            operators.push(c);
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;)&#x27;</span>) &#123; <span class="hljs-comment">//遇到右括号</span>
+            <span class="hljs-comment">//依次从运算符栈中弹出运算符，直至弹出左括号;同时从操作数栈中弹出两个操作数进行相应运算，运算结果压入操作数栈顶</span>
+            <span class="hljs-keyword">while</span> (operators.peek() != <span class="hljs-string">&#x27;(&#x27;</span>) &#123;
+                <span class="hljs-type">char</span> <span class="hljs-variable">op</span> <span class="hljs-operator">=</span> operators.pop();
+                <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.pop(); <span class="hljs-comment">//先出栈的是右操作数</span>
+                <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> nums.pop();
+                nums.push(applyOp(op, right, left));
+            &#125;
+            operators.pop(); <span class="hljs-comment">// 弹出左括号</span>
+        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">//遇到运算符</span>
+            <span class="hljs-comment">// 依次从运算符栈中弹出运算符，直至栈顶为左括号或栈为空,同时从操作数栈中弹出两个操作数进行相应运算，运算结果压入操作数栈顶, 最后将当前运算符压入运算符栈</span>
+
+            <span class="hljs-comment">// 处理一元负号</span>
+            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;-&#x27;</span> &amp;&amp; isUnary(s, i)) &#123;
+                nums.push(<span class="hljs-number">0</span>);
+            &#125;
+            
+            <span class="hljs-keyword">while</span> (!operators.isEmpty() &amp;&amp; operators.peek() != <span class="hljs-string">&#x27;(&#x27;</span> &amp;&amp; level(operators.peek()) &gt;= level(c)) &#123;
+                nums.push(applyOp(operators.pop(), nums.pop(), nums.pop()));
+            &#125;
+            operators.push(c);
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">while</span> (!operators.isEmpty()) &#123;
+        nums.push(applyOp(operators.pop(), nums.pop(), nums.pop()));
+    &#125;
+    <span class="hljs-keyword">return</span> nums.pop();
+&#125;
+
+<span class="hljs-type">boolean</span> <span class="hljs-title function_">isUnary</span><span class="hljs-params">(String s, <span class="hljs-type">int</span> i)</span> &#123;
+    <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    <span class="hljs-type">char</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> s.charAt(i - <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> prev == <span class="hljs-string">&#x27;(&#x27;</span> || prev == <span class="hljs-string">&#x27;+&#x27;</span> || prev == <span class="hljs-string">&#x27;-&#x27;</span> || prev == <span class="hljs-string">&#x27;*&#x27;</span> || prev == <span class="hljs-string">&#x27;/&#x27;</span>;
+&#125;
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">applyOp</span><span class="hljs-params">(<span class="hljs-type">char</span> operator, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> left)</span> &#123;
+    <span class="hljs-keyword">if</span> (operator == <span class="hljs-string">&#x27;+&#x27;</span>)
+        <span class="hljs-keyword">return</span> left + right;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (operator == <span class="hljs-string">&#x27;-&#x27;</span>)
+        <span class="hljs-keyword">return</span> left - right;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (operator == <span class="hljs-string">&#x27;*&#x27;</span>)
+        <span class="hljs-keyword">return</span> left * right;
+    <span class="hljs-keyword">return</span> left / right;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">level</span><span class="hljs-params">(<span class="hljs-type">char</span> c)</span> &#123;
+    <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;+&#x27;</span> || c == <span class="hljs-string">&#x27;-&#x27;</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+&#125;
+</code></pre></div><h2 id="前-k-个高频元素"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/top-k-frequent-elements/">前 K 个高频元素</a></h2><p>题目描述：给你一个整数数组 <code>nums</code> 和一个整数 <code>k</code> ，请你返回其中出现频率前 <code>k</code> 高的元素。你可以按 <strong>任意顺序</strong> 返回答案。（<span style="color:red">Top k问题</span>）</p><p>基本思路：</p><ul><li>统计元素出现的次数。</li><li>对次数排序。</li><li>找出前 k个高频元素。</li></ul><p>Top K问题是堆的经典应用。</p><p>首先可以使用HashMap统计各个元素出现的频率。之后遍历HashMap，根据出现的频率将对应的元素存入大小为k的优先级队列<a href="https://catpaws.top/d5381517/#priorityqueue">PriorityQueue</a>（小根堆）中，最终优先级队列中存储的就是频率前k高的元素。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] topKFrequent(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k) &#123;
+    Map&lt;Integer, Integer&gt; map  = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+    <span class="hljs-comment">//统计频率</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : nums) &#123;
+        map.put(num, map.getOrDefault(num, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);
+    &#125;
+	
+    <span class="hljs-comment">// 创建优先队列（小根堆），比较器基于频率</span>
+    Queue&lt;Integer&gt; heap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;&gt;(
+        (a, b) -&gt; map.get(a) - map.get(b)
+    );
+	
+    <span class="hljs-comment">//遍历HashMap的键，维护大小为k的堆</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : map.keySet()) &#123;
+        heap.offer(num);
+        <span class="hljs-keyword">if</span> (heap.size() &gt; k) 
+            heap.poll(); <span class="hljs-comment">//移除频率最低的元素</span>
+    &#125;
+
+    <span class="hljs-comment">//收集前k个高频元素</span>
+    <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[k];
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; k; i++) &#123;
+        res[i] = heap.poll();
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre></div><h2 id="单调队列">单调队列</h2><p><strong>单调队列</strong>是一种特殊的队列，它保证队列中的元素（或元素的某个属性）是单调的（递增或递减）。与普通队列的 FIFO 原则不同，单调队列为了维护其单调性，会从<strong>队尾</strong>插入新元素，但可能会从<strong>队尾</strong>或<strong>队首</strong>删除元素。</p><ul><li><strong>单调递增队列</strong>：从队首到队尾，元素是单调递增的。常用于维护<strong>滑动窗口的最小值</strong>。</li><li><strong>单调递减队列</strong>：从队首到队尾，元素是单调递减的。常用于维护<strong>滑动窗口的最大值</strong>。</li></ul><p>核心思想：在遍历序列的过程中，维护一个“候选元素集合”。新元素加入时，会“淘汰”掉队列中所有不可能成为未来窗口极值的元素（从队尾开始淘汰），以保证队列的单调性。同时，需要检查队首元素是否已经滑出窗口，并及时移除。</p><hr><p>单调队列几乎是为<strong>滑动窗口</strong> 问题量身定做的数据结构，以<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">滑动窗口最大值</a>问题为例，分析单调队列的工作流程。</p><p>由于要求最大值，因此使用一个<strong>单调递减队列</strong>（求最小值用递增队列）。队列中存储的是元素的<strong>索引</strong>，因为索引可以同时提供<strong>值</strong>和<strong>位置</strong>信息，后者对于判断元素是否滑出窗口至关重要。</p><p>遍历数组 <code>nums</code> 的每个索引 <code>i</code>，在其中做四件事：</p><ul><li><strong>维护队首</strong>：检查队首索引对应的元素是否已经不在当前窗口<code>[i - k + 1, i]</code> 内。如果是，则将其从<strong>队首</strong>弹出。</li><li><strong>维护单调性</strong>：从<strong>队尾</strong>开始，弹出所有 小于等于 <code>nums[i]</code>的元素对应的索引。因为新来的 <code>nums[i]</code> 更大且更新，队列中所有比它小的元素都不可能再成为未来窗口的最大值，所以它们被“淘汰”了。</li><li><strong>新元素入队</strong>：将当前索引 <code>i</code> 加入队尾。</li><li><strong>记录结果</strong>：当 <code>i &gt;= k - 1</code>（即窗口首次被填满后），每个窗口的最大值就是当前队首索引对应的元素 。</li></ul><p>时间复杂度分析：由于每个元素最多被<strong>入队一次</strong>和<strong>出队一次</strong>，因此整体时间复杂度是<span class="math inline">\(O(n)\)</span></p><div class="note note-info"><p>单调队列的精髓在于<strong>从队尾淘汰无用元素</strong>，<strong>从队首移除过期元素</strong>。它是一个“知道得太多的”数据结构，它通过巧妙的淘汰机制，提前排除了那些永远不可能成为答案的候选者，从而实现了高效计算。</p></div><h3 id="滑动窗口最大值"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">滑动窗口最大值</a></h3><p><img src="https://gitee.com/cmyk359/img/raw/master/img/无标题-2025-9-922:55:25.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>基本思路：窗口每移动一次就求当前窗口中的最大值，将各个窗口中的最大值收集起来即可。关键是求每个窗口中的最大值。</p><p>思路一：使用容量为k的大根堆存储窗口中的值，窗口元素的最大值就是堆顶元素。但是随着窗口移动需要频繁调整堆结构。每次调整堆结构的时间复杂度是调<span class="math inline">\(O(k)\)</span>，窗口共要移动 n-k+1次，因此总的时间复杂度是<span class="math inline">\(O(nk)\)</span>，和暴力解法的时间复杂度相同。在 k 较大时会变得非常慢，可能接近 <span class="math inline">\(O(n²)\)</span>，</p><blockquote><p>窗口每移动一次需要删除从堆中删除一个元素，<u>由于不一定是堆顶元素，需要遍历查找堆数组找到下标</u>，再从堆中删除，时间复杂度是<span class="math inline">\(O(k) + O(log_2K)\)</span>。最后将新元素插入堆中并调整堆结构，时间复杂度是<span class="math inline">\((O(log_2k))\)</span>。因此移动一次窗口，调整堆结构的时间复杂度是<span class="math inline">\(O(k)\)</span>。</p></blockquote><hr><p>思路二：使用单调队列。单调队列几乎是为<strong>滑动窗口</strong> 问题量身定做的数据结构。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] maxSlidingWindow(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k) &#123;
+    <span class="hljs-comment">//使用双端队列Deque作为优先队列，用于记录索引</span>
+    Deque&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;(); 
+    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;
+    <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n - k + <span class="hljs-number">1</span>];
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-comment">// 检查队首是否已超出窗口范围 (i - k + 1 是当前窗口的左边界)</span>
+        <span class="hljs-keyword">if</span> (!queue.isEmpty() &amp;&amp; queue.peek() &lt; i - k + <span class="hljs-number">1</span>) &#123;
+            queue.poll();
+        &#125;
+
+        <span class="hljs-comment">//从队尾开始，淘汰所有小于当前值的元素（维护单调递减性）</span>
+        <span class="hljs-comment">// 将 &lt;= 改为 &gt;=后，维护的是单调递增性，得到的就是单调增队列</span>
+        <span class="hljs-keyword">while</span>(!queue.isEmpty() &amp;&amp; nums[queue.peekLast()] &lt;= nums[i])&#123;
+            queue.pollLast();
+        &#125;
+        <span class="hljs-comment">//新元素入队</span>
+        queue.offer(i);
+
+        <span class="hljs-comment">// 当窗口形成后，记录结果（队首元素即为当前窗口最大值的索引）</span>
+        <span class="hljs-keyword">if</span> (i &gt;= k - <span class="hljs-number">1</span>)&#123;
+            res[i - k + <span class="hljs-number">1</span>] = nums[queue.peek()];
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre></div><h2 id="单调栈">单调栈</h2><p><strong>单调栈</strong>是一种特殊的栈结构，它要求栈内的元素（或元素的某种属性）始终保持<strong>单调性</strong>。</p><ul><li><strong>单调递增栈</strong>：从栈顶到栈底，元素是单调递增的（或非递减的）。</li><li><strong>单调递减栈</strong>：从栈顶到栈底，元素是单调递减的（或非递增的）。</li></ul><p>它的核心思想是：<strong>在遍历一个序列（如数组）时，利用栈来维护一个“待定的候选元素集合”。当新元素到来时，通过与新元素比较，可以确定栈中哪些候选元素的答案就是这个新元素，从而将它们弹出并记录结果，最后再将新元素入栈，以保持栈的单调性。</strong></p><p>栈中存储的通常是<strong>索引</strong>，因为索引可以获取值，还可以计算宽度、距离等信息。</p><p>如何选择单调性：找“<strong>更大”</strong>用“<strong>增</strong>”栈，找“<strong>更小</strong>”用“<strong>减</strong>”栈。如果想要找更大的，堆顶就得是最小的（单调递增），这样才能一遇到大的就触发操作；找更小的同理。</p><p>栈的核心作用是以某种顺序（递增或递减）保存之前已经遍历过的元素，或者说<strong>尚未找到答案的候选元素</strong>，将当前元素与栈顶元素对比，快速找到栈顶元素之前或之后满足某种大小关系的第一个元素。</p><p>它擅长解决以下类型的问题：</p><ul><li>下一个更大元素：找出数组中每个元素右边第一个比它大的元素。</li><li>下一个更小元素：找出数组中每个元素右边第一个比它小的元素。</li><li>上一个更大/更小元素：找出左边第一个比它大或小的元素。</li><li>衍生问题：如「柱状图中的最大矩形」、「接雨水」等，其核心都可转化为寻找每个元素两边的边界（第一个比它小或大的元素）。</li></ul><hr><p>以最经典的 <strong>“下一个更大元素”</strong> 问题为例，分析单调栈（此处使用<strong>单调递减栈</strong>）的工作原理。</p><p>目标：对于数组 <code>nums</code> 中的每个元素 <code>nums[i]</code>，找到其右边第一个比它大的元素<code>nums[j]</code></p><p>创建一个空栈 <code>stack</code>，用于存储元素的索引。</p><p>遍历数组 <code>nums</code> 的每个索引 <code>i</code>：</p><ul><li><strong>维护单调性</strong>：当栈不为空，且当前元素 <code>nums[i]</code> 大于栈顶索引对应的元素 ，这意味着当前元素 <code>nums[i]</code> 正是栈顶索引对应元素的下一个更大元素，此时弹出栈顶索引并记录结果。重复以上过程，直到“淘汰”掉所有比当前元素小且已找到答案的元素。</li><li><strong>新元素入栈</strong>：将当前索引 <code>i</code> 压入栈中。当前元素 <code>nums[i]</code> 现在成为了新的“候选者”，它需要等待后续的元素来为自己提供答案。</li></ul><p>遍历结束后，栈中可能还剩余一些元素。这些元素意味着在整个数组中，它们的右边<strong>不存在比它们更大的元素</strong>。</p><p>时间复杂度分析：每个元素<strong>最多只会被压入栈一次和弹出栈一次</strong>，整个过程的弹出和压入操作总数与数组长度 <code>n</code> 成线性关系。因此使用单调栈解决问题的时间复杂度为<span class="math inline">\(O(n)\)</span></p><div class="note note-info"><p>栈内存储的是一系列<strong>尚未找到“下一个更大元素”的候选者的索引</strong>。这些候选者按照从顶到底、值逐渐变大的顺序排列（单调递增）。当一个<strong>更大</strong>的新元素 <code>nums[i]</code> 到来时，它就像一把“钥匙”，可以解锁（弹出）栈中所有比它小的元素，并成为它们的答案。</p></div><h3 id="每日温度"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/">每日温度</a></h3><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911115015025-2025-9-1111:50:18.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>思路：使用 单调递增栈 存储每天温度对应的索引。创建与天数相同大小的数组res存储最终结果，初始化为0，表示没有比当天温度更高的了。</p><p>遍历temperatures数组：</p><ul><li><p>若栈为空，当前元素的索引入栈。</p></li><li><p>若栈不为空，弹出栈顶所有比当前元素小 的元素对应 的索引，栈顶元素与右侧第一个比它的元素的距离，就是两者是索引的差值；最后将当前元素的索引入栈。</p></li></ul><p>遍历完后可能栈中还有索引剩余，它们在结果数组 <code>res</code> 中对应的值保持为初始的默认值0，无需额外操作。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] dailyTemperatures(<span class="hljs-type">int</span>[] temperatures) &#123;
+    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
+    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> temperatures.length;
+    <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-comment">// 维护单调性：当前元素大于栈顶元素时,弹出栈顶元素（索引），并记录答案</span>
+        <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; temperatures[i] &gt; temperatures[stack.peek()])&#123;
+            <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> stack.pop();
+            res[j] = i - j;
+        &#125;
+        <span class="hljs-comment">//当前索引入栈</span>
+        stack.push(i);
+    &#125;
+    <span class="hljs-comment">//遍历结束，栈中剩余元素的res值保持为-1，表示没有比那一天温度更高的</span>
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre></div><h3 id="下一个更大元素-i"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-i/">下一个更大元素 I</a></h3><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911121006649-2025-9-1112:10:08.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>对比 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/">每日温度</a>，就是在外面多套了一层，需要拿着第一个数组中的元素，在第二个数组中找它的下一个更大元素。复杂的点是：当在第二个数组中找到了下一个更大元素，需要在第一个数组中找到其位置，再将更大元素保存在该位置。为了解决这个问题可以使用HashMap做元素和位置的映射，从而快速找到要存放的位置。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElement(<span class="hljs-type">int</span>[] nums1, <span class="hljs-type">int</span>[] nums2) &#123;
+    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
+    Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+    <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[nums1.length];
+    Arrays.fill(res, -<span class="hljs-number">1</span>);
+	
+    <span class="hljs-comment">// 建立映射</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums1.length; i++) &#123;
+        map.put(nums1[i], i);
+    &#125;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums2.length; i++) &#123;
+        <span class="hljs-comment">// 1、维护单调性：当前元素大于栈顶元素时,弹出栈顶元素（索引），并记录答案</span>
+        <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; nums2[i] &gt; nums2[stack.peek()]) &#123;
+            <span class="hljs-comment">//nums2[j]找到了第一个比它大的元素</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> stack.pop();
+            <span class="hljs-comment">//如果nums2[j]是 nums1中的元素，就记录结果</span>
+            <span class="hljs-keyword">if</span> (map.containsKey(nums2[j])) &#123; 
+                res[map.get(nums2[j])] = nums2[i];
+            &#125;
+        &#125;
+        <span class="hljs-comment">//2、 当前索引入栈</span>
+        stack.push(i);
+    &#125;
+    <span class="hljs-comment">//遍历结束，栈中剩余元素的res值保持为-1</span>
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre></div><h3 id="下一个更大元素-ii"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-ii/">下一个更大元素 II</a></h3><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911154443978-2025-9-1115:44:47.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>给定的nums是<strong>循环数组</strong>，要找到每个元素的下一个更大元素需要遍历nums数组两遍，因此可以通过模运算模拟成环，当遍历指针超出nums长度时，通过模上数组长度让它重新指回数组首部。</p><p>使用单调递增栈解决下一个更大元素的问题，栈中存放的是元素索引。为了避免重复计算，只有在第一次遍历中才将索引放入栈中，寻找下一个更大元素。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] nextGreaterElements(<span class="hljs-type">int</span>[] nums) &#123;
+    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
+    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;
+    <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];
+    Arrays.fill(res, -<span class="hljs-number">1</span>);
+    <span class="hljs-type">int</span> index;
+    
+    <span class="hljs-comment">//遍历两遍以处理循环</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span> * n; i++) &#123;
+        index = i % n; <span class="hljs-comment">//取模</span>
+        
+        <span class="hljs-comment">//维护单调性：当前元素大于栈顶元素时,弹出栈顶元素（索引），并记录答案</span>
+        <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[index] &gt; nums[stack.peek()]) &#123;
+            res[stack.pop()] = nums[index]; 
+        &#125;
+
+        <span class="hljs-keyword">if</span> (index &lt; n) &#123; <span class="hljs-comment">//只在第一次遍历时压入索引</span>
+            stack.push(index);
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;</code></pre></div><h3 id="接雨水"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/">接雨水</a></h3><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911092401377-2025-9-1109:24:29.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>基本思路：雨水存在于凹槽处，将各个凹槽的水量加起来即可。</p><p>对于每个凹槽：</p><ul><li>水面高度取决于两侧较低的柱子，h = min(left , right) - cur</li><li>水面宽度是两侧柱子中间的距离，w = right的下标 - left的下标 - 1</li></ul><p>故一个凹槽的储水量为 h * w。</p><p>雨水量有两种计算方式：按行计算和按列计算。</p><ul><li><p>按行计算：每次计算一个水平段的雨水量，凹槽的边界是左右<strong>第一个</strong>比当前高的柱子</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911214256191-2025-9-1121:42:58.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p></li><li><p>按列计算：每一列柱子独立计算其能接住的雨水量，凹槽的边界是<strong>左边最高</strong>和<strong>右边最高</strong>的柱子</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911214322645-2025-9-1121:43:23.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p></li></ul><hr><p>暴力解法</p><p>思路：计算以每个位置的柱子为底部的凹槽 所能贡献的雨水量，将各个位置所贡献的水量加起来即可。</p><p>遍历每个柱子，同时在当前循环中，从当前位置向左向右遍历，寻找两侧的最高柱，计算它们三个组成的凹槽所能贡献的雨水，最终将每一列的储水量累加起来即可。第一个和最后一个柱子无法构造凹槽，在遍历过程中可以跳过。</p><p>显而易见，暴力解法采用<strong>按列</strong>方式计算雨水量，每个凹槽的宽度都是1，每列的储水量 = min(left, right) - cur</p><blockquote><p>由于是按列计算雨水量，需要寻找两侧比当前柱子高的最高柱，而非第一个比它高的柱子</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911212950738-2025-9-1121:29:54.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p></blockquote><p>复杂度分析：因为每次遍历列的时候，还要向两边寻找最高的列，所以时间复杂度为<span class="math inline">\(O(n^2)\)</span>，空间复杂度为<span class="math inline">\(O(1)\)</span>。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">trap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;
+    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> height.length;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-comment">// 第一个柱子和最后一个柱子不接雨水</span>
+        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || i == n - <span class="hljs-number">1</span>)
+            <span class="hljs-keyword">continue</span>;
+        <span class="hljs-type">int</span> <span class="hljs-variable">lHeight</span> <span class="hljs-operator">=</span> height[i]; <span class="hljs-comment">//记录左侧比它高的最高柱</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">rHeight</span> <span class="hljs-operator">=</span> height[i]; <span class="hljs-comment">//记录右侧比它高的最高柱</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i - <span class="hljs-number">1</span>; j &gt;= <span class="hljs-number">0</span>; j--) &#123;
+            <span class="hljs-keyword">if</span> (height[j] &gt; lHeight)
+                lHeight = height[j];
+        &#125;
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i + <span class="hljs-number">1</span>; j &lt; n; j++) &#123;
+            <span class="hljs-keyword">if</span> (height[j] &gt; rHeight)
+                rHeight = height[j];
+        &#125;
+
+        <span class="hljs-comment">//累加当前列的储水量</span>
+        <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> Math.min(lHeight, rHeight) - height[i];
+        <span class="hljs-keyword">if</span> (h &gt; <span class="hljs-number">0</span>) 
+            sum += h;
+    &#125;
+
+    <span class="hljs-keyword">return</span> sum;
+&#125;</code></pre></div><hr><p>动态规划</p><p>在暴力解法中，只要记录左边柱子的最高高度 和 右边柱子的最高高度，就可以计算当前位置的雨水面积。而为了得到两边的最高高度，每到一个柱子都向两边遍历一遍，其中存在许多重复计算。</p><p>可以每一个位置的左边最高高度记录在一个数组上（maxLeft），右边最高高度记录在一个数组上（maxRight），这样就避免了重复计算。</p><p>当前位置，左边的最高高度 = 前一个位置的左边最高高度 与 高度的最大值。右边的最高高度同理。</p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">trap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;
+    <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> height.length;
+    <span class="hljs-keyword">if</span> (length &lt;= <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span>[] maxLeft = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[length];
+    <span class="hljs-type">int</span>[] maxRight = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[length];
+
+    <span class="hljs-comment">// 记录每个柱子左边柱子最大高度（从左往右）</span>
+    maxLeft[<span class="hljs-number">0</span>] = height[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i&lt; length; i++) maxLeft[i] = Math.max(height[i], maxLeft[i-<span class="hljs-number">1</span>]);
+
+    <span class="hljs-comment">// 记录每个柱子右边柱子最大高度 （从右往左）</span>
+    maxRight[length - <span class="hljs-number">1</span>] = height[length - <span class="hljs-number">1</span>];
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> length - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--) maxRight[i] = Math.max(height[i], maxRight[i+<span class="hljs-number">1</span>]);
+
+    <span class="hljs-comment">// 求和</span>
+    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; length; i++) &#123;
+        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> Math.min(maxLeft[i], maxRight[i]) - height[i];
+        <span class="hljs-keyword">if</span> (count &gt; <span class="hljs-number">0</span>) sum += count;
+    &#125;
+    <span class="hljs-keyword">return</span> sum;
+&#125;</code></pre></div><p>复杂度分析：需要三次遍历height数组，时间复杂度为<span class="math inline">\(O(n)\)</span>。需要两个与height大小相同的数组，空间复杂度也为<span class="math inline">\(O(n)\)</span></p><hr><p>双指针法（最优解）</p><p><strong>核心</strong>：对于每个位置，它能接的雨水量取决于它左右两侧最大高度的较小值（水桶效应）。</p><p>双指针法使用两个指针 <code>left</code> 和 <code>right</code> 分别从数组的两端向中间移动，同时维护两个变量 <code>left_max</code> 和 <code>right_max</code>，分别记录<u>从左端到 <code>left</code> 指针的最大高度</u>和<u>从右端到 <code>right</code> 指针的最大高度</u>。</p><p>双指针法的核心策略是：<strong>总是移动高度较小的指针</strong>。因为这样可以确保在处理当前位置时，另一侧有一个更高的柱子作为“屏障”。</p><ul><li>当处理左指针时，我们知道右边至少有一个柱子（当前右指针）不低于左边任何柱子</li><li>当处理右指针时，我们知道左边至少有一个柱子（当前左指针）不低于右边任何柱子</li></ul><p>这样，我们就不需要知道另一侧的全局最大高度，只需要知道当前侧的最大高度即可。</p><p>具体执行过程如下，当 left 指针小于等于 right 指针时，执行循环：</p><p>若 <code>h[left] &lt; h[right]</code>，比较当前柱子高度 与 左边最大高度：</p><ul><li>如果 <code>h[left] &gt;= left_max</code>，当前柱子比之前的左边最大值大，无法积水。更新左侧最大值为当前柱子高度</li><li>否则，计算当前位置能接的雨水量 <code>left_max - h[left]</code>并累加到总和中</li><li>left++</li></ul><p>否则，比较当前柱子高度 与 右边最大高度</p><ul><li>如果 <code>h[right] &gt;= right_max</code>，更新 <code>right_max = h[right]</code></li><li>否则，计算当前位置能接的雨水量：<code>right_max - h[right]</code> 并累加到总和中</li><li>right--</li></ul><p>复杂度分析：两个指针移动的距离总和就是给定柱子的个数n，因此时间复杂度为<span class="math inline">\(O(n)\)</span>，由于没有使用额外的辅助空间，空间复杂度为<span class="math inline">\(O(1)\)</span></p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">trap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;
+    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> height.length;
+    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right = n - <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> <span class="hljs-variable">left_max</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, right_max = <span class="hljs-number">0</span>; <span class="hljs-comment">//记录左右两侧的最大值</span>
+    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">while</span> (left &lt;= right) &#123;
+        <span class="hljs-keyword">if</span> (height[left] &lt; height[right]) &#123;
+            height[left] &gt;= left_max ? left_max = height[left] : sum += (left_max - height[left]);
+            left++;
+        &#125; <span class="hljs-keyword">else</span> &#123; 
+            height[right] &gt;= right_max ? right_max = height[right] :sum += (right_max - height[right]);
+            right--;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> sum;
+
+&#125;</code></pre></div><hr><p>使用单调栈</p><p>单调栈使用<strong>按行方式</strong>计算雨水量，关键是从当前位置向左寻找第一个比它高的柱子，向右寻找第一个比它高的柱子，计算它们三个所组成的凹槽的积水量。</p><p>思路：维护一个单调递增栈，栈中存储的是每个柱子的索引。在遍历数组时，每当遇到一个比栈顶柱子高的柱子，就说明形成了一个凹槽。</p><ul><li>栈顶的柱子是凹槽底部</li><li>当前的遍历柱子是凹槽的右边界（右侧第一个比它高的）</li><li>将当前栈顶元素弹出后，新的栈顶元素是左边界（左侧第一个比它高的）<ul><li>注：此时不要错将栈顶弹出了，只要取到值即可</li></ul></li></ul><p>计算每个凹槽的储水量，累加起来即可。</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250912110107459-2025-9-1211:01:43.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>与上面方法不同的是第一个柱子和最后一个柱子不能跳过，因为它们可能是某个凹槽的左边界和右边界。</p><p>复杂度分析：每个柱子最多只会被压入栈一次和弹出栈一次，时间复杂度是<span class="math inline">\(O(n)\)</span>；由于使用了栈存储所有可能构成凹槽的元素，空间复杂度也是<span class="math inline">\(O(n)\)</span></p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">trap</span><span class="hljs-params">(<span class="hljs-type">int</span>[] height)</span> &#123;
+    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>();
+    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> height.length;
+    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//至少要三个柱子才可能接住雨水</span>
+
+    <span class="hljs-type">int</span> <span class="hljs-variable">sum</span>  <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        <span class="hljs-keyword">while</span>(!stack.isEmpty() &amp;&amp; height[i] &gt; height[stack.peek()]) &#123;
+            <span class="hljs-comment">//找到了一个凹槽</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">bottom</span> <span class="hljs-operator">=</span> stack.pop();
+            <span class="hljs-keyword">if</span> (stack.isEmpty()) <span class="hljs-keyword">break</span>; <span class="hljs-comment">//不存在左边界，无法组成凹槽</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">leftIndex</span> <span class="hljs-operator">=</span> stack.peek(); <span class="hljs-comment">//***注意，此时左边界不用弹出，只要取到它的值就行</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">w</span> <span class="hljs-operator">=</span> i - leftIndex - <span class="hljs-number">1</span>; <span class="hljs-comment">//凹槽的宽度</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> Math.min(height[i], height[leftIndex]) - height[bottom]; <span class="hljs-comment">//凹槽的高度</span>
+            sum += w * h; <span class="hljs-comment">//累加每个凹槽的储水量</span>
+        &#125;
+        stack.push(i);
+    &#125;
+    <span class="hljs-keyword">return</span> sum;
+&#125;</code></pre></div><h3 id="柱状图中最大的矩形"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">柱状图中最大的矩形</a></h3><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250911224840034-2025-9-1122:48:41.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="zoom:80%"></p><p>思路：计算以每个柱子为基准所能勾勒出来的最大矩形的面积，取其中的最大值即可。</p><p>以某个柱子的高度为基准所能勾勒出来的最大矩形，取决于这个矩形的边界在哪，即这个矩形有多宽。</p><p>以示例中高度为1的柱子为例，左侧没有比它低的，右侧也没有比它低的，因此以高度为1的柱子为基准所能勾勒出的最大矩形的宽度为6，面积为1*6；再以高度为5的柱子为例，左侧第一个比它低的柱子（左边界）下标为1，右侧第一个比它低的柱子（有边界）下标为4，因此以该柱子为基准所能勾勒出的最大矩形的宽度为 4 -1 -1，即左右两侧第一个比它低的柱子之间的距离。</p><p>因此关键是求一个数左右两侧第一个比它小的数，这是单调栈应用的经典场景，与之前的接雨水问题很相似。</p><p>使用一个<strong>单调递减栈</strong>，栈中存放每个柱子的索引。在遍历数组时，每当遇到一个比栈顶低的柱子，栈顶柱子右侧第一个比它低的柱子就找到了，将栈顶元素出栈后，新的栈顶柱子就是它左侧第一个比它低的柱子，这样以栈顶元素为基准的最大矩形的面积就可以计算了。每个柱子都会入栈一次，计算以每个柱子为基准的最大矩形面积，取最大值即可。</p><p>这样看来，本题的思路与接雨水的思路完全相同，但本题在具体处理上也有它的独特之处：接雨水问题中一个柱子可以没有它的左边界和右边界，此时它的储水量为0；但矩形面积计算必须依赖左右边界，否则就无法计算宽度。因此为了避免这种情况的出现，<strong>需要手动给数组首尾加0</strong>.</p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250912120452068-2025-9-1212:04:58.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload alt="首部加0，保证每个元素都有左边界" style="zoom:80%"></p><p><img src="https://gitee.com/cmyk359/img/raw/master/img/image-20250912121530252-2025-9-1212:15:31.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload alt="尾部加0，保证每个元素有右边界" style="zoom:80%"></p><div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">largestRectangleArea</span><span class="hljs-params">(<span class="hljs-type">int</span>[] heights)</span> &#123;
+    <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> heights.length;
+    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> heights[<span class="hljs-number">0</span>];
+    <span class="hljs-comment">//单调递减栈</span>
+    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();
+    <span class="hljs-type">int</span> <span class="hljs-variable">maxArea</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">//给原数组首尾加0</span>
+    <span class="hljs-type">int</span>[] nh = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n+<span class="hljs-number">2</span>];
+    nh[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        nh[i+<span class="hljs-number">1</span>] = heights[i];
+    &#125;
+    nh[n+<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
+
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n+<span class="hljs-number">2</span>; i++) &#123;
+        <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nh[i] &lt; nh[stack.peek()]) &#123;
+            <span class="hljs-type">int</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> stack.pop();
+            <span class="hljs-type">int</span> <span class="hljs-variable">w</span> <span class="hljs-operator">=</span> i - stack.peek() - <span class="hljs-number">1</span>; <span class="hljs-comment">//矩形的宽</span>
+            <span class="hljs-type">int</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> nh[cur];  <span class="hljs-comment">// 矩形的高</span>
+            maxArea = Math.max(maxArea, h * w); <span class="hljs-comment">//计算矩形面积，取最大值</span>
+        &#125;
+        stack.push(i);
+    &#125;
+    <span class="hljs-keyword">return</span> maxArea;
+&#125;</code></pre></div><link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script></div><hr><div><div class="post-metas my-3"><div class="post-meta mr-3 d-flex align-items-center"><i class="iconfont icon-category"></i> <span class="category-chains"><span class="category-chain"><a href="/categories/leetcode/" class="category-chain-item">leetcode</a></span></span></div></div><div class="license-box my-3"><div class="license-title"><div>五、栈与队列</div><div>https://catpaws.top/700d279/</div></div><div class="license-meta"><div class="license-meta-item"><div>作者</div><div>猫爪在上</div></div><div class="license-meta-item license-meta-date"><div>发布于</div><div>2025年9月7日</div></div><div class="license-meta-item"><div>许可协议</div><div><a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/"><span class="hint--top hint--rounded" aria-label="BY - 署名"><i class="iconfont icon-cc-by"></i></span></a></div></div></div><div class="license-icon iconfont"></div></div><div class="post-prevnext my-3"><article class="post-prev col-6"></article><article class="post-next col-6"><a href="/36b020a8/" title="四、字符串"><span class="hidden-mobile">四、字符串</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div><article id="comments" lazyload><div id="twikoo"></div><script type="text/javascript">Fluid.utils.loadComments("#comments",(function(){Fluid.utils.createScript("https://catpaws.top/blog-resource/twikoo1.6.42/twikoo.all.min.js",(function(){var t=Object.assign({envId:"https://catpaws-comments.netlify.app/.netlify/functions/twikoo",region:"ap-shanghai",path:"window.location.pathname"},{el:"#twikoo",path:"window.location.pathname",onCommentLoaded:function(){Fluid.utils.listenDOMLoaded((function(){var t="#twikoo .tk-content img:not(.tk-owo-emotion)";Fluid.plugins.imageCaption(t),Fluid.plugins.fancyBox(t)}))}});twikoo.init(t)}))}))</script><noscript>Please enable JavaScript to view the comments</noscript></article></article></div></div></div><div class="side-col d-none d-lg-block col-lg-2"><aside class="sidebar" style="margin-left:-1rem"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i> <span>目录</span></p><div class="toc-body" id="toc-body"></div></div></aside></div></div></div><script>Fluid.utils.createScript("https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js",(function(){mermaid.initialize({theme:"default"}),Fluid.utils.listenDOMLoaded((function(){Fluid.events.registerRefreshCallback((function(){"mermaid"in window&&mermaid.init()}))}))}))</script><a id="scroll-top-button" aria-label="TOP" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div></main><footer><div class="footer-inner"><div class="footer-content">人山人海，欢迎你的到来 <i class="iconfont icon-love"></i><br><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><br><span><a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">本站由<img src="/img/upyun_logo.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload style="width:auto;height:auto">提供CDN加速/云存储服务</a></span></div><div class="beian"><span><a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">陕ICP备2025059828号 </a></span><span><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61032302000087" rel="nofollow noopener" class="beian-police" target="_blank"><span style="visibility:hidden;width:0">|</span> <img src="/img/police_beian.png" srcset="https://catpaws.top/blog-resource/imgs/transparent.svg" lazyload alt="police-icon"> <span>陕公网安备61032302000087号</span></a></span></div></div></footer><script src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js"></script><link rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css"><script>NProgress.configure({showSpinner:!1,trickleSpeed:100}),NProgress.start(),window.addEventListener("load",(function(){NProgress.done()}))</script><script src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js"></script><script src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script><script src="/js/events.js"></script><script src="/js/plugins.js"></script><script src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js"></script><script>!function(t,e){var i=Fluid.plugins.typing,n=e.getElementById("subtitle");n&&i&&i(n.getAttribute("data-typed-text"))}(window,document)</script><script src="/js/img-lazyload.js"></script><script>Fluid.utils.createScript("https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js",(function(){var t=jQuery("#toc");if(0!==t.length&&window.tocbot){var i=jQuery("#board-ctn").offset().top;window.tocbot.init(Object.assign({tocSelector:"#toc-body",contentSelector:".markdown-body",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",scrollSmooth:!0,includeTitleTags:!0,headingsOffset:-i},CONFIG.toc)),t.find(".toc-list-item").length>0&&t.css("visibility","visible"),Fluid.events.registerRefreshCallback((function(){if("tocbot"in window){tocbot.refresh();var t=jQuery("#toc");if(0===t.length||!tocbot)return;t.find(".toc-list-item").length>0&&t.css("visibility","visible")}}))}}))</script><script src="https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js"></script><script>Fluid.plugins.codeWidget()</script><script>Fluid.utils.createScript("https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js",(function(){window.anchors.options={placement:CONFIG.anchorjs.placement,visible:CONFIG.anchorjs.visible},CONFIG.anchorjs.icon&&(window.anchors.options.icon=CONFIG.anchorjs.icon);var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(window.anchors.options.class="anchorjs-link-left"),window.anchors.add(o.join(", ")),Fluid.events.registerRefreshCallback((function(){if("anchors"in window){anchors.removeAll();var n=(CONFIG.anchorjs.element||"h1,h2,h3,h4,h5,h6").split(","),o=[];for(var s of n)o.push(".markdown-body > "+s.trim());"left"===CONFIG.anchorjs.placement&&(anchors.options.class="anchorjs-link-left"),anchors.add(o.join(", "))}}))}))</script><script>Fluid.utils.createScript("https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js",(function(){Fluid.plugins.fancyBox()}))</script><script>Fluid.plugins.imageCaption()</script><script>window.MathJax?(MathJax.startup.document.state(0),MathJax.texReset(),MathJax.typeset(),MathJax.typesetPromise()):window.MathJax={tex:{inlineMath:{"[+]":[["$","$"]]}},loader:{load:["ui/lazy"]},options:{renderActions:{insertedScript:[200,()=>{document.querySelectorAll("mjx-container").forEach(t=>{let e=t.parentNode;"li"===e.nodeName.toLowerCase()&&e.parentNode.classList.add("has-jax")})},"",!1]}}},Fluid.events.registerRefreshCallback((function(){"MathJax"in window&&MathJax.startup.document&&"function"==typeof MathJax.startup.document.state&&(MathJax.startup.document.state(0),MathJax.texReset(),MathJax.typeset(),MathJax.typesetPromise())}))</script><script src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script defer src="/js/leancloud.js"></script><script src="/js/local-search.js"></script><script src="//catpaws.top/blog-resource/js/timeDate.js"></script><script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script><script src="//catpaws.top/blog-resource/js/loader.js"></script><script src="//catpaws.top/blog-resource/js/blurpicload.js"></script><script src="//catpaws.top/blog-resource/js/axios.min.js"></script><script src="/js/boot.js"></script><noscript><div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div></noscript><script data-pjax src="https://catpaws.top/blog-resource/live2d/index.min.js"></script><script>const oml2d=OML2D.loadOml2d({dockedPosition:"left",mobileDisplay:!1,models:[{path:"https://catpaws.top/blog-resource/live2d/Frieren/Frieren.model3.json",motionPreloadStrategy:"IDLE",position:[-60,-100],scale:.06,stageStyle:{width:250,height:350}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:!1,tips:{style:{width:200,height:90,left:"calc(50% - 20px)",top:"-100px","font-size":"14px"}}})</script></body></html>

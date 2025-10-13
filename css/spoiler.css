@@ -1,58 +1,92 @@
 .spoiler {
-    margin: 5px 0;
-    padding: 0 15px;
-    border: 1px solid #e6ebf1;
+    margin: 10px 0;
+    padding: 0;
+    border: 1px solid #ede7ff;
+    /* 改为淡紫色边框 */
     position: relative;
     clear: both;
-    border-radius: 0.625rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.spoiler:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .spoiler .spoiler-title {
-    background: #e6ebf1;
-    margin: 0 -15px;
-    padding: 5px 15px;
-    color: #353535;
+    background: #f8f5ff;
+    /* 改为淡紫色背景 */
+    margin: 0;
+    padding: 18px 24px;
+    color: #2c3e50;
     font-weight: bold;
     font-size: 16px;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 1px solid #ede7ff;
+    /* 改为淡紫色边框 */
 }
 
-.spoiler .spoiler-title:before {
-    font-weight: bold;
+.spoiler.collapsed .spoiler-title {
+    border-radius: 12px;
+    border-bottom: none;
 }
 
-.spoiler.collapsed .spoiler-title:before {
-    content: "▴ ";
+.spoiler .spoiler-title:hover {
+    background: #f1ebff;
+    /* 改为悬停时的淡紫色背景 */
 }
 
-.spoiler.expanded .spoiler-title:before {
-    content: "▾ ";
+.spoiler .spoiler-title::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237a6ab0'%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z'/%3E%3C/svg%3E");
+    /* 改为紫色箭头 */
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.spoiler.collapsed .spoiler-title::after {
+    transform: rotate(-90deg);
 }
 
 .spoiler .spoiler-content {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    -moz-transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    -o-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -moz-transition-timing-function: ease-in-out;
-    -webkit-transition-timing-function: ease-in-out;
-    -o-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    padding: 0;
+    margin: 0;
+    background: white;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition:
+        max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease,
+        padding 0.3s ease;
 }
 
 .spoiler.collapsed .spoiler-content {
-    overflow: hidden;
     max-height: 0;
+    opacity: 0;
+    padding: 0 24px;
 }
 
 .spoiler.expanded .spoiler-content {
     max-height: 3000px;
-    overflow: auto;
+    opacity: 1;
+    padding: 24px;
+    transition:
+        max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s ease 0.1s,
+        padding 0.3s ease;
 }
 
 .spoiler .spoiler-content p:first-child {
